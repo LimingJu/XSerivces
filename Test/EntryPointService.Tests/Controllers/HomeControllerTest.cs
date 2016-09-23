@@ -1,5 +1,4 @@
-﻿using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EntryPointService;
 using EntryPointService.Controllers;
 
