@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AdminService</name>
+    </assembly>
+    <members>
+        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
+            <summary>
+            This controller is for display API description info, works as a ReadMe.
+            </summary>
+        </member>
+        <member name="T:AdminService.Models.PeopleModel">
+            <summary>
+            POCO for People used in a Get method
+            </summary>
+        </member>
+        <member name="T:AdminService.Controllers.PeoplesController">
+            <summary>
+            This controller is only for sample code demo purpose
+            </summary>
+        </member>
+        <member name="M:AdminService.Controllers.PeoplesController.Get">
+            <summary>
+            Get all the People
+            </summary>
+            <returns>A set of Peoples</returns>
+        </member>
+        <member name="M:AdminService.Controllers.PeoplesController.Get(System.Int32)">
+            <summary>
+            Get People by Id
+            </summary>
+            <param name="id">int id</param>
+            <returns>the people matched with the Id</returns>
+        </member>
+        <member name="M:AdminService.Controllers.PeoplesController.Post(AdminService.Models.PeopleModel)">
+            <summary>
+            Create a new People
+            </summary>
+            <param name="people">new people entity</param>
+            <returns>succeed or not.</returns>
+        </member>
+        <member name="M:AdminService.Controllers.PeoplesController.Put(System.Int32,AdminService.Models.PeopleModel)">
+            <summary>
+            update target People
+            </summary>
+            <param name="id">target people id</param>
+            <param name="updatePeople">replace with this entity</param>
+            <returns>succeed or not.</returns>
+        </member>
+        <member name="M:AdminService.Controllers.PeoplesController.Delete(System.Int32)">
+            <summary>
+            Delete target People by id
+            </summary>
+            <param name="id">target Id</param>
+            <returns>succeed or not.</returns>
+        </member>
+        <member name="M:AdminService.Program.LogMemory">
+            <summary>
+            Logs the current memory status.
+            </summary>
+        </member>
+    </members>
+</doc>
