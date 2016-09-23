@@ -148,6 +148,7 @@
     <None Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Doc\Flow.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
