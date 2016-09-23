@@ -19,7 +19,7 @@ namespace ShowMeApi_SelfHost
 {
     public class HtmlActionResult : IHttpActionResult
     {
-        private const string ViewDirectory = @"C:\Fun\Code\ReposOnGitHub\SiteServiceCluster\EntryPointService\HelpPageForSelfHost\Areas\HelpPage\Views\Help";
+        private const string ViewDirectory = @"Areas\HelpPage\Views\Help";
         private readonly string _view;
         private readonly object _model;
         private readonly DynamicViewBag _viewBag;
