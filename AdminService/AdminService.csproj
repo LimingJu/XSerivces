@@ -49,8 +49,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -85,8 +85,8 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Npgsql, Version=3.1.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.3.1.7\lib\net451\Npgsql.dll</HintPath>
+    <Reference Include="Npgsql, Version=3.1.8.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.8\lib\net451\Npgsql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -134,7 +134,7 @@
       <Link>Controllers\ShowMeApiController.cs</Link>
     </Compile>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Controllers\PeoplesController.cs" />
+    <Compile Include="Controllers\PosStaffController.cs" />
     <Compile Include="Migrations\201609220829300_init.cs" />
     <Compile Include="Migrations\201609220829300_init.Designer.cs">
       <DependentUpon>201609220829300_init.cs</DependentUpon>
@@ -143,14 +143,40 @@
     <Compile Include="Migrations\201609230203038_Add_PeopleDetail.Designer.cs">
       <DependentUpon>201609230203038_Add_PeopleDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609260745532_remove_Children_Property_From_PeopleDetail.cs" />
+    <Compile Include="Migrations\201609260745532_remove_Children_Property_From_PeopleDetail.Designer.cs">
+      <DependentUpon>201609260745532_remove_Children_Property_From_PeopleDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.cs" />
+    <Compile Include="Migrations\201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.Designer.cs">
+      <DependentUpon>201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.cs" />
+    <Compile Include="Migrations\201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.Designer.cs">
+      <DependentUpon>201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.cs" />
+    <Compile Include="Migrations\201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.Designer.cs">
+      <DependentUpon>201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609280109597_rename_a_column_from_versioning_to_snapshot.cs" />
+    <Compile Include="Migrations\201609280109597_rename_a_column_from_versioning_to_snapshot.Designer.cs">
+      <DependentUpon>201609280109597_rename_a_column_from_versioning_to_snapshot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609280113158_add_DateToDeactivate_column_for_PosItemModel.cs" />
+    <Compile Include="Migrations\201609280113158_add_DateToDeactivate_column_for_PosItemModel.Designer.cs">
+      <DependentUpon>201609280113158_add_DateToDeactivate_column_for_PosItemModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609280218314_notAllowDateTimeNull.cs" />
+    <Compile Include="Migrations\201609280218314_notAllowDateTimeNull.Designer.cs">
+      <DependentUpon>201609280218314_notAllowDateTimeNull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\People.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
     <None Include="Doc\Flow.docx" />
@@ -168,8 +194,33 @@
     <EmbeddedResource Include="Migrations\201609230203038_Add_PeopleDetail.resx">
       <DependentUpon>201609230203038_Add_PeopleDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609260745532_remove_Children_Property_From_PeopleDetail.resx">
+      <DependentUpon>201609260745532_remove_Children_Property_From_PeopleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.resx">
+      <DependentUpon>201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.resx">
+      <DependentUpon>201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.resx">
+      <DependentUpon>201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609280109597_rename_a_column_from_versioning_to_snapshot.resx">
+      <DependentUpon>201609280109597_rename_a_column_from_versioning_to_snapshot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609280113158_add_DateToDeactivate_column_for_PosItemModel.resx">
+      <DependentUpon>201609280113158_add_DateToDeactivate_column_for_PosItemModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609280218314_notAllowDateTimeNull.resx">
+      <DependentUpon>201609280218314_notAllowDateTimeNull.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharedModel\SharedModel.csproj">
+      <Project>{80b5caf7-3270-40bb-9852-41a7276e5438}</Project>
+      <Name>SharedModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared\HelpPageForSelfHost\ShowMeApi_SelfHost.csproj">
       <Project>{ce524a06-1076-4e76-bbb3-f2103f377725}</Project>
       <Name>ShowMeApi_SelfHost</Name>
@@ -190,6 +241,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

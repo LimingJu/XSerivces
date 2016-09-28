@@ -12,13 +12,14 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using AdminService.Models;
 using log4net;
+using SharedModel;
 
 namespace AdminService.Controllers
 {
     /// <summary>
     /// This controller is only for sample code demo purpose
     /// </summary>
-    public class PeoplesController : ApiController
+    public class PosStaffController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
         ApplicationDbContext dbContext = new ApplicationDbContext();
@@ -27,10 +28,9 @@ namespace AdminService.Controllers
         /// Get all the People
         /// </summary>
         /// <returns>A set of Peoples</returns>
-        public IQueryable<PeopleModel> Get()
+        public IQueryable<PosStaffModel> Get()
         {
-            return dbContext.PeopleModels.Include(
-                p => p.Detail);
+            return dbContext.PosStaffModels;
         }
 
         /// <summary>
@@ -38,38 +38,37 @@ namespace AdminService.Controllers
         /// </summary>
         /// <param name="id">int id</param>
         /// <returns>the people matched with the Id</returns>
-        public IQueryable<PeopleModel> Get(int id)
+        public IQueryable<PosStaffModel> Get(int id)
         {
-            return dbContext.PeopleModels.Where(p => p.Id == id).Include(
-                p => p.Detail);
+            return dbContext.PosStaffModels.Where(p => p.Id == id);
         }
 
         /// <summary>
-        /// Create a new People
+        /// Create a new staff
         /// </summary>
-        /// <param name="people">new people entity</param>
+        /// <param name="newPosStaff">new staff entity</param>
         /// <returns>succeed or not.</returns>
-        [ResponseType(typeof(PeopleModel))]
-        public async Task<IHttpActionResult> Post(PeopleModel newPeople)
+        [ResponseType(typeof(PosStaffModel))]
+        public async Task<IHttpActionResult> Post(PosStaffModel newPosStaff)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (newPeople.Detail == null)
+            if (newPosStaff.UserName == null)
             {
-                logger.Info("'Detail' is null from post request");
-                return BadRequest("'Detail' should not be null");
+                logger.Info("'UserName' is null from post request");
+                return BadRequest("'UserName' should not be null");
             }
 
-            if (dbContext.PeopleModels.FirstOrDefault(f => f.Name == newPeople.Name) != null)
+            if (dbContext.PosStaffModels.FirstOrDefault(f => f.UserName == newPosStaff.UserName) != null)
             {
-                logger.Info("Duplicate Name: " + newPeople.Name);
+                logger.Info("Duplicate Name: " + newPosStaff.UserName);
                 return Conflict();
             }
 
-            dbContext.PeopleModels.Add(newPeople);
+            dbContext.PosStaffModels.Add(newPosStaff);
             try
             {
                 await dbContext.SaveChangesAsync();
@@ -84,44 +83,44 @@ namespace AdminService.Controllers
                     // quite sure it's the duplicate key exception, no need to cancel.
                     logger.Error(
                         "Duplicate key inserting was detected, will respond with 'HttpStatusCode.Conflict', the posted detail: " +
-                        newPeople);
+                        newPosStaff);
                     return StatusCode(HttpStatusCode.Conflict);
                 }
                 // it's something else...
                 throw;
             }
 
-            return Ok(newPeople);
+            return Ok(newPosStaff);
         }
 
         /// <summary>
         /// update target People
         /// </summary>
         /// <param name="id">target people id</param>
-        /// <param name="updatePeople">replace with this entity</param>
+        /// <param name="updateStaff">replace with this entity</param>
         /// <returns>succeed or not.</returns>
-        public async Task<IHttpActionResult> Put(int id, PeopleModel updatePeople)
+        public async Task<IHttpActionResult> Put(int id, PosStaffModel updateStaff)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != updatePeople.Id)
+            if (id != updateStaff.Id)
             {
                 return BadRequest("Unmatched id between url parameter and posted entity");
             }
 
-            if (updatePeople.Detail.Id == 0)
-            {
-                dbContext.Entry(updatePeople.Detail).State = EntityState.Added;
-            }
-            else
-            {
-                dbContext.Entry(updatePeople.Detail).State = EntityState.Modified;
-            }
+            //if (updateStaff.Detail.Id == 0)
+            //{
+            //    dbContext.Entry(updateStaff.Detail).State = EntityState.Added;
+            //}
+            //else
+            //{
+            //    dbContext.Entry(updateStaff.Detail).State = EntityState.Modified;
+            //}
 
-            dbContext.Entry(updatePeople).State = EntityState.Modified;
+            dbContext.Entry(updateStaff).State = EntityState.Modified;
             try
             {
                 await dbContext.SaveChangesAsync();
@@ -144,14 +143,14 @@ namespace AdminService.Controllers
         /// <returns>succeed or not.</returns>
         public async Task<IHttpActionResult> Delete(int id)
         {
-            var targetPeopleModel =
-                await dbContext.PeopleModels.Where(p => p.Id == id).Include(f => f.Detail).FirstOrDefaultAsync();
-            if (targetPeopleModel == null)
+            var targetPosStaffModel =
+                await dbContext.PosStaffModels.Where(p => p.Id == id).FirstOrDefaultAsync();
+            if (targetPosStaffModel == null)
             {
                 return NotFound();
             }
 
-            dbContext.PeopleModels.Remove(targetPeopleModel);
+            dbContext.PosStaffModels.Remove(targetPosStaffModel);
             await dbContext.SaveChangesAsync();
             return Ok();
 

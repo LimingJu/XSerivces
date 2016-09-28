@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using SharedConfig;
+using SharedModel;
 
 namespace AdminService.Models
 {
@@ -26,7 +27,10 @@ namespace AdminService.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<PeopleModel> PeopleModels { get; set; }
-        public System.Data.Entity.DbSet<PeopleDetailModel> PeopleDetailModels { get; set; }
+        public System.Data.Entity.DbSet<PosItemModel> PosItemModels { get; set; }
+
+        public System.Data.Entity.DbSet<PosStaffModel> PosStaffModels { get; set; }
+
+        public System.Data.Entity.DbSet<SnapShotModel> SnapShotModels { get; set; }
     }
 }
