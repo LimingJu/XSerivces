@@ -32,5 +32,7 @@ namespace AdminService.Models
         public System.Data.Entity.DbSet<PosStaffModel> PosStaffModels { get; set; }
 
         public System.Data.Entity.DbSet<SnapShotModel> SnapShotModels { get; set; }
+
+        public System.Data.Entity.DbSet<PosTransactionModel> PosTransactionModels { get; set; }
     }
 }

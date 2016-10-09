@@ -43,6 +43,7 @@ namespace BackOfficeSystem
             #endregion
 
             #region POS Staff Managment
+
             sortedAndReorg = new List<OperationDescriptor>();
             _ = visibleTables.First(t => t.EntityType == typeof(PosStaffModel));
             sortedAndReorg.Add(new OperationDescriptor()
@@ -57,6 +58,22 @@ namespace BackOfficeSystem
 
             #endregion
 
+            #region POS Transaction Managment
+
+            sortedAndReorg = new List<OperationDescriptor>();
+
+            _ = visibleTables.First(t => t.EntityType == typeof(PosTransactionModel));
+            sortedAndReorg.Add(new OperationDescriptor()
+            {
+                LinkPath = _.GetActionPath("List"),
+                DisplayText = "!!!Temp use here!!!Add, update or delete Pos Transaction",
+                DetailDescription = "!!!Temp use here!!! for modify the read-only pos transaction data."
+            });
+
+            PosTransactionManagmentGridView.DataSource = sortedAndReorg;
+            PosTransactionManagmentGridView.DataBind();
+
+            #endregion
         }
 
     }

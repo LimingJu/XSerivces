@@ -5,16 +5,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharedModel.ModelMetaData;
 
 namespace SharedModel
 {
     public enum PosTransactionSource { Indoor, Outdoor }
     public enum PosTransactionType { Sale, Refund, Reconciliation, Redemption, EndOfShift, EndOfDay }
-    public class PosTransaction
+    [ScaffoldTable(true)]
+    [MetadataType(typeof(PosTransactionModelMetadata))]
+    public class PosTransactionModel
     {
         public int Id { get; set; }
         public List<PosItemModel> SaleItems { get; set; }
-        public List<PosTransactionDicount> Dicounts { get; set; }
+        public List<PosTransactionDiscountModel> Dicounts { get; set; }
         public PosTransactionSource TransactionSource { get; set; }
 
         public PosTransactionType TransactionType { get; set; }
@@ -42,7 +45,8 @@ namespace SharedModel
         public string Currency { get; set; }
     }
 
-    public class PosTransactionDicount
+    [ScaffoldTable(true)]
+    public class PosTransactionDiscountModel
     {
         public int Id { get; set; }
 
@@ -55,14 +59,14 @@ namespace SharedModel
         public decimal DiscountAmount { get; set; }
     }
 
-    public class PosTransactionPayment
+    public class PosTransactionPaymentModel
     {
         public int Id { get; set; }
-        public List<MethodOfPayment> Payments { get; set; }
+        public List<MethodOfPaymentModel> Payments { get; set; }
 
     }
 
-    public class MethodOfPayment
+    public class MethodOfPaymentModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

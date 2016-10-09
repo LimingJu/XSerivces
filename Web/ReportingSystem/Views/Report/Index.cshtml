@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SharedModel.PosTransactionModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiptId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TerminalId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionInitDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Currency)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionSource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceiptId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TerminalId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShiftId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionInitDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Currency)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

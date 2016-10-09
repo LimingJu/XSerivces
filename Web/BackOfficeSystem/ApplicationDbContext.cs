@@ -30,5 +30,7 @@ namespace BackOfficeSystem
         public System.Data.Entity.DbSet<SharedModel.SnapShotModel> SnapShotModels { get; set; }
 
         public System.Data.Entity.DbSet<SharedModel.PosStaffModel> PosStaffModels { get; set; }
+
+        public System.Data.Entity.DbSet<SharedModel.PosTransactionModel> PosTransactionModels { get; set; }
     }
 }

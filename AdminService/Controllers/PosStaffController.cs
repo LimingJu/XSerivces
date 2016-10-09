@@ -23,7 +23,7 @@ namespace AdminService.Controllers
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
         ApplicationDbContext dbContext = new ApplicationDbContext();
-
+        
         /// <summary>
         /// Get all the People
         /// </summary>

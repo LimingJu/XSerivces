@@ -155,6 +155,7 @@
     </Compile>
     <Content Include="web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="DynamicData\web.config" />
     <Content Include="DynamicData\Content\GridViewPager.ascx" />
@@ -460,7 +461,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SharedModel\SharedModel.csproj">
+    <ProjectReference Include="..\..\Shared\SharedModel\SharedModel.csproj">
       <Project>{80b5caf7-3270-40bb-9852-41a7276e5438}</Project>
       <Name>SharedModel</Name>
     </ProjectReference>

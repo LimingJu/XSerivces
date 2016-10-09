@@ -171,6 +171,14 @@
     <Compile Include="Migrations\201609280218314_notAllowDateTimeNull.Designer.cs">
       <DependentUpon>201609280218314_notAllowDateTimeNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609280604549_AddPosTransactionRelatedModels.cs" />
+    <Compile Include="Migrations\201609280604549_AddPosTransactionRelatedModels.Designer.cs">
+      <DependentUpon>201609280604549_AddPosTransactionRelatedModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610081148203_align.cs" />
+    <Compile Include="Migrations\201610081148203_align.Designer.cs">
+      <DependentUpon>201610081148203_align.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,12 +223,14 @@
     <EmbeddedResource Include="Migrations\201609280218314_notAllowDateTimeNull.resx">
       <DependentUpon>201609280218314_notAllowDateTimeNull.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609280604549_AddPosTransactionRelatedModels.resx">
+      <DependentUpon>201609280604549_AddPosTransactionRelatedModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610081148203_align.resx">
+      <DependentUpon>201610081148203_align.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedModel\SharedModel.csproj">
-      <Project>{80b5caf7-3270-40bb-9852-41a7276e5438}</Project>
-      <Name>SharedModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared\HelpPageForSelfHost\ShowMeApi_SelfHost.csproj">
       <Project>{ce524a06-1076-4e76-bbb3-f2103f377725}</Project>
       <Name>ShowMeApi_SelfHost</Name>
@@ -228,6 +238,10 @@
     <ProjectReference Include="..\Shared\SharedConfig\SharedConfig.csproj">
       <Project>{8630443e-775b-4c9b-b8f4-8e630a908fef}</Project>
       <Name>SharedConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\SharedModel\SharedModel.csproj">
+      <Project>{80b5caf7-3270-40bb-9852-41a7276e5438}</Project>
+      <Name>SharedModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
