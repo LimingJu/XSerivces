@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TransactionService</name>
+    </assembly>
+    <members>
+        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
+            <summary>
+            This controller is for display API description info, works as a ReadMe.
+            </summary>
+        </member>
+        <member name="T:TransactionService.Controllers.SoldItemController">
+            <summary>
+            This controller is for querying sold items
+            </summary>
+        </member>
+        <member name="M:TransactionService.Controllers.SoldItemController.GetByTransactionId(System.Int32)">
+            <summary>
+            Get sold items by transaction id.
+            </summary>
+            <returns>A set of sold items</returns>
+        </member>
+        <member name="M:TransactionService.Controllers.SoldItemController.GetByItemId(System.Int32)">
+            <summary>
+            Get sold items by item id.
+            </summary>
+            <returns>A set of sold items</returns>
+        </member>
+        <member name="T:TransactionService.Controllers.TransactionController">
+            <summary>
+            This controller is for posting a transaction record
+            </summary>
+        </member>
+        <member name="M:TransactionService.Controllers.TransactionController.Get">
+            <summary>
+            Get all the transactions.
+            We do not return sold items here, but you can refer to SoldItemController to 
+            get per transaction or per item sold items.
+            </summary>
+            <returns>A set of transactions</returns>
+        </member>
+        <member name="M:TransactionService.Controllers.TransactionController.Post(SharedModel.PosTransactionModel)">
+            <summary>
+            Record a new transaction in database
+            </summary>
+            <param name="newPosTransaction">new transaction entity</param>
+            <returns>succeed or not.</returns>
+        </member>
+        <member name="M:TransactionService.Program.LogMemory">
+            <summary>
+            Logs the current memory status.
+            </summary>
+        </member>
+    </members>
+</doc>

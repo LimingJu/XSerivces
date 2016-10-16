@@ -15,9 +15,12 @@ namespace SharedModel
     [MetadataType(typeof(PosTransactionModelMetadata))]
     public class PosTransactionModel
     {
-        public int Id { get; set; }
-        public List<PosItemModel> SaleItems { get; set; }
-        public List<PosTransactionDiscountModel> Dicounts { get; set; }
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PosTransactionId { get; set; }
+
+        //public List<PosTransactionDiscountModel> Dicounts { get; set; }
         public PosTransactionSource TransactionSource { get; set; }
 
         public PosTransactionType TransactionType { get; set; }
@@ -43,6 +46,23 @@ namespace SharedModel
         public decimal GrossAmount { get; set; }
 
         public string Currency { get; set; }
+
+        public virtual ICollection<SoldPosItemModel> SoldPosItems { get; set; }
+    }
+
+    public class SoldPosItemModel
+    {
+        [Key]
+        [Column(Order = 0)]
+        public int PosTransactionId { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int ItemId { get; set; }
+
+        public virtual PosTransactionModel PosTransaction { get; set; }
+        public virtual PosItemModel PosItem { get; set; }
+
+        public int SoldCount { get; set; }
     }
 
     [ScaffoldTable(true)]

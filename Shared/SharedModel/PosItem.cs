@@ -64,6 +64,8 @@ namespace SharedModel
 
         [MaxLength(200)]
         public string ItemBarCode { get; set; }
+
+        public virtual ICollection<SoldPosItemModel> SoldPosItems { get; set; }
     }
 
     //public class PosItemGroupModel

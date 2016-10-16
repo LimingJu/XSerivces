@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel", "Shared\Share
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingSystem", "Web\ReportingSystem\ReportingSystem.csproj", "{0D53437F-01B4-44E3-B136-F39EB5BE6CE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionService", "TransactionService\TransactionService.csproj", "{5684BFFC-5E3B-44F6-A4DC-6B36A8F97D66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{0D53437F-01B4-44E3-B136-F39EB5BE6CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D53437F-01B4-44E3-B136-F39EB5BE6CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D53437F-01B4-44E3-B136-F39EB5BE6CE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5684BFFC-5E3B-44F6-A4DC-6B36A8F97D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5684BFFC-5E3B-44F6-A4DC-6B36A8F97D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5684BFFC-5E3B-44F6-A4DC-6B36A8F97D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5684BFFC-5E3B-44F6-A4DC-6B36A8F97D66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
