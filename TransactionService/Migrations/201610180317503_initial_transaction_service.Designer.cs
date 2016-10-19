@@ -7,13 +7,13 @@ namespace TransactionService.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class remove_PosItemDetail_for_simplify_only_for_demo : IMigrationMetadata
+    public sealed partial class initial_transaction_service : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(remove_PosItemDetail_for_simplify_only_for_demo));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial_transaction_service));
         
         string IMigrationMetadata.Id
         {
-            get { return "201609271402464_remove_PosItemDetail_for_simplify_only_for_demo"; }
+            get { return "201610180317503_initial_transaction_service"; }
         }
         
         string IMigrationMetadata.Source

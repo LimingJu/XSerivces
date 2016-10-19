@@ -9,29 +9,29 @@
             This controller is for display API description info, works as a ReadMe.
             </summary>
         </member>
-        <member name="T:TransactionService.Controllers.SoldItemController">
+        <member name="T:TransactionService.Controllers.SoldItemsController">
             <summary>
             This controller is for querying sold items
             </summary>
         </member>
-        <member name="M:TransactionService.Controllers.SoldItemController.GetByTransactionId(System.Int32)">
+        <member name="M:TransactionService.Controllers.SoldItemsController.GetByTransactionId(System.Int32)">
             <summary>
             Get sold items by transaction id.
             </summary>
             <returns>A set of sold items</returns>
         </member>
-        <member name="M:TransactionService.Controllers.SoldItemController.GetByItemId(System.Int32)">
+        <member name="M:TransactionService.Controllers.SoldItemsController.GetByItemId(System.Int32)">
             <summary>
             Get sold items by item id.
             </summary>
             <returns>A set of sold items</returns>
         </member>
-        <member name="T:TransactionService.Controllers.TransactionController">
+        <member name="T:TransactionService.Controllers.TransactionsController">
             <summary>
-            This controller is for posting a transaction record
+            This controller is for posting and querying transaction 
             </summary>
         </member>
-        <member name="M:TransactionService.Controllers.TransactionController.Get">
+        <member name="M:TransactionService.Controllers.TransactionsController.Get">
             <summary>
             Get all the transactions.
             We do not return sold items here, but you can refer to SoldItemController to 
@@ -39,7 +39,14 @@
             </summary>
             <returns>A set of transactions</returns>
         </member>
-        <member name="M:TransactionService.Controllers.TransactionController.Post(SharedModel.PosTransactionModel)">
+        <member name="M:TransactionService.Controllers.TransactionsController.GetById(System.Int32)">
+            <summary>
+            Get a transaction given a transaction ID
+            </summary>
+            <param name="id">transaction id</param>
+            <returns>a transaction</returns>
+        </member>
+        <member name="M:TransactionService.Controllers.TransactionsController.Post(SharedModel.PosTransactionModel)">
             <summary>
             Record a new transaction in database
             </summary>

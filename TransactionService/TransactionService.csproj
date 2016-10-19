@@ -134,55 +134,11 @@
       <Link>Controllers\ShowMeApiController.cs</Link>
     </Compile>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Controllers\SoldItemController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
-    <Compile Include="Migrations\201609220829300_init.cs" />
-    <Compile Include="Migrations\201609220829300_init.Designer.cs">
-      <DependentUpon>201609220829300_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609230203038_Add_PeopleDetail.cs" />
-    <Compile Include="Migrations\201609230203038_Add_PeopleDetail.Designer.cs">
-      <DependentUpon>201609230203038_Add_PeopleDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609260745532_remove_Children_Property_From_PeopleDetail.cs" />
-    <Compile Include="Migrations\201609260745532_remove_Children_Property_From_PeopleDetail.Designer.cs">
-      <DependentUpon>201609260745532_remove_Children_Property_From_PeopleDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.cs" />
-    <Compile Include="Migrations\201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.Designer.cs">
-      <DependentUpon>201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.cs" />
-    <Compile Include="Migrations\201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.Designer.cs">
-      <DependentUpon>201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.cs" />
-    <Compile Include="Migrations\201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.Designer.cs">
-      <DependentUpon>201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609280109597_rename_a_column_from_versioning_to_snapshot.cs" />
-    <Compile Include="Migrations\201609280109597_rename_a_column_from_versioning_to_snapshot.Designer.cs">
-      <DependentUpon>201609280109597_rename_a_column_from_versioning_to_snapshot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609280113158_add_DateToDeactivate_column_for_PosItemModel.cs" />
-    <Compile Include="Migrations\201609280113158_add_DateToDeactivate_column_for_PosItemModel.Designer.cs">
-      <DependentUpon>201609280113158_add_DateToDeactivate_column_for_PosItemModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609280218314_notAllowDateTimeNull.cs" />
-    <Compile Include="Migrations\201609280218314_notAllowDateTimeNull.Designer.cs">
-      <DependentUpon>201609280218314_notAllowDateTimeNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609280604549_AddPosTransactionRelatedModels.cs" />
-    <Compile Include="Migrations\201609280604549_AddPosTransactionRelatedModels.Designer.cs">
-      <DependentUpon>201609280604549_AddPosTransactionRelatedModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610081148203_align.cs" />
-    <Compile Include="Migrations\201610081148203_align.Designer.cs">
-      <DependentUpon>201610081148203_align.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610151335486_transaction__related_tables.cs" />
-    <Compile Include="Migrations\201610151335486_transaction__related_tables.Designer.cs">
-      <DependentUpon>201610151335486_transaction__related_tables.cs</DependentUpon>
+    <Compile Include="Controllers\SoldItemsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Migrations\201610180317503_initial_transaction_service.cs" />
+    <Compile Include="Migrations\201610180317503_initial_transaction_service.Designer.cs">
+      <DependentUpon>201610180317503_initial_transaction_service.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -199,44 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Doc\EF_command.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609220829300_init.resx">
-      <DependentUpon>201609220829300_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609230203038_Add_PeopleDetail.resx">
-      <DependentUpon>201609230203038_Add_PeopleDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609260745532_remove_Children_Property_From_PeopleDetail.resx">
-      <DependentUpon>201609260745532_remove_Children_Property_From_PeopleDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.resx">
-      <DependentUpon>201609270805202_remove_People_Model_which_for_demo_purpose_And_Add_Some_other_models.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.resx">
-      <DependentUpon>201609271402464_remove_PosItemDetail_for_simplify_only_for_demo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.resx">
-      <DependentUpon>201609271417470_make_ItemId_In_PosItem_table_not_generatedByDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609280109597_rename_a_column_from_versioning_to_snapshot.resx">
-      <DependentUpon>201609280109597_rename_a_column_from_versioning_to_snapshot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609280113158_add_DateToDeactivate_column_for_PosItemModel.resx">
-      <DependentUpon>201609280113158_add_DateToDeactivate_column_for_PosItemModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609280218314_notAllowDateTimeNull.resx">
-      <DependentUpon>201609280218314_notAllowDateTimeNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609280604549_AddPosTransactionRelatedModels.resx">
-      <DependentUpon>201609280604549_AddPosTransactionRelatedModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610081148203_align.resx">
-      <DependentUpon>201610081148203_align.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610151335486_transaction__related_tables.resx">
-      <DependentUpon>201610151335486_transaction__related_tables.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\HelpPageForSelfHost\ShowMeApi_SelfHost.csproj">
@@ -266,6 +184,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610180317503_initial_transaction_service.resx">
+      <DependentUpon>201610180317503_initial_transaction_service.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,9 +17,9 @@ using SharedModel;
 namespace TransactionService.Controllers
 {
     /// <summary>
-    /// This controller is for posting a transaction record
+    /// This controller is for posting and querying transaction 
     /// </summary>
-    public class TransactionController : ApiController
+    public class TransactionsController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
         ApplicationDbContext dbContext = new ApplicationDbContext();
@@ -33,6 +33,27 @@ namespace TransactionService.Controllers
         public IQueryable<PosTransactionModel> Get()
         {
             return dbContext.PosTransactionModels;
+        }
+
+        /// <summary>
+        /// Get a transaction given a transaction ID
+        /// </summary>
+        /// <param name="id">transaction id</param>
+        /// <returns>a transaction</returns>
+        [ResponseType(typeof(PosTransactionModel))]
+        public async Task<IHttpActionResult> GetById(int id)
+        {
+            try
+            {
+                var transaction = await dbContext.PosTransactionModels
+                    .FirstAsync(t => t.PosTransactionId == id);
+
+                return Ok(transaction);
+            }
+            catch(InvalidOperationException)
+            {
+                return NotFound();
+            }  
         }
 
         /// <summary>

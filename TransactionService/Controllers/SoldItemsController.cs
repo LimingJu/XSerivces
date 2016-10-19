@@ -19,7 +19,7 @@ namespace TransactionService.Controllers
     /// <summary>
     /// This controller is for querying sold items
     /// </summary>
-    public class SoldItemController : ApiController
+    public class SoldItemsController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
         ApplicationDbContext dbContext = new ApplicationDbContext();
@@ -28,20 +28,22 @@ namespace TransactionService.Controllers
         /// Get sold items by transaction id.
         /// </summary>
         /// <returns>A set of sold items</returns>
-        public IQueryable<SoldPosItemModel> GetByTransactionId(int posTransactionId)
+        [Route("api/transactions/{transactionId}/soldItems")]
+        public IQueryable<SoldPosItemModel> GetByTransactionId(int transactionId)
         {
             return dbContext.SoldPosItemModels
-                            .Where(s => s.PosTransactionId == posTransactionId);
+                            .Where(s => s.PosTransactionId == transactionId);
         }
 
         /// <summary>
         /// Get sold items by item id.
         /// </summary>
         /// <returns>A set of sold items</returns>
-        public IQueryable<SoldPosItemModel> GetByItemId(int posItemId)
+        [Route("api/items/{itemId}/soldItems")]
+        public IQueryable<SoldPosItemModel> GetByItemId(int itemId)
         {
             return dbContext.SoldPosItemModels
-                            .Where(s => s.ItemId == posItemId);
+                            .Where(s => s.ItemId == itemId);
         }
     }
 }
