@@ -1,0 +1,26 @@
+﻿Be always use the code based migrations since I have not found any clue for how to rollback the Migrations in automatical Migrations mode.
+
+// create support tables in db, and create the first batch of tables defined in project.
+// and create Migrations in local project.
+// !!!make sure you select the target Project in 'Package Manager Console'
+Enable-Migrations
+
+// generate a migration file with the name specified.
+Add-Migration [Name]
+
+// re-generate the migration file which will overwrite the existed one with the name specified.
+Add-Migration [Name] -Force
+
+// update database to latest migration file
+Update-Database
+
+// update database to migration file with specified name, use this for rollback/undo migrations.
+Update-Database –TargetMigration: [Name]
+
+// update database to initialized state which means no migartion file is applied.
+Update-Database –TargetMigration: $InitialDatabase
+
+// generate a script file which include all the migartions from the beginning to a migration by name
+// specified.
+// omit the :-TargetMigration: [Name] will assume TargetMigration is latest.
+Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: [Name]

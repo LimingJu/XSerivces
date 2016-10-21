@@ -47,7 +47,7 @@ namespace SharedModel
 
         public string Currency { get; set; }
 
-        public int MethodOfPaymentId { get; set; }
+        public int MethodOfPaymentId { get; set; } 
 
         [ForeignKey("MethodOfPaymentId")]
         public virtual MethodOfPaymentModel MethodOfPayment { get; set; }
@@ -70,32 +70,11 @@ namespace SharedModel
         public int SoldCount { get; set; }
     }
 
-    [ScaffoldTable(true)]
-    public class PosTransactionDiscountModel
-    {
-        public int Id { get; set; }
-
-        /// <summary>
-        /// The discount is performed on these items.
-        /// </summary>
-        public List<PosItemModel> TargetSaleItems { get; set; }
-
-        public string DiscountName { get; set; }
-        public decimal DiscountAmount { get; set; }
-    }
-
-    public class PosTransactionPaymentModel
-    {
-        public int Id { get; set; }
-        public List<MethodOfPaymentModel> Payments { get; set; }
-
-    }
-
     public class MethodOfPaymentModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PaymentTypeId { get; set; }
+        public int MethodOfPaymentId { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<PosTransactionModel> PosTransactions { get; set; }

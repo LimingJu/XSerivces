@@ -17,13 +17,13 @@ using SharedModel;
 namespace TransactionService.Controllers
 {
     /// <summary>
-    /// This controller is for posting and querying transaction 
+    /// This controller is for querying transaction(s)
     /// </summary>
     public class TransactionsController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
         ApplicationDbContext dbContext = new ApplicationDbContext();
-        
+
         /// <summary>
         /// Get all the transactions.
         /// We do not return sold items here, but you can refer to SoldItemController to 
@@ -50,32 +50,10 @@ namespace TransactionService.Controllers
 
                 return Ok(transaction);
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 return NotFound();
-            }  
-        }
-
-        /// <summary>
-        /// Record a new transaction in database
-        /// </summary>
-        /// <param name="newPosTransaction">new transaction entity</param>
-        /// <returns>succeed or not.</returns>
-        public async Task<IHttpActionResult> Post(PosTransactionModel newPosTransaction)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
             }
-
-            // add parameter validation here
-            // nothing for now
-
-            // insert a new transaction record and related sold item records
-            dbContext.PosTransactionModels.Add(newPosTransaction);
-            await dbContext.SaveChangesAsync();
-
-            return Ok();
         }
 
 
