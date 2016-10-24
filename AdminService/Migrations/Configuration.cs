@@ -1,3 +1,5 @@
+using SharedModel;
+
 namespace AdminService.Migrations
 {
     using System;
@@ -19,12 +21,13 @@ namespace AdminService.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
+            context.CurrencyModels.AddOrUpdate(
+              p => p.Name,
+              new Currency() { Name = "USD" },
+              new Currency() { Name = "RMB" },
+              new Currency() { Name = "SGD" },
+              new Currency() { Name = "JAP" }
+            );
             //
         }
     }

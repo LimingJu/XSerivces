@@ -21,7 +21,7 @@ namespace BackOfficeSystem
 
             var sortedAndReorg = new List<OperationDescriptor>();
 
-            var _ = visibleTables.First(t => t.EntityType == typeof(SnapShotModel));
+            var _ = visibleTables.First(t => t.EntityType == typeof(SnapShot));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),
@@ -29,11 +29,11 @@ namespace BackOfficeSystem
                 DetailDescription = "Adding a SnapShot to start a process of add or modification POS Items."
             });
 
-            _ = visibleTables.First(t => t.EntityType == typeof(PosItemModel));
+            _ = visibleTables.First(t => t.EntityType == typeof(PosItem));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),
-                DisplayText = "Add, update or delete POS Items",
+                DisplayText = "Add, update or delete POS Items which can be sold",
                 DetailDescription = "Any operation with modification to POS Items need create a Snapshot point first which gurantee all history data safe and un-touched."
             });
 
@@ -42,10 +42,60 @@ namespace BackOfficeSystem
 
             #endregion
 
+            #region PosDiscount Managment
+
+            sortedAndReorg = new List<OperationDescriptor>();
+
+            _ = visibleTables.First(t => t.EntityType == typeof(PosDiscount));
+            sortedAndReorg.Add(new OperationDescriptor()
+            {
+                LinkPath = _.GetActionPath("List"),
+                DisplayText = "Add a Pos Discount configuration, this can be used in later POS transaction",
+                DetailDescription = "Adding a Pos Discount configuration."
+            });
+
+            //_ = visibleTables.First(t => t.EntityType == typeof(PosItem));
+            //sortedAndReorg.Add(new OperationDescriptor()
+            //{
+            //    LinkPath = _.GetActionPath("List"),
+            //    DisplayText = "Add, update or delete POS Items",
+            //    DetailDescription = "Any operation with modification to POS Items need create a Snapshot point first which gurantee all history data safe and un-touched."
+            //});
+
+            PosDiscountsManagmentGridView.DataSource = sortedAndReorg;
+            PosDiscountsManagmentGridView.DataBind();
+
+            #endregion
+
+            #region PosMop Managment
+
+            sortedAndReorg = new List<OperationDescriptor>();
+
+            _ = visibleTables.First(t => t.EntityType == typeof(PosMop));
+            sortedAndReorg.Add(new OperationDescriptor()
+            {
+                LinkPath = _.GetActionPath("List"),
+                DisplayText = "Add a Pos Method of payment (MOP) configuration, this can be used in later POS transaction",
+                DetailDescription = "Add a Pos Method of payment (MOP) configuration."
+            });
+
+            //_ = visibleTables.First(t => t.EntityType == typeof(PosItem));
+            //sortedAndReorg.Add(new OperationDescriptor()
+            //{
+            //    LinkPath = _.GetActionPath("List"),
+            //    DisplayText = "Add, update or delete POS Items",
+            //    DetailDescription = "Any operation with modification to POS Items need create a Snapshot point first which gurantee all history data safe and un-touched."
+            //});
+
+            PosMopManagmentGridView.DataSource = sortedAndReorg;
+            PosMopManagmentGridView.DataBind();
+            
+            #endregion
+
             #region POS Staff Managment
 
             sortedAndReorg = new List<OperationDescriptor>();
-            _ = visibleTables.First(t => t.EntityType == typeof(PosStaffModel));
+            _ = visibleTables.First(t => t.EntityType == typeof(PosStaff));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),
@@ -62,7 +112,7 @@ namespace BackOfficeSystem
 
             sortedAndReorg = new List<OperationDescriptor>();
 
-            _ = visibleTables.First(t => t.EntityType == typeof(PosTransactionModel));
+            _ = visibleTables.First(t => t.EntityType == typeof(PosTrx));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),

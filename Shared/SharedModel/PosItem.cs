@@ -11,28 +11,30 @@ namespace SharedModel
     /// <summary>
     /// Specify how a item mesured, by volumn (galon) or piece.
     /// </summary>
-    public enum PosItemModelUnitId { Gal, PCS }
+    public enum PosItemUnitId { Gal, PCS }
+
     /// <summary>
-    /// POCO for PosItem
+    /// POCO for Pos Item
     /// </summary>
     [ScaffoldTable(true)]
-    [MetadataType(typeof(PosItemModelMetadata))]
-    public class PosItemModel
+    [MetadataType(typeof(PosItemMetadata))]
+    public class PosItem
     {
+        public int Id { get; set; }
         /// <summary>
         /// predefined by business
         /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column(Order = 1)]
-        public int ItemId { get; set; }
+        [Index("IX_ItemIdAndSnapShotId", 1, IsUnique = true)]
+        [Required]
+        [MaxLength(20)]
+        public string ItemId { get; set; }
 
         /// <summary>
         /// for keep all history item, import this version
         /// </summary>
-        [Key]
-        [Column(Order = 2)]
-        public SnapShotModel SnapShot { get; set; }
+        [Index("IX_ItemIdAndSnapShotId", 2, IsUnique = true)]
+        public int SnapShotId { get; set; }
+        public SnapShot SnapShot { get; set; }
 
         /// <summary>
         /// predefined by business
@@ -51,7 +53,7 @@ namespace SharedModel
             get; set;
         }
 
-        public PosItemModelUnitId UnitId { get; set; }
+        public PosItemUnitId UnitId { get; set; }
 
         public decimal Price { get; set; }
 
@@ -63,7 +65,16 @@ namespace SharedModel
         public DateTime DateToDeactivate { get; set; }
 
         [MaxLength(200)]
-        public string ItemBarCode { get; set; }
+        public string BarCode { get; set; }
+
+        [MaxLength(200)]
+        public string PLU { get; set; }
+
+        /// <summary>
+        /// defined and involved in which Pos Discount definition.
+        /// The PosDiscount typically downloaded and parsed from a table download or BOS download.
+        /// </summary>
+        public virtual List<PosDiscount> DiscountedIn { get; set; }
     }
 
     //public class PosItemGroupModel
@@ -80,5 +91,10 @@ namespace SharedModel
     //    public string ItemGroupName { get; set; }
     //}
 
+    //public class PosTransactionModelPosItemModels
+    //{
+    //    public int PosTransactionModel_Id { get; set; }
+    //    public int PosItemModel_Id { get; set; }
+    //}
 
 }

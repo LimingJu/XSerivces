@@ -27,14 +27,14 @@
             <param name="id">int id</param>
             <returns>the people matched with the Id</returns>
         </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Post(SharedModel.PosStaffModel)">
+        <member name="M:AdminService.Controllers.PosStaffController.Post(SharedModel.PosStaff)">
             <summary>
             Create a new staff
             </summary>
             <param name="newPosStaff">new staff entity</param>
             <returns>succeed or not.</returns>
         </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Put(System.Int32,SharedModel.PosStaffModel)">
+        <member name="M:AdminService.Controllers.PosStaffController.Put(System.Int32,SharedModel.PosStaff)">
             <summary>
             update target People
             </summary>

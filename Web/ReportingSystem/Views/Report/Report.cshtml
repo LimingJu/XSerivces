@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SharedModel.PosTransactionModel>
+﻿@model IEnumerable<SharedModel.PosTrx>
 
 @{
     ViewBag.Title = "Report";
@@ -40,14 +40,14 @@
         @{
             var chartLabelsStr = "";
             var chartDataStr = "";
-            if (Model.Any() && Model.Any(m => m.SaleItems != null))
+            if (Model.Any() && Model.Any(m => m.Items != null))
             {
-                var allItemsLookup = Model.SelectMany(m => m.SaleItems).GroupBy(k => k.ItemName).ToList();
-                chartLabelsStr = allItemsLookup.Select(c => "\"" + c.Key + "\"").Aggregate((acc, n) => acc + "," + n);
+                var allItemsLookup = Model.SelectMany(m => m.Items).Select(i=>i.Item).GroupBy(k => k.ItemName).ToList();
+                chartLabelsStr = allItemsLookup.Select(c => @"""" + c.Key + @"""").Aggregate((acc, n) => acc +","+ n);
                 chartDataStr = allItemsLookup.Select(c => c.Count().ToString()).Aggregate((acc, n) => acc + "," + n);
             }
         }
-        labels: [@chartLabelsStr],
+        labels: [@Html.Raw(chartLabelsStr)],
         datasets: [
             {
                 label: "Sold Items top 10",
@@ -80,7 +80,7 @@
 
     var ctx1 = document.getElementById("indoorAndOutdoorSoldItemsDistributionChart");
     var data1 = {
-        labels: [@Html.Raw(colors.Select(c => "\"" + c + "\"").Aggregate((acc, n) => acc + "," + n))],
+        labels: [@Html.Raw(colors.Select(c => @"""" + c + @"""").Aggregate((acc, n) => acc + "," + n))],
         datasets: [
             {
                 label: "Indoor/Outdoor Sold Items",

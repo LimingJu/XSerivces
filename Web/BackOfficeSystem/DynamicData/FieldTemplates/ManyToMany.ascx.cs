@@ -1,7 +1,10 @@
 using System;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects.DataClasses;
+using System.Linq;
 using System.Web.UI;
+using SharedModel;
 
 namespace BackOfficeSystem
 {
@@ -22,15 +25,66 @@ namespace BackOfficeSystem
                 entity = Row;
             }
 
-            var entityCollection = Column.EntityTypeProperty.GetValue(entity, null);
-            var realEntityCollection = entityCollection as RelatedEnd;
-            if (realEntityCollection != null && !realEntityCollection.IsLoaded)
+            if (entity is PosTrx)
             {
-                realEntityCollection.Load();
+                //using (var db = new ApplicationDbContext())
+                //{
+                //    var targetTrx = (PosTrx)entity;
+                //    var entityCollection = db.PosTrxModels.Include(trx => trx.Items)
+                //        .Where(trx => trx.Id == targetTrx.Id)
+                //        .SelectMany(t => t.Items).ToList();
+                //    Repeater1.DataSource = entityCollection;
+                //    Repeater1.DataBind();
+                //}
             }
+            else if (entity is PosItem)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetPosItem = (PosItem)entity;
+                    var entityCollection = db.PosItemModels.Include(item => item.DiscountedIn)
+                        .Where(item => item.Id == targetPosItem.Id)
+                        .SelectMany(t => t.DiscountedIn).ToList();
+                    Repeater1.DataSource = entityCollection;
+                    Repeater1.DataBind();
+                }
+            }
+            else if (entity is PosDiscount)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetPosDiscountItem = (PosDiscount)entity;
+                    var entityCollection = db.PosDiscountModels.Include(item => item.Targets)
+                        .Where(item => item.Id == targetPosDiscountItem.Id)
+                        .SelectMany(t => t.Targets).ToList();
+                    Repeater1.DataSource = entityCollection;
+                    Repeater1.DataBind();
+                }
+            }
+            else if (entity is PosTrxDiscount)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetPosDiscountItem = (PosTrxDiscount)entity;
+                    var entityCollection = db.PosTrxDiscountModels.Include(item => item.Items)
+                        .Where(item => item.Id == targetPosDiscountItem.Id)
+                        .SelectMany(t => t.Items).ToList();
+                    Repeater1.DataSource = entityCollection;
+                    Repeater1.DataBind();
+                }
+            }
+            else
+            {
+                var entityCollection = Column.EntityTypeProperty.GetValue(entity, null);
+                var realEntityCollection = entityCollection as RelatedEnd;
+                if (realEntityCollection != null && !realEntityCollection.IsLoaded)
+                {
+                    realEntityCollection.Load();
+                }
 
-            Repeater1.DataSource = entityCollection;
-            Repeater1.DataBind();
+                Repeater1.DataSource = entityCollection;
+                Repeater1.DataBind();
+            }
         }
 
         public override Control DataControl

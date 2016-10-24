@@ -9,8 +9,8 @@ using SharedModel.ModelMetadata;
 namespace SharedModel
 {
     [ScaffoldTable(true)]
-    [MetadataType(typeof(PosStaffModelMetadata))]
-    public class PosStaffModel
+    [MetadataType(typeof(PosStaffMetadata))]
+    public class PosStaff
     {
         public int Id { get; set; }
 

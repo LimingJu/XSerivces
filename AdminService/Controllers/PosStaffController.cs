@@ -23,14 +23,14 @@ namespace AdminService.Controllers
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
         ApplicationDbContext dbContext = new ApplicationDbContext();
-        
+
         /// <summary>
         /// Get all the People
         /// </summary>
         /// <returns>A set of Peoples</returns>
-        public IQueryable<PosStaffModel> Get()
+        public IQueryable<PosTrx> Get()
         {
-            return dbContext.PosStaffModels;
+            return dbContext.PosTransactionModels.Include(trx => trx.Items);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace AdminService.Controllers
         /// </summary>
         /// <param name="id">int id</param>
         /// <returns>the people matched with the Id</returns>
-        public IQueryable<PosStaffModel> Get(int id)
+        public IQueryable<PosStaff> Get(int id)
         {
             return dbContext.PosStaffModels.Where(p => p.Id == id);
         }
@@ -48,8 +48,8 @@ namespace AdminService.Controllers
         /// </summary>
         /// <param name="newPosStaff">new staff entity</param>
         /// <returns>succeed or not.</returns>
-        [ResponseType(typeof(PosStaffModel))]
-        public async Task<IHttpActionResult> Post(PosStaffModel newPosStaff)
+        [ResponseType(typeof(PosStaff))]
+        public async Task<IHttpActionResult> Post(PosStaff newPosStaff)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace AdminService.Controllers
         /// <param name="id">target people id</param>
         /// <param name="updateStaff">replace with this entity</param>
         /// <returns>succeed or not.</returns>
-        public async Task<IHttpActionResult> Put(int id, PosStaffModel updateStaff)
+        public async Task<IHttpActionResult> Put(int id, PosStaff updateStaff)
         {
             if (!ModelState.IsValid)
             {

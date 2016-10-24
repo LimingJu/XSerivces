@@ -13,8 +13,8 @@ namespace SharedModel
     /// history changes, this is required for debug and reporting.
     /// </summary>
     [ScaffoldTable(true)]
-    [MetadataType(typeof(SnapShotModelModelMetadata))]
-    public class SnapShotModel
+    [MetadataType(typeof(SnapShotMetadata))]
+    public class SnapShot
     {
         public int Id { get; set; }
 

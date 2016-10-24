@@ -18,7 +18,7 @@ namespace BackOfficeSystem
                 return s_defaultModel;
             }
         }
-
+        // follow https://blogs.msdn.microsoft.com/webdev/2014/02/28/announcing-the-release-of-dynamic-data-provider-and-entitydatasource-control-for-entity-framework-6/
         public static void RegisterRoutes(RouteCollection routes)
         {
             //                    IMPORTANT: DATA MODEL REGISTRATION 

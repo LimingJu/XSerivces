@@ -18,8 +18,10 @@ namespace ReportingSystem.Controllers
         // GET: Report
         public ActionResult Chart(string chartType)
         {
-            ViewBag.ChartTypeString = chartType; 
-            return View("Report", db.PosTransactionModels.ToList());
+            ViewBag.ChartTypeString = chartType;
+            var data = db.PosTrxModels.Include(trx => trx.Items).Include(t => t.Currency)
+                .Include(t => t.Payments).Include(t => t.Discounts).ToList();
+            return View("Report", data);
         }
 
         // GET: Report
@@ -35,7 +37,7 @@ namespace ReportingSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PosTransactionModel posTransactionModel = db.PosTransactionModels.Find(id);
+            PosTrx posTransactionModel = db.PosTrxModels.Find(id);
             if (posTransactionModel == null)
             {
                 return HttpNotFound();
@@ -54,11 +56,11 @@ namespace ReportingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TransactionSource,TransactionType,ReceiptId,TerminalId,ShiftId,TransactionInitDateTime,NetAmount,GrossAmount,Currency")] PosTransactionModel posTransactionModel)
+        public ActionResult Create([Bind(Include = "Id,TransactionSource,TransactionType,ReceiptId,TerminalId,ShiftId,TransactionInitDateTime,NetAmount,GrossAmount,Currency")] PosTrx posTransactionModel)
         {
             if (ModelState.IsValid)
             {
-                db.PosTransactionModels.Add(posTransactionModel);
+                db.PosTrxModels.Add(posTransactionModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -73,7 +75,7 @@ namespace ReportingSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PosTransactionModel posTransactionModel = db.PosTransactionModels.Find(id);
+            PosTrx posTransactionModel = db.PosTrxModels.Find(id);
             if (posTransactionModel == null)
             {
                 return HttpNotFound();
@@ -86,7 +88,7 @@ namespace ReportingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TransactionSource,TransactionType,ReceiptId,TerminalId,ShiftId,TransactionInitDateTime,NetAmount,GrossAmount,Currency")] PosTransactionModel posTransactionModel)
+        public ActionResult Edit([Bind(Include = "Id,TransactionSource,TransactionType,ReceiptId,TerminalId,ShiftId,TransactionInitDateTime,NetAmount,GrossAmount,Currency")] PosTrx posTransactionModel)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +106,7 @@ namespace ReportingSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PosTransactionModel posTransactionModel = db.PosTransactionModels.Find(id);
+            PosTrx posTransactionModel = db.PosTrxModels.Find(id);
             if (posTransactionModel == null)
             {
                 return HttpNotFound();
@@ -117,8 +119,8 @@ namespace ReportingSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PosTransactionModel posTransactionModel = db.PosTransactionModels.Find(id);
-            db.PosTransactionModels.Remove(posTransactionModel);
+            PosTrx posTransactionModel = db.PosTrxModels.Find(id);
+            db.PosTrxModels.Remove(posTransactionModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using SharedModel;
 
 namespace ReportingSystem
 {
@@ -25,6 +26,18 @@ namespace ReportingSystem
         {
         }
 
-        public System.Data.Entity.DbSet<SharedModel.PosTransactionModel> PosTransactionModels { get; set; }
+        public System.Data.Entity.DbSet<PosItem> PosItemModels { get; set; }
+        public System.Data.Entity.DbSet<PosTrxItem> PosTrxItemModels { get; set; }
+
+        public System.Data.Entity.DbSet<PosStaff> PosStaffModels { get; set; }
+
+        public System.Data.Entity.DbSet<SnapShot> SnapShotModels { get; set; }
+
+        public System.Data.Entity.DbSet<PosDiscount> PosDiscountModels { get; set; }
+
+        public System.Data.Entity.DbSet<PosTrxDiscount> PosTrxDiscountModels { get; set; }
+        public System.Data.Entity.DbSet<PosTrx> PosTrxModels { get; set; }
+
+        public System.Data.Entity.DbSet<Currency> CurrencyModels { get; set; }
     }
 }

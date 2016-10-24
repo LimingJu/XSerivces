@@ -50,13 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomMetaTableAttributes\AddOnlyAttribute.cs" />
-    <Compile Include="ModelMetadata\PosTransactionModelMetadata.cs" />
-    <Compile Include="ModelMetadata\PosStaffModelMetadata.cs" />
-    <Compile Include="ModelMetadata\SnapShotModelModelMetadata.cs" />
-    <Compile Include="ModelMetadata\PosItemModelMetadata.cs" />
+    <Compile Include="ModelMetadata\PosDiscountMetadata.cs" />
+    <Compile Include="ModelMetadata\PosTrxMopMetadata.cs" />
+    <Compile Include="ModelMetadata\PosTrxDiscountMetadata.cs" />
+    <Compile Include="ModelMetadata\PosTrxItemMetadata.cs" />
+    <Compile Include="ModelMetadata\PosTrxMetadata.cs" />
+    <Compile Include="ModelMetadata\PosStaffMetadata.cs" />
+    <Compile Include="ModelMetadata\SnapShotMetadata.cs" />
+    <Compile Include="ModelMetadata\PosItemMetadata.cs" />
     <Compile Include="PosFunction.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="PosStaff.cs" />
-    <Compile Include="PosTransaction.cs" />
+    <Compile Include="PosTrx.cs" />
     <Compile Include="SnapShot.cs" />
     <Compile Include="PosItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -67,12 +67,14 @@ namespace SharedConfig
                 SerializerSettings =
                 {
                     NullValueHandling = NullValueHandling.Ignore
-                }
+                },
             };
 
             config.Formatters.RemoveAt(0);
             config.Formatters.Insert(0, jsonformatter);
-
+            config.Formatters.JsonFormatter
+            .SerializerSettings
+            .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             #endregion
 
         }
