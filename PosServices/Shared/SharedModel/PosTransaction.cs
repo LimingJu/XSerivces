@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SharedModel.ModelMetaData;
+
+namespace SharedModel
+{
+    public enum PosTransactionSource { Indoor, Outdoor }
+    public enum PosTransactionType { Sale, Refund, Reconciliation, Redemption, EndOfShift, EndOfDay }
+    [ScaffoldTable(true)]
+    [MetadataType(typeof(PosTransactionModelMetadata))]
+    public class PosTransactionModel
+    {
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PosTransactionId { get; set; }
+
+        //public List<PosTransactionDiscountModel> Dicounts { get; set; }
+        public PosTransactionSource TransactionSource { get; set; }
+
+        public PosTransactionType TransactionType { get; set; }
+
+        [MaxLength(20)]
+        public string ReceiptId { get; set; }
+
+        /// <summary>
+        /// Indoor based on 100, outdoor based on 0.
+        /// </summary>
+        public int TerminalId { get; set; }
+        public int ShiftId { get; set; }
+        public DateTime TransactionInitDateTime { get; set; }
+
+        /// <summary>
+        /// final charged from customer
+        /// </summary>
+        public decimal NetAmount { get; set; }
+
+        /// <summary>
+        /// total amount without discount deducted yet.
+        /// </summary>
+        public decimal GrossAmount { get; set; }
+
+        public string Currency { get; set; }
+
+        public int MethodOfPaymentId { get; set; } 
+
+        [ForeignKey("MethodOfPaymentId")]
+        public virtual MethodOfPaymentModel MethodOfPayment { get; set; }
+
+        public virtual ICollection<SoldPosItemModel> SoldPosItems { get; set; }
+    }
+
+    public class SoldPosItemModel
+    {
+        [Key]
+        [Column(Order = 0)]
+        public int PosTransactionId { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int ItemId { get; set; }
+
+        public virtual PosTransactionModel PosTransaction { get; set; }
+        public virtual PosItemModel PosItem { get; set; }
+
+        public int SoldCount { get; set; }
+    }
+
+    public class MethodOfPaymentModel
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MethodOfPaymentId { get; set; }
+        public string Name { get; set; }
+
+        public virtual ICollection<PosTransactionModel> PosTransactions { get; set; }
+    }
+}
