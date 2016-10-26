@@ -1,3 +1,5 @@
+using SharedConfig;
+
 namespace TransactionService.Migrations
 {
     using System;
@@ -5,14 +7,14 @@ namespace TransactionService.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TransactionService.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DefaultAppDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TransactionService.Models.ApplicationDbContext context)
+        protected override void Seed(DefaultAppDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -10,8 +10,8 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using TransactionService.Models;
 using log4net;
+using SharedConfig;
 using SharedModel;
 
 namespace TransactionService.Controllers
@@ -22,7 +22,7 @@ namespace TransactionService.Controllers
     public class TransactionsController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
-        ApplicationDbContext dbContext = new ApplicationDbContext();
+        DefaultAppDbContext dbContext = new DefaultAppDbContext();
         
         /// <summary>
         /// Get all the transactions.
@@ -30,9 +30,9 @@ namespace TransactionService.Controllers
         /// get per transaction or per item sold items.
         /// </summary>
         /// <returns>A set of transactions</returns>
-        public IQueryable<PosTransactionModel> Get()
+        public IQueryable<PosTrx> Get()
         {
-            return dbContext.PosTransactionModels;
+            return dbContext.PosTrxModels;
         }
 
         /// <summary>
@@ -40,13 +40,13 @@ namespace TransactionService.Controllers
         /// </summary>
         /// <param name="id">transaction id</param>
         /// <returns>a transaction</returns>
-        [ResponseType(typeof(PosTransactionModel))]
+        [ResponseType(typeof(PosTrx))]
         public async Task<IHttpActionResult> GetById(int id)
         {
             try
             {
-                var transaction = await dbContext.PosTransactionModels
-                    .FirstAsync(t => t.PosTransactionId == id);
+                var transaction = await dbContext.PosTrxModels
+                    .FirstAsync(t => t.Id == id);
 
                 return Ok(transaction);
             }
@@ -61,7 +61,7 @@ namespace TransactionService.Controllers
         /// </summary>
         /// <param name="newPosTransaction">new transaction entity</param>
         /// <returns>succeed or not.</returns>
-        public async Task<IHttpActionResult> Post(PosTransactionModel newPosTransaction)
+        public async Task<IHttpActionResult> Post(PosTrx newPosTransaction)
         {
             if (!ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace TransactionService.Controllers
             // nothing for now
 
             // insert a new transaction record and related sold item records
-            dbContext.PosTransactionModels.Add(newPosTransaction);
+            dbContext.PosTrxModels.Add(newPosTransaction);
             await dbContext.SaveChangesAsync();
 
             return Ok();

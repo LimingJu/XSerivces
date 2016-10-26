@@ -10,8 +10,8 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using TransactionService.Models;
 using log4net;
+using SharedConfig;
 using SharedModel;
 
 namespace TransactionService.Controllers
@@ -22,17 +22,17 @@ namespace TransactionService.Controllers
     public class SoldItemsController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
-        ApplicationDbContext dbContext = new ApplicationDbContext();
+        DefaultAppDbContext dbContext = new DefaultAppDbContext();
 
         /// <summary>
         /// Get sold items by transaction id.
         /// </summary>
         /// <returns>A set of sold items</returns>
         [Route("api/transactions/{transactionId}/soldItems")]
-        public IQueryable<SoldPosItemModel> GetByTransactionId(int transactionId)
+        public IQueryable<PosTrxItem> GetByTransactionId(int transactionId)
         {
-            return dbContext.SoldPosItemModels
-                            .Where(s => s.PosTransactionId == transactionId);
+            return dbContext.PosTrxItemModels
+                            .Where(s => s.Id == transactionId);
         }
 
         /// <summary>
@@ -40,10 +40,10 @@ namespace TransactionService.Controllers
         /// </summary>
         /// <returns>A set of sold items</returns>
         [Route("api/items/{itemId}/soldItems")]
-        public IQueryable<SoldPosItemModel> GetByItemId(int itemId)
+        public IQueryable<PosTrxItem> GetByItemId(int itemId)
         {
-            return dbContext.SoldPosItemModels
-                            .Where(s => s.ItemId == itemId);
+            return dbContext.PosTrxItemModels
+                            .Where(s => s.PosItemId == itemId);
         }
     }
 }

@@ -46,7 +46,7 @@
             <param name="id">transaction id</param>
             <returns>a transaction</returns>
         </member>
-        <member name="M:TransactionService.Controllers.TransactionsController.Post(SharedModel.PosTransactionModel)">
+        <member name="M:TransactionService.Controllers.TransactionsController.Post(SharedModel.PosTrx)">
             <summary>
             Record a new transaction in database
             </summary>

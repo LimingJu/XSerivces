@@ -133,7 +133,6 @@
     <Compile Include="..\Shared\HelpPageForSelfHost\Areas\HelpPage\Controllers\ShowMeApiController.cs">
       <Link>Controllers\ShowMeApiController.cs</Link>
     </Compile>
-    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Controllers\SoldItemsController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Migrations\201610180317503_initial_transaction_service.cs" />
