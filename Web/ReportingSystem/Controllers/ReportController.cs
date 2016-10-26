@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ReportingSystem;
 using SharedModel;
 
 namespace ReportingSystem.Controllers
@@ -92,7 +87,7 @@ namespace ReportingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(posTransactionModel).State = EntityState.Modified;
+                db.Entry(posTransactionModel).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

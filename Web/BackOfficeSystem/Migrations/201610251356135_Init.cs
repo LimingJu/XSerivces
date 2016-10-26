@@ -1,9 +1,9 @@
-namespace AdminService.Migrations
+namespace BackOfficeSystem.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,31 @@ namespace AdminService.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "public.PosDiscounts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DiscountName = c.String(nullable: false),
+                        DiscountType = c.Int(nullable: false),
+                        DiscountRule = c.Int(nullable: false),
+                        Value = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        SnapShotId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("public.SnapShots", t => t.SnapShotId, cascadeDelete: true)
+                .Index(t => new { t.DiscountName, t.SnapShotId }, unique: true, name: "IX_DiscountNameAndSnapShotId");
+            
+            CreateTable(
+                "public.SnapShots",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Tag = c.String(),
+                        CreatedDateTime = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -38,30 +63,6 @@ namespace AdminService.Migrations
                 .Index(t => new { t.ItemId, t.SnapShotId }, unique: true, name: "IX_ItemIdAndSnapShotId");
             
             CreateTable(
-                "public.PosDiscounts",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DiscountName = c.String(nullable: false),
-                        DiscountType = c.Int(nullable: false),
-                        DiscountRule = c.Int(nullable: false),
-                        SnapShotId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("public.SnapShots", t => t.SnapShotId, cascadeDelete: true)
-                .Index(t => new { t.DiscountName, t.SnapShotId }, unique: true, name: "IX_DiscountNameAndSnapShotId");
-            
-            CreateTable(
-                "public.SnapShots",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Tag = c.String(),
-                        CreatedDateTime = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "public.PosStaffs",
                 c => new
                     {
@@ -72,6 +73,37 @@ namespace AdminService.Migrations
                         LastLoginDateTime = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "public.PosTrxDiscounts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        PosDiscountId = c.Int(nullable: false),
+                        DiscountAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        PosTrxId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("public.PosTrxes", t => t.PosTrxId, cascadeDelete: true)
+                .ForeignKey("public.PosDiscounts", t => t.PosDiscountId, cascadeDelete: true)
+                .Index(t => t.PosDiscountId)
+                .Index(t => t.PosTrxId);
+            
+            CreateTable(
+                "public.PosTrxItems",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        LineNum = c.Int(nullable: false),
+                        PosItemId = c.Int(nullable: false),
+                        Qty = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        PosTrxId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("public.PosItems", t => t.PosItemId, cascadeDelete: true)
+                .ForeignKey("public.PosTrxes", t => t.PosTrxId, cascadeDelete: true)
+                .Index(t => new { t.LineNum, t.PosTrxId }, unique: true, name: "IX_LineNumAndPosTrxId")
+                .Index(t => t.PosItemId);
             
             CreateTable(
                 "public.PosTrxes",
@@ -93,51 +125,20 @@ namespace AdminService.Migrations
                 .Index(t => t.CurrencyId);
             
             CreateTable(
-                "public.PosTrxDiscounts",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        PosDiscountId = c.Int(nullable: false),
-                        DiscountAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        PosTrxId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("public.PosDiscounts", t => t.PosDiscountId, cascadeDelete: true)
-                .ForeignKey("public.PosTrxes", t => t.PosTrxId, cascadeDelete: true)
-                .Index(t => t.PosDiscountId)
-                .Index(t => t.PosTrxId);
-            
-            CreateTable(
-                "public.PosTrxItems",
+                "public.PosTrxMops",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         LineNum = c.Int(nullable: false),
-                        PosItemId = c.Int(nullable: false),
-                        Qty = c.Int(nullable: false),
-                        PosTrxId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("public.PosItems", t => t.PosItemId, cascadeDelete: true)
-                .ForeignKey("public.PosTrxes", t => t.PosTrxId, cascadeDelete: true)
-                .Index(t => new { t.LineNum, t.PosTrxId }, unique: true, name: "IX_LineNumAndPosTrxId")
-                .Index(t => t.PosItemId);
-            
-            CreateTable(
-                "public.PosTrxMops",
-                c => new
-                    {
-                        MId = c.Int(nullable: false),
-                        Name = c.String(),
                         Paid = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PayBack = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PosTrxId = c.Int(nullable: false),
                         PosMopId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.MId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("public.PosMops", t => t.PosMopId, cascadeDelete: true)
                 .ForeignKey("public.PosTrxes", t => t.PosTrxId, cascadeDelete: true)
-                .Index(t => t.PosTrxId)
+                .Index(t => new { t.LineNum, t.PosTrxId }, unique: true, name: "IX_LineNumAndPosTrxId")
                 .Index(t => t.PosMopId);
             
             CreateTable(
@@ -183,16 +184,16 @@ namespace AdminService.Migrations
         
         public override void Down()
         {
-            DropForeignKey("public.PosTrxMops", "PosTrxId", "public.PosTrxes");
-            DropForeignKey("public.PosTrxMops", "PosMopId", "public.PosMops");
-            DropForeignKey("public.PosMops", "SnapShotId", "public.SnapShots");
-            DropForeignKey("public.PosTrxDiscounts", "PosTrxId", "public.PosTrxes");
             DropForeignKey("public.PosTrxDiscounts", "PosDiscountId", "public.PosDiscounts");
             DropForeignKey("public.PosTrxDisPosTrxItem_M2M", "PosTrxItemId", "public.PosTrxItems");
             DropForeignKey("public.PosTrxDisPosTrxItem_M2M", "PosTrxDiscountId", "public.PosTrxDiscounts");
+            DropForeignKey("public.PosTrxMops", "PosTrxId", "public.PosTrxes");
+            DropForeignKey("public.PosTrxMops", "PosMopId", "public.PosMops");
+            DropForeignKey("public.PosMops", "SnapShotId", "public.SnapShots");
             DropForeignKey("public.PosTrxItems", "PosTrxId", "public.PosTrxes");
-            DropForeignKey("public.PosTrxItems", "PosItemId", "public.PosItems");
+            DropForeignKey("public.PosTrxDiscounts", "PosTrxId", "public.PosTrxes");
             DropForeignKey("public.PosTrxes", "CurrencyId", "public.Currencies");
+            DropForeignKey("public.PosTrxItems", "PosItemId", "public.PosItems");
             DropForeignKey("public.PosItems", "SnapShotId", "public.SnapShots");
             DropForeignKey("public.PosItemPosDis_M2M", "PosDiscountId", "public.PosDiscounts");
             DropForeignKey("public.PosItemPosDis_M2M", "PosItemId", "public.PosItems");
@@ -203,25 +204,25 @@ namespace AdminService.Migrations
             DropIndex("public.PosItemPosDis_M2M", new[] { "PosItemId" });
             DropIndex("public.PosMops", "IX_PaymentIdAndSnapShotId");
             DropIndex("public.PosTrxMops", new[] { "PosMopId" });
-            DropIndex("public.PosTrxMops", new[] { "PosTrxId" });
+            DropIndex("public.PosTrxMops", "IX_LineNumAndPosTrxId");
+            DropIndex("public.PosTrxes", new[] { "CurrencyId" });
             DropIndex("public.PosTrxItems", new[] { "PosItemId" });
             DropIndex("public.PosTrxItems", "IX_LineNumAndPosTrxId");
             DropIndex("public.PosTrxDiscounts", new[] { "PosTrxId" });
             DropIndex("public.PosTrxDiscounts", new[] { "PosDiscountId" });
-            DropIndex("public.PosTrxes", new[] { "CurrencyId" });
-            DropIndex("public.PosDiscounts", "IX_DiscountNameAndSnapShotId");
             DropIndex("public.PosItems", "IX_ItemIdAndSnapShotId");
+            DropIndex("public.PosDiscounts", "IX_DiscountNameAndSnapShotId");
             DropTable("public.PosTrxDisPosTrxItem_M2M");
             DropTable("public.PosItemPosDis_M2M");
             DropTable("public.PosMops");
             DropTable("public.PosTrxMops");
+            DropTable("public.PosTrxes");
             DropTable("public.PosTrxItems");
             DropTable("public.PosTrxDiscounts");
-            DropTable("public.PosTrxes");
             DropTable("public.PosStaffs");
+            DropTable("public.PosItems");
             DropTable("public.SnapShots");
             DropTable("public.PosDiscounts");
-            DropTable("public.PosItems");
             DropTable("public.Currencies");
         }
     }

@@ -154,7 +154,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="DefaultAppDbContext.cs" />
+    <Compile Include="ApplicationIdentityDbContext.cs" />
     <Compile Include="ApplicationOAuthProvider.cs" />
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="ApplicationUserManager.cs" />
@@ -168,6 +169,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharedModel\SharedModel.csproj">
+      <Project>{80b5caf7-3270-40bb-9852-41a7276e5438}</Project>
+      <Name>SharedModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharedProvider\SharedProvider.csproj">
       <Project>{4018adb6-0340-4701-83ea-8d442939eaef}</Project>
       <Name>SharedProvider</Name>

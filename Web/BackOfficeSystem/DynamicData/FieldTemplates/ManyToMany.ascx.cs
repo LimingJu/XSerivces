@@ -25,6 +25,8 @@ namespace BackOfficeSystem
                 entity = Row;
             }
 
+            var aaaaa = Column.EntityTypeProperty.GetValue(entity, null);
+            Console.WriteLine(aaaaa);
             if (entity is PosTrx)
             {
                 //using (var db = new ApplicationDbContext())

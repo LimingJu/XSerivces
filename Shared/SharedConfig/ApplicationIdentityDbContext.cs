@@ -7,16 +7,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SharedConfig
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public ApplicationIdentityDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static ApplicationIdentityDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new ApplicationIdentityDbContext();
         }
     }
 }

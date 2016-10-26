@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EntryPointService;
-using EntryPointService.Controllers;
 
 namespace EntryPointService.Tests.Controllers
 {

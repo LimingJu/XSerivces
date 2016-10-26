@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -10,8 +9,8 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using AdminService.Models;
 using log4net;
+using SharedConfig;
 using SharedModel;
 
 namespace AdminService.Controllers
@@ -22,7 +21,7 @@ namespace AdminService.Controllers
     public class PosStaffController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
-        ApplicationDbContext dbContext = new ApplicationDbContext();
+        DefaultAppDbContext dbContext = new DefaultAppDbContext();
 
         /// <summary>
         /// Get all the People
@@ -30,7 +29,7 @@ namespace AdminService.Controllers
         /// <returns>A set of Peoples</returns>
         public IQueryable<PosTrx> Get()
         {
-            return dbContext.PosTransactionModels.Include(trx => trx.Items);
+            return dbContext.PosTrxModels.Include(trx => trx.Items);
         }
 
         /// <summary>

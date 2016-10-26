@@ -101,12 +101,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\EntryPointService\EntryPointService.csproj">
-      <Project>{6A6ADB23-9E42-468C-9D8A-34714CD70679}</Project>
-      <Name>EntryPointService</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
