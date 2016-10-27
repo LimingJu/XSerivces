@@ -56,6 +56,9 @@ namespace SharedConfig
         public System.Data.Entity.DbSet<PosTrxDiscount> PosTrxDiscountModels { get; set; }
         public System.Data.Entity.DbSet<PosStaff> PosStaffModels { get; set; }
 
+        public System.Data.Entity.DbSet<PosMop> PosMopModels { get; set; }
+        public System.Data.Entity.DbSet<PosTrxMop> PosTrxMopModels { get; set; }
+
         public System.Data.Entity.DbSet<SnapShot> SnapShotModels { get; set; }
 
         public System.Data.Entity.DbSet<Currency> CurrencyModels { get; set; }
