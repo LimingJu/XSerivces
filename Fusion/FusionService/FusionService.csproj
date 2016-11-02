@@ -153,15 +153,15 @@
     <Content Include="Doc\EF_command.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared\HelpPageForSelfHost\ShowMeApi_SelfHost.csproj">
+    <ProjectReference Include="..\..\Shared\HelpPageForSelfHost\ShowMeApi_SelfHost.csproj">
       <Project>{ce524a06-1076-4e76-bbb3-f2103f377725}</Project>
       <Name>ShowMeApi_SelfHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shared\SharedConfig\SharedConfig.csproj">
+    <ProjectReference Include="..\..\Shared\SharedConfig\SharedConfig.csproj">
       <Project>{8630443e-775b-4c9b-b8f4-8e630a908fef}</Project>
       <Name>SharedConfig</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shared\SharedModel\SharedModel.csproj">
+    <ProjectReference Include="..\..\Shared\SharedModel\SharedModel.csproj">
       <Project>{80b5caf7-3270-40bb-9852-41a7276e5438}</Project>
       <Name>SharedModel</Name>
     </ProjectReference>
