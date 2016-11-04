@@ -133,7 +133,10 @@
     <Compile Include="..\Shared\HelpPageForSelfHost\Areas\HelpPage\Controllers\ShowMeApiController.cs">
       <Link>Controllers\ShowMeApiController.cs</Link>
     </Compile>
+    <Compile Include="Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\TransactionPaymentsController.cs" />
+    <Compile Include="Controllers\TransactionItemsController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Program.cs" />

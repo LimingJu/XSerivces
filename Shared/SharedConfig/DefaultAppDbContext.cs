@@ -14,6 +14,7 @@ namespace SharedConfig
         public DefaultAppDbContext()
             : base("PgDatabaseContext")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public static DefaultAppDbContext Create()
@@ -44,7 +45,7 @@ namespace SharedConfig
                     mc.MapLeftKey("PosTrxDiscountId");
                     mc.MapRightKey("PosTrxItemId");
                 });
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public System.Data.Entity.DbSet<PosTrx> PosTrxModels { get; set; }
