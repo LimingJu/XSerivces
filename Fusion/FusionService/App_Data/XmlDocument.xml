@@ -4,11 +4,6 @@
         <name>FusionService</name>
     </assembly>
     <members>
-        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
-            <summary>
-            This controller is for display API description info, works as a ReadMe.
-            </summary>
-        </member>
         <member name="T:FusionService.Controllers.ItemsController">
             <summary>
             This controller is for querying POS items.
@@ -115,6 +110,11 @@
         <member name="M:FusionService.Program.LogMemory">
             <summary>
             Logs the current memory status.
+            </summary>
+        </member>
+        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
+            <summary>
+            This controller is for display API description info, works as a ReadMe.
             </summary>
         </member>
     </members>
