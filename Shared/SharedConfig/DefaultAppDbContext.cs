@@ -14,6 +14,7 @@ namespace SharedConfig
         public DefaultAppDbContext()
             : base("PgDatabaseContext")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public static DefaultAppDbContext Create()

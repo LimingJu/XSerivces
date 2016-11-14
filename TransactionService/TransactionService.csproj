@@ -143,15 +143,6 @@
     </Compile>
     <Compile Include="Controllers\SoldItemsController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
-    <Compile Include="Migrations\201610180317503_initial_transaction_service.cs" />
-    <Compile Include="Migrations\201610180317503_initial_transaction_service.Designer.cs">
-      <DependentUpon>201610180317503_initial_transaction_service.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610200413401_related_postransaction_to_paymentofmethod.cs" />
-    <Compile Include="Migrations\201610200413401_related_postransaction_to_paymentofmethod.Designer.cs">
-      <DependentUpon>201610200413401_related_postransaction_to_paymentofmethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -194,15 +185,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610180317503_initial_transaction_service.resx">
-      <DependentUpon>201610180317503_initial_transaction_service.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610200413401_related_postransaction_to_paymentofmethod.resx">
-      <DependentUpon>201610200413401_related_postransaction_to_paymentofmethod.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

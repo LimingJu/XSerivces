@@ -66,6 +66,7 @@
     <Compile Include="ModelMetadata\PosStaffMetadata.cs" />
     <Compile Include="ModelMetadata\SnapShotMetadata.cs" />
     <Compile Include="ModelMetadata\PosItemMetadata.cs" />
+    <Compile Include="PosDiscount.cs" />
     <Compile Include="PosFunction.cs" />
     <Compile Include="SiteInfo.cs" />
     <Compile Include="ServiceUser.cs" />

@@ -4,11 +4,6 @@
         <name>FusionService</name>
     </assembly>
     <members>
-        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
-            <summary>
-            This controller is for display API description info, works as a ReadMe.
-            </summary>
-        </member>
         <member name="T:FusionService.Controllers.ItemsController">
             <summary>
             This controller is for querying POS items.
@@ -21,28 +16,76 @@
             </summary>
             <returns>A list of POS items</returns>
         </member>
-        <member name="M:FusionService.Controllers.ItemsController.GetById(System.Int32)">
+        <member name="M:FusionService.Controllers.ItemsController.GetByIdFromSnapShot(System.Int32,System.String)">
             <summary>
-            Get an item by item id.
+            Get an item by item id and snap shot id.
             </summary>
             <returns>A POS item if exists</returns>
         </member>
-        <member name="M:FusionService.Controllers.ItemsController.GetByBarCode(System.String)">
+        <member name="M:FusionService.Controllers.ItemsController.GetById(System.String)">
             <summary>
-            Get item(s) by a barcode
+            Get an item by item id from the most recent snapshot.
             </summary>
-            <returns>a list of POS items that have the given bar code</returns>
+            <returns>A POS item if exists</returns>
+        </member>
+        <member name="T:FusionService.Controllers.TransactionPaymentsController">
+            <summary>
+            This controller is for performing payments
+            </summary>
+        </member>
+        <member name="M:FusionService.Controllers.TransactionPaymentsController.GetByTransactionId(System.Int32)">
+            <summary>
+            get all the payments made in a given transaction
+            </summary>
+            <param name="trxId">transaction id</param>
+            <returns></returns>
+        </member>
+        <member name="M:FusionService.Controllers.TransactionPaymentsController.Post(System.Decimal,SharedModel.PosTrxMop)">
+            <summary>
+            Insert a transaction payment into database
+            It can be used to pay transactions #step(3)
+            </summary>
+            <param name="amountToPay">the amount this payment is gonna pay</param>
+            <param name="trxMop"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FusionService.Controllers.TransactionItemsController.GetByTransactionId(System.Int32)">
+            <summary>
+            get all the items rung up in a given transaction
+            </summary>
+            <param name="trxId">transaction id</param>
+            <returns></returns>
+        </member>
+        <member name="M:FusionService.Controllers.TransactionItemsController.Post(SharedModel.PosTrxItem)">
+            <summary>
+            Insert a transaction item into database
+            It can be used to ring up transaction items #step(2)
+            </summary>
+            <param name="trxItem"></param>
+            <returns></returns>
         </member>
         <member name="T:FusionService.Controllers.TransactionsController">
             <summary>
             This controller is for querying transaction(s)
             </summary>
         </member>
+        <member name="M:FusionService.Controllers.TransactionsController.Post(SharedModel.PosTrx)">
+            <summary>
+            Record a new transaction in database
+            It can be used to initiate a transaction #step(1)
+            </summary>
+            <param name="newPosTransaction">new transaction entity</param>
+            <returns>succeed or not.</returns>
+        </member>
+        <member name="M:FusionService.Controllers.TransactionsController.GetUnfinished">
+            <summary>
+            Get the last unfinished POS transaction
+            </summary>
+            <returns>the last unfinished POS transaction</returns>
+        </member>
         <member name="M:FusionService.Controllers.TransactionsController.Get">
             <summary>
             Get all the transactions.
-            We do not return sold items here, but you can refer to SoldItemController to 
-            get per transaction or per item sold items.
             </summary>
             <returns>A set of transactions</returns>
         </member>
@@ -55,7 +98,7 @@
         </member>
         <member name="T:FusionService.Controllers.PaymentsController">
             <summary>
-            This controller is for performing payment
+            This controller is for querying payment
             </summary>
         </member>
         <member name="M:FusionService.Controllers.PaymentsController.Get">
@@ -64,47 +107,14 @@
             </summary>
             <returns>A set of payment of methods</returns>
         </member>
-        <member name="M:FusionService.Controllers.PaymentsController.Post(SharedModel.PosTrx)">
-            <summary>
-            pay for a POS transaction
-            </summary>
-            <remarks>
-            The client can pass a JSON object in the HTTP request body like
-            the following. Please note that the TransactionId is not needed as
-            it is generated on the server side.
-            
-            {
-                "TransactionSource": 1,
-                "TransactionType": 1,
-                "ReceiptId": "1",
-                "TerminalId": 1,
-                "ShiftId": 1,
-                "TransactionInitDateTime": "2016-10-20T13:50:00",
-                "NetAmount": 8,
-                "GrossAmount": 8,
-                "Currency": "RMB",
-                "MethodOfPaymentId": 1,
-                "SoldPosItems":
-                [
-                    {"ItemId": 1, "SoldCount": 3},
-                    {"ItemId": 2, "SoldCount": 2}
-                ]
-            }
-            
-            </remarks>
-            <param name="posTransaction">current POS transaction to be paid</param>
-            <returns></returns>
-        </member>
-        <member name="M:FusionService.Controllers.PaymentsController.performPayment(SharedModel.PosTrx)">
-            <summary>
-            make the acctual payment happen
-            </summary>
-            <param name="posTransaction">current POS transaction to be paid</param>
-            <returns>true if payment is successful; otherwise is false</returns>
-        </member>
         <member name="M:FusionService.Program.LogMemory">
             <summary>
             Logs the current memory status.
+            </summary>
+        </member>
+        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
+            <summary>
+            This controller is for display API description info, works as a ReadMe.
             </summary>
         </member>
     </members>

@@ -32,7 +32,7 @@ namespace TransactionService.Controllers
         public IQueryable<PosTrxItem> GetByTransactionId(int transactionId)
         {
             return dbContext.PosTrxItemModels
-                            .Where(s => s.Id == transactionId);
+                            .Where(s => s.PosTrxId == transactionId);
         }
 
         /// <summary>

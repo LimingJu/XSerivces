@@ -35,16 +35,18 @@ namespace FusionService.Controllers
         }
 
         /// <summary>
-        /// Get an item by item id.
+        /// Get an item by item id and snap shot id.
         /// </summary>
         /// <returns>A POS item if exists</returns>
+        [Route("api/snapShots/{snapShotId}/items/{itemId}")]
         [ResponseType(typeof(PosItem))]
-        public IHttpActionResult GetById(int id)
+        public IHttpActionResult GetByIdFromSnapShot(int snapShotId, string itemId)
         {
             try
             {
                 var item = dbContext.PosItemModels
-                                .First(i => i.Id == id);
+                                .Where(i => i.SnapShotId == snapShotId)
+                                .First(i => i.ItemId == itemId);
                 return Ok(item);
             }
             catch(InvalidOperationException)
@@ -55,13 +57,25 @@ namespace FusionService.Controllers
         }
 
         /// <summary>
-        /// Get item(s) by a barcode
+        /// Get an item by item id from the most recent snapshot.
         /// </summary>
-        /// <returns>a list of POS items that have the given bar code</returns>
-        public IQueryable<PosItem> GetByBarCode(string barCode)
+        /// <returns>A POS item if exists</returns>
+        [Route("api/items/{itemId}")]
+        [ResponseType(typeof(PosItem))]
+        public IHttpActionResult GetById(string itemId)
         {
-            return dbContext.PosItemModels
-                        .Where(i => i.BarCode == barCode);
+            try
+            {
+                var item = dbContext.PosItemModels
+                                .OrderByDescending(i => i.SnapShotId)
+                                .First(i => i.ItemId == itemId);
+                return Ok(item);
+            }
+            catch (InvalidOperationException)
+            {
+                // item not found
+                return NotFound();
+            }
         }
     }
 }

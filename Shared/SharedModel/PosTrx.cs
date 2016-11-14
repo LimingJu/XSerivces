@@ -11,6 +11,12 @@ namespace SharedModel
 {
     public enum PosTrxSource { Indoor, Outdoor }
     public enum PosTrxType { Sale, Refund, Reconciliation, Redemption, EndOfShift, EndOfDay }
+    /// <summary>
+    /// Normal: transaction in progress or finished
+    /// Cancelled: transaction already cancelled
+    /// </summary>
+    public enum PosTrxStatus { Normal, Cancelled }
+
     [ScaffoldTable(true)]
     [MetadataType(typeof(PosTrxMetadata))]
     public class PosTrx
@@ -36,7 +42,7 @@ namespace SharedModel
         public DateTime TransactionInitDateTime { get; set; }
 
         /// <summary>
-        /// final charged from customer
+        /// amount that the customer needs to pay
         /// </summary>
         public decimal NetAmount { get; set; }
 
@@ -46,6 +52,17 @@ namespace SharedModel
         public decimal GrossAmount { get; set; }
         public int CurrencyId { get; set; }
         public virtual Currency Currency { get; set; }
+
+        public PosTrxStatus TransactionStatus { get; set; }
+
+        /// <summary>
+        /// Update some or all properties.
+        /// </summary>
+        /// <param name="updatedTrx"></param>
+        public void UpdateProperties(PosTrx updatedTrx)
+        {
+            TransactionStatus = updatedTrx.TransactionStatus;
+        }
     }
 
     [ScaffoldTable(true)]
