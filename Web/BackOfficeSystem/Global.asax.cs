@@ -32,7 +32,7 @@ namespace BackOfficeSystem
             // See http://go.microsoft.com/fwlink/?LinkId=257395 for more information on how to register Entity Data Model with Dynamic Data            
             DefaultModel.RegisterContext(
                 new Microsoft.AspNet.DynamicData.ModelProviders.EFDataModelProvider(() => new ApplicationDbContext()),
-                new ContextConfiguration() { ScaffoldAllTables = false });
+                new ContextConfiguration() { ScaffoldAllTables = true });
 
             // The following registration should be used if YourDataContextType does not derive from DbContext
             // DefaultModel.RegisterContext(typeof(YourDataContextType), new ContextConfiguration() { ScaffoldAllTables = false });

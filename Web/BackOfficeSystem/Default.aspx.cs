@@ -124,6 +124,31 @@ namespace BackOfficeSystem
             PosTransactionManagmentGridView.DataBind();
 
             #endregion
+
+            #region User Account Managment
+
+            sortedAndReorg = new List<OperationDescriptor>();
+
+            _ = visibleTables.First(t => t.EntityType == typeof(ServiceUser));
+            sortedAndReorg.Add(new OperationDescriptor()
+            {
+                LinkPath = _.GetActionPath("List"),
+                DisplayText = "Add a Pos Discount configuration, this can be used in later POS transaction",
+                DetailDescription = "Adding a Pos Discount configuration."
+            });
+
+            //_ = visibleTables.First(t => t.EntityType == typeof(PosItem));
+            //sortedAndReorg.Add(new OperationDescriptor()
+            //{
+            //    LinkPath = _.GetActionPath("List"),
+            //    DisplayText = "Add, update or delete POS Items",
+            //    DetailDescription = "Any operation with modification to POS Items need create a Snapshot point first which gurantee all history data safe and un-touched."
+            //});
+
+            UserAccountManagment.DataSource = sortedAndReorg;
+            UserAccountManagment.DataBind();
+
+            #endregion
         }
 
     }

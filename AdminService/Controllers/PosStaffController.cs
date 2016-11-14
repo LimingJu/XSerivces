@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using System.Security.Claims;
 using log4net;
 using SharedConfig;
 using SharedModel;
@@ -23,13 +24,16 @@ namespace AdminService.Controllers
         private ILog logger = log4net.LogManager.GetLogger("Main");
         DefaultAppDbContext dbContext = new DefaultAppDbContext();
 
+        [Authorize]
         /// <summary>
         /// Get all the People
         /// </summary>
         /// <returns>A set of Peoples</returns>
         public IQueryable<PosTrx> Get()
         {
-            return dbContext.PosTrxModels.Include(trx => trx.Items);
+            var identity = User.Identity as ClaimsIdentity;
+            //var r = dbContext.PosTrxModels.ToList();
+            return dbContext.PosTrxModels;
         }
 
         /// <summary>

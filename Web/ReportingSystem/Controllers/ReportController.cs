@@ -10,6 +10,7 @@ namespace ReportingSystem.Controllers
     {
         private ReportingSystemDbContext db = new ReportingSystemDbContext();
 
+        //[Authorize]
         // GET: Report
         public ActionResult Chart(string chartType)
         {

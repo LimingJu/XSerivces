@@ -86,6 +86,17 @@
             <asp:HyperLinkField HeaderText="Description" DataTextField="DetailDescription" DataNavigateUrlFields="LinkPath"></asp:HyperLinkField>
         </Columns>
     </asp:GridView>
+    
+    <h2 class="DDSubHeader">User Account Managment</h2>
+    <asp:GridView ID="UserAccountManagment" runat="server" AutoGenerateColumns="false"
+        CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
+        <Columns>
+            <asp:HyperLinkField HeaderText="Operation" DataTextField="DisplayText" DataNavigateUrlFields="LinkPath"></asp:HyperLinkField>
+        </Columns>
+        <Columns>
+            <asp:HyperLinkField HeaderText="Description" DataTextField="DetailDescription" DataNavigateUrlFields="LinkPath"></asp:HyperLinkField>
+        </Columns>
+    </asp:GridView>
 </asp:Content>
 
 

@@ -28,7 +28,7 @@ namespace ShowMeApi_SelfHost.Areas.HelpPage.Controllers
             viewBag.AddValue("Introduction", Assembly.GetEntryAssembly().FullName);
             viewBag.AddValue("DocumentationProvider", Configuration.Services.GetDocumentationProvider());
             return new HtmlActionResult("Test",
-                SelfHostStartup.config.Services.GetApiExplorer().ApiDescriptions, viewBag);
+                SelfHostStartupConsumeBarerToken.config.Services.GetApiExplorer().ApiDescriptions, viewBag);
         }
 
         //[HttpGet]

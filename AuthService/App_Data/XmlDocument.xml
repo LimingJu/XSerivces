@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AuthService</name>
+    </assembly>
+    <members>
+        <member name="T:ShowMeApi_SelfHost.Areas.HelpPage.Controllers.ShowMeApiController">
+            <summary>
+            This controller is for display API description info, works as a ReadMe.
+            </summary>
+        </member>
+        <member name="M:AuthService.Program.LogMemory">
+            <summary>
+            Logs the current memory status.
+            </summary>
+        </member>
+    </members>
+</doc>

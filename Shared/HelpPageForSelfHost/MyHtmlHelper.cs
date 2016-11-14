@@ -23,7 +23,7 @@ namespace ShowMeApi_SelfHost
 
         public HelpPageApiModel GetHelpPageApiModel(string apiDescriptionId)
         {
-            return SelfHostStartup.config.GetHelpPageApiModel(apiDescriptionId);
+            return SelfHostStartupConsumeBarerToken.config.GetHelpPageApiModel(apiDescriptionId);
         }
     }
 

@@ -42,7 +42,7 @@ namespace BackOfficeSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             HyperLink1.Text = "View " + ChildrenColumn.ChildTable.DisplayName;
         }
 
@@ -50,6 +50,7 @@ namespace BackOfficeSystem
         {
             base.OnDataBinding(e);
             var foreignKeyColumn = ChildrenColumn.ColumnInOtherTable as System.Web.DynamicData.MetaForeignKeyColumn;
+            if (foreignKeyColumn == null) return;
             var query = ChildrenColumn.ChildTable.GetQuery();
             var parameter = Expression.Parameter(query.ElementType, "row");
 

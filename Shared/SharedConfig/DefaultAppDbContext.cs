@@ -9,7 +9,7 @@ using SharedModel;
 
 namespace SharedConfig
 {
-    public class DefaultAppDbContext : DbContext
+    public class DefaultAppDbContext : IdentityDbContext<ServiceUser>
     {
         public DefaultAppDbContext()
             : base("PgDatabaseContext")
@@ -44,7 +44,16 @@ namespace SharedConfig
                     mc.MapLeftKey("PosTrxDiscountId");
                     mc.MapRightKey("PosTrxItemId");
                 });
-            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ServiceUser>()
+               .HasMany(p => p.BindingSites)
+               .WithMany(t => t.BoundServiceUsers)
+               .Map(mc =>
+               {
+                   mc.ToTable("ServiceUserSiteInfo_M2M");
+                   mc.MapLeftKey("ServiceUserId");
+                   mc.MapRightKey("SiteInfoId");
+               });
+            base.OnModelCreating(modelBuilder);
         }
 
         public System.Data.Entity.DbSet<PosTrx> PosTrxModels { get; set; }
@@ -62,5 +71,9 @@ namespace SharedConfig
         public System.Data.Entity.DbSet<SnapShot> SnapShotModels { get; set; }
 
         public System.Data.Entity.DbSet<Currency> CurrencyModels { get; set; }
+
+        public System.Data.Entity.DbSet<SiteInfo> SiteInfoModels { get; set; }
+        public System.Data.Entity.DbSet<IdentityUserClaim> IdentityUserClaimModels { get; set; }
+        public System.Data.Entity.DbSet<IdentityUserRole> IdentityUserRoleModels { get; set; }
     }
 }

@@ -34,9 +34,10 @@ namespace EntryPointService
             Console.WriteLine("Starting listening: " + baseAddress);
             try
             {
+                SelfHostStartupConsumeBarerToken aa = new SelfHostStartupConsumeBarerToken();
                 
                 // Start OWIN host 
-                using (WebApp.Start<SelfHostStartup>(url: baseAddress))
+                using (WebApp.Start<SelfHostStartupConsumeBarerToken>(url: baseAddress))
                 {
                     // Create HttpCient and make a request to api/values 
                     //HttpClient client = new HttpClient();

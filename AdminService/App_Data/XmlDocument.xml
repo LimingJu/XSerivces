@@ -14,12 +14,6 @@
             This controller is only for sample code demo purpose
             </summary>
         </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Get">
-            <summary>
-            Get all the People
-            </summary>
-            <returns>A set of Peoples</returns>
-        </member>
         <member name="M:AdminService.Controllers.PosStaffController.Get(System.Int32)">
             <summary>
             Get People by Id
