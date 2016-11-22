@@ -127,8 +127,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TimePicker">
-      <HintPath>..\..\..\..\..\..\Users\Think\Downloads\TimePicker\Bin\TimePicker.dll</HintPath>
+    <Reference Include="TimePicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d25e9f59e49c4d2f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Shared\SharedBin\TimePicker.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
