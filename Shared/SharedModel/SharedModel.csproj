@@ -61,6 +61,8 @@
     <Compile Include="Identity\ServiceIdentityRole.cs" />
     <Compile Include="Identity\ServiceIdentityUserRole.cs" />
     <Compile Include="Identity\ServiceIdentityUserClaim.cs" />
+    <Compile Include="ModelMetadata\SiteInfoMetadata.cs" />
+    <Compile Include="ModelMetadata\PosMopMetadata.cs" />
     <Compile Include="ModelMetadata\PosDiscountMetadata.cs" />
     <Compile Include="ModelMetadata\PosTrxMopMetadata.cs" />
     <Compile Include="ModelMetadata\PosTrxDiscountMetadata.cs" />

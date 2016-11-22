@@ -18,5 +18,12 @@ namespace SharedModel.ModelMetaData
         public int Id;
         [ScaffoldColumn(true)]
         public string DiscountName;
+
+        /// <summary>
+        /// 'DateTime.Now_OnPostBack' will set a DateTime.Now when Page PostBack performed.
+        /// </summary>
+        [UIHint("DateTime", null, "DateTime.Now_OnPostBack", "")]
+        [ScaffoldColumn(true)]
+        public DateTime CreatedDateTime;
     }
 }

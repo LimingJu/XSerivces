@@ -68,7 +68,7 @@ namespace BackOfficeSystem
             if (Column.Attributes.OfType<UIHintAttribute>().Any())
             {
                 var att = Column.Attributes.OfType<UIHintAttribute>().First();
-                if (att.ControlParameters.ContainsKey("DateTime.Now_OnPostBack"))
+                if (Mode == DataBoundControlMode.Insert && att.ControlParameters.ContainsKey("DateTime.Now_OnPostBack"))
                 {
                     TextBox1.Text = DateTime.Now.ToString();
                 }

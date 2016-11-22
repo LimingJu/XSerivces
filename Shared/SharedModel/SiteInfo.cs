@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SharedModel.ModelMetadata;
+using SharedModel.ModelMetaData;
 
 namespace SharedModel
 {
     [ScaffoldTable(true)]
+    [MetadataType(typeof(SiteInfoMetadata))]
     public class SiteInfo
     {
         public int Id { get; set; }
@@ -32,6 +33,12 @@ namespace SharedModel
         /// anything could help people know what this site is, located where and etc.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the datetime when this siteInfo created and saved into database.
+        /// normally this time should be automatically set at the saving time (to db).
+        /// </summary>
+        public DateTime CreatedDateTime { get; set; }
 
         /// <summary>
         /// this sites resouces (or services) will be consumed by these ServiceUser account

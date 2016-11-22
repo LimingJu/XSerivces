@@ -15,5 +15,16 @@ namespace SharedModel.ModelMetadata
     {
         [UIHint("GuidColumnText")]
         public string Id;
+        [UIHint("ServiceUserGuidLinkedChildren")]
+        public ICollection<ServiceIdentityUserRole> Users;
+        /// <summary>
+        /// 'DateTime.Now_OnPostBack' will set a DateTime.Now when Page PostBack performed.
+        /// </summary>
+        [UIHint("DateTime", null, "DateTime.Now_OnPostBack", "")]
+        [Display(Order = 4)]
+        public DateTime CreatedDateTime;
+
+        [Display(Name = "RoleName")]
+        public string Name;
     }
 }

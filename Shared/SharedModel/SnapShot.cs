@@ -23,6 +23,10 @@ namespace SharedModel
         /// </summary>
         public string Tag { get; set; }
 
+        /// <summary>
+        /// Gets or sets the datetime when this SnapShot created and saved into database.
+        /// normally this time should be automatically set at the saving time (to db).
+        /// </summary>
         public DateTime CreatedDateTime { get; set; }
     }
 }

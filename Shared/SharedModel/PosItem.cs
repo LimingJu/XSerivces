@@ -71,6 +71,12 @@ namespace SharedModel
         public string PLU { get; set; }
 
         /// <summary>
+        /// Gets or sets the datetime when this PosItem created and saved into database.
+        /// normally this time should be automatically set at the saving time (to db).
+        /// </summary>
+        public DateTime CreatedDateTime { get; set; }
+
+        /// <summary>
         /// defined and involved in which Pos Discount definition.
         /// The PosDiscount typically downloaded and parsed from a table download or BOS download.
         /// </summary>

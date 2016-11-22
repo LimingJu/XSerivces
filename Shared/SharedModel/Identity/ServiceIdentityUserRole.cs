@@ -8,12 +8,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SharedModel.Identity
 {
+    /// <summary>
+    /// this model works as the junction table for maintain the manyToMany relationship
+    /// between ServiceIdentityUser and ServiceIdentityRole
+    /// </summary>
     public class ServiceIdentityUserRole : IdentityUserRole<string>
     {
         [ForeignKey("UserId")]
-        public ServiceIdentityUser ServiceIdentityUser { get; set; }
+        public virtual ServiceIdentityUser ServiceIdentityUser { get; set; }
 
         [ForeignKey("RoleId")]
-        public ServiceIdentityRole ServiceIdentityRole { get; set; }
+        public virtual ServiceIdentityRole ServiceIdentityRole { get; set; }
     }
 }
