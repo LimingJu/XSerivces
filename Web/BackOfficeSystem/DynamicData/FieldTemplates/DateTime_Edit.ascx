@@ -2,12 +2,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:TextBox ID="TextBox1" runat="server" Text='<%# FieldValueEditString %>' Columns="20"></asp:TextBox>
+<label style="font-style: italic;" runat="server" ID="Explainer" Visible="False">&nbsp;&nbsp;&nbsp;&nbsp;Generated automatically By System With Submit time.</label>
 <%--<input type="text" name="TextBox2" id="TextBox2" value="" />--%>
 <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1" CssClass="DDControl DDValidator" ControlToValidate="TextBox1" Display="Static" Enabled="false" />
 <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator1" CssClass="DDControl DDValidator" ControlToValidate="TextBox1" Display="Static" Enabled="false" />
 <asp:DynamicValidator runat="server" ID="DynamicValidator1" CssClass="DDControl DDValidator" ControlToValidate="TextBox1" Display="Static" />
 <asp:CustomValidator runat="server" ID="DateValidator" CssClass="DDControl DDValidator" ControlToValidate="TextBox1" Display="Static" EnableClientScript="false" Enabled="false" OnServerValidate="DateValidator_ServerValidate" />
-<ajaxtoolkit:calendarextender
+<ajaxToolkit:CalendarExtender
     ID="Calendar"
     TargetControlID="TextBox1"
     Format="yyyy-MM-dd HH:mm:ss"

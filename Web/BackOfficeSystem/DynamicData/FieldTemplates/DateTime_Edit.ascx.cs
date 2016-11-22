@@ -15,6 +15,21 @@ namespace BackOfficeSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             TextBox1.ToolTip = Column.Description;
+
+            // field set with auto fill data will ignore the Validator check since client side will not set value for it.
+            if (Column.Attributes.OfType<UIHintAttribute>().Any())
+            {
+                var att = Column.Attributes.OfType<UIHintAttribute>().First();
+                if (att.ControlParameters.ContainsKey("DateTime.Now_OnPostBack"))
+                {
+                    TextBox1.ReadOnly = true;
+                    TextBox1.Enabled = false;
+                    Calendar.Enabled = false;
+                    Explainer.Visible = true;
+                    return;
+                }
+            }
+
             SetUpValidator(RequiredFieldValidator1);
             SetUpValidator(RegularExpressionValidator1);
             SetUpValidator(DynamicValidator1);
@@ -50,6 +65,15 @@ namespace BackOfficeSystem
 
         protected override void ExtractValues(IOrderedDictionary dictionary)
         {
+            if (Column.Attributes.OfType<UIHintAttribute>().Any())
+            {
+                var att = Column.Attributes.OfType<UIHintAttribute>().First();
+                if (att.ControlParameters.ContainsKey("DateTime.Now_OnPostBack"))
+                {
+                    TextBox1.Text = DateTime.Now.ToString();
+                }
+            }
+
             dictionary[Column.Name] = ConvertEditedValue(TextBox1.Text);
         }
 

@@ -29,7 +29,7 @@ namespace AuthService.Controllers
         private ILog logger = log4net.LogManager.GetLogger("Main");
         DefaultAppDbContext dbContext = new DefaultAppDbContext();
 
-        public IEnumerable<ServiceUser> Get()
+        public IEnumerable<ServiceIdentityUser> Get()
         {
             var all = dbContext.Users.Include(u => u.BindingSites).Include(u => u.Roles).Include(u => u.Claims).ToList();
             return all;

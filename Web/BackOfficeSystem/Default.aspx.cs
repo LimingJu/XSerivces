@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.DynamicData;
 using SharedModel;
+using SharedModel.Identity;
 
 namespace BackOfficeSystem
 {
@@ -89,22 +90,23 @@ namespace BackOfficeSystem
 
             PosMopManagmentGridView.DataSource = sortedAndReorg;
             PosMopManagmentGridView.DataBind();
-            
+
             #endregion
 
-            #region POS Staff Managment
+            #region SiteInfo Managment
 
             sortedAndReorg = new List<OperationDescriptor>();
-            _ = visibleTables.First(t => t.EntityType == typeof(PosStaff));
+
+            _ = visibleTables.First(t => t.EntityType == typeof(SiteInfo));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),
-                DisplayText = "Add, update or delete POS Staff.",
-                DetailDescription = "Manage POS Staff which for control the priviledge, login account and etc."
+                DisplayText = "Add, update or delete Site.",
+                DetailDescription = "Add, update or delete Site.."
             });
 
-            PosStaffManagmentGridView.DataSource = sortedAndReorg;
-            PosStaffManagmentGridView.DataBind();
+            SiteInfoManagmentGridView.DataSource = sortedAndReorg;
+            SiteInfoManagmentGridView.DataBind();
 
             #endregion
 
@@ -129,21 +131,21 @@ namespace BackOfficeSystem
 
             sortedAndReorg = new List<OperationDescriptor>();
 
-            _ = visibleTables.First(t => t.EntityType == typeof(ServiceUser));
+            _ = visibleTables.First(t => t.EntityType == typeof(ServiceIdentityUser));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),
-                DisplayText = "Add a Pos Discount configuration, this can be used in later POS transaction",
-                DetailDescription = "Adding a Pos Discount configuration."
+                DisplayText = "Add, update or delete user account.",
+                DetailDescription = "Manage user account for consume the services."
             });
 
-            //_ = visibleTables.First(t => t.EntityType == typeof(PosItem));
-            //sortedAndReorg.Add(new OperationDescriptor()
-            //{
-            //    LinkPath = _.GetActionPath("List"),
-            //    DisplayText = "Add, update or delete POS Items",
-            //    DetailDescription = "Any operation with modification to POS Items need create a Snapshot point first which gurantee all history data safe and un-touched."
-            //});
+            _ = visibleTables.First(t => t.EntityType == typeof(ServiceIdentityRole));
+            sortedAndReorg.Add(new OperationDescriptor()
+            {
+                LinkPath = _.GetActionPath("List"),
+                DisplayText = "Add, update or delete a new type of Role",
+                DetailDescription = "Role is a group to control priviledge for a set of accounts."
+            });
 
             UserAccountManagment.DataSource = sortedAndReorg;
             UserAccountManagment.DataBind();

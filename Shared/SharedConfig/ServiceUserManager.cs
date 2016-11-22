@@ -10,21 +10,22 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SharedModel;
+using SharedModel.Identity;
 
 namespace SharedConfig
 {
-    public class ServiceUserManager : UserManager<ServiceUser>
+    public class ServiceUserManager : UserManager<ServiceIdentityUser, string>
     {
-        public ServiceUserManager(IUserStore<ServiceUser> store)
+        public ServiceUserManager(IUserStore<ServiceIdentityUser, string> store)
             : base(store)
         {
         }
 
         public static ServiceUserManager Create(IdentityFactoryOptions<ServiceUserManager> options, IOwinContext context)
         {
-            var manager = new ServiceUserManager(new UserStore<ServiceUser>(context.Get<DefaultAppDbContext>()));
+            var manager = new ServiceUserManager(new UserStore<ServiceIdentityUser, ServiceIdentityRole, string, IdentityUserLogin, ServiceIdentityUserRole, ServiceIdentityUserClaim>(context.Get<DefaultAppDbContext>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ServiceUser>(manager)
+            manager.UserValidator = new UserValidator<ServiceIdentityUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -41,20 +42,20 @@ namespace SharedConfig
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ServiceUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<ServiceIdentityUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
     }
 
-    public class ServiceSignInManager : SignInManager<ServiceUser, string>
+    public class ServiceSignInManager : SignInManager<ServiceIdentityUser, string>
     {
         public ServiceSignInManager(ServiceUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ServiceUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ServiceIdentityUser user)
         {
             return user.GenerateUserIdentityAsync((ServiceUserManager)UserManager, DefaultAuthenticationTypes.ApplicationCookie);
         }

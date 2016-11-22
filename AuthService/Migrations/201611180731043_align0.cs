@@ -3,7 +3,7 @@ namespace AuthService.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class align0 : DbMigration
     {
         public override void Up()
         {
@@ -15,6 +15,18 @@ namespace AuthService.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "public.AspNetUserLogins",
+                c => new
+                    {
+                        LoginProvider = c.String(nullable: false, maxLength: 128),
+                        ProviderKey = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
+                .ForeignKey("public.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "public.PosDiscounts",
@@ -132,6 +144,7 @@ namespace AuthService.Migrations
                         NetAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         GrossAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CurrencyId = c.Int(nullable: false),
+                        TransactionStatus = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("public.Currencies", t => t.CurrencyId, cascadeDelete: true)
@@ -159,6 +172,7 @@ namespace AuthService.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        CreatedDateTime = c.DateTime(),
                         Name = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
@@ -182,6 +196,8 @@ namespace AuthService.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        UserName = c.String(nullable: false, maxLength: 256),
+                        Alias = c.String(maxLength: 50),
                         Tag = c.String(),
                         Address = c.String(),
                         City = c.String(),
@@ -197,10 +213,10 @@ namespace AuthService.Migrations
                         LockoutEndDateUtc = c.DateTime(),
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex")
+                .Index(t => t.Alias, unique: true);
             
             CreateTable(
                 "public.SiteInfoes",
@@ -228,15 +244,15 @@ namespace AuthService.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "public.AspNetUserLogins",
+                "public.TestReadBooks",
                 c => new
                     {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
-                        ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
+                        BookName = c.String(),
+                        UserId = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("public.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("public.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId);
             
             CreateTable(
@@ -283,6 +299,7 @@ namespace AuthService.Migrations
         public override void Down()
         {
             DropForeignKey("public.AspNetUserRoles", "UserId", "public.AspNetUsers");
+            DropForeignKey("public.TestReadBooks", "UserId", "public.AspNetUsers");
             DropForeignKey("public.AspNetUserLogins", "UserId", "public.AspNetUsers");
             DropForeignKey("public.AspNetUserClaims", "UserId", "public.AspNetUsers");
             DropForeignKey("public.ServiceUserSiteInfo_M2M", "SiteInfoId", "public.SiteInfoes");
@@ -308,9 +325,10 @@ namespace AuthService.Migrations
             DropIndex("public.PosTrxDisPosTrxItem_M2M", new[] { "PosTrxDiscountId" });
             DropIndex("public.PosItemPosDis_M2M", new[] { "PosDiscountId" });
             DropIndex("public.PosItemPosDis_M2M", new[] { "PosItemId" });
-            DropIndex("public.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("public.TestReadBooks", new[] { "UserId" });
             DropIndex("public.AspNetUserClaims", new[] { "UserId" });
             DropIndex("public.SiteInfoes", "IX_NameAndProjectCodeName");
+            DropIndex("public.AspNetUsers", new[] { "Alias" });
             DropIndex("public.AspNetUsers", "UserNameIndex");
             DropIndex("public.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("public.AspNetUserRoles", new[] { "UserId" });
@@ -325,10 +343,11 @@ namespace AuthService.Migrations
             DropIndex("public.PosMops", "IX_PaymentIdAndSnapShotId");
             DropIndex("public.PosItems", "IX_ItemIdAndSnapShotId");
             DropIndex("public.PosDiscounts", "IX_DiscountNameAndSnapShotId");
+            DropIndex("public.AspNetUserLogins", new[] { "UserId" });
             DropTable("public.ServiceUserSiteInfo_M2M");
             DropTable("public.PosTrxDisPosTrxItem_M2M");
             DropTable("public.PosItemPosDis_M2M");
-            DropTable("public.AspNetUserLogins");
+            DropTable("public.TestReadBooks");
             DropTable("public.AspNetUserClaims");
             DropTable("public.SiteInfoes");
             DropTable("public.AspNetUsers");
@@ -343,6 +362,7 @@ namespace AuthService.Migrations
             DropTable("public.PosItems");
             DropTable("public.SnapShots");
             DropTable("public.PosDiscounts");
+            DropTable("public.AspNetUserLogins");
             DropTable("public.Currencies");
         }
     }

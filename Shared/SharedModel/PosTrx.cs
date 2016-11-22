@@ -50,11 +50,20 @@ namespace SharedModel
         /// total amount without discount deducted yet.
         /// </summary>
         public decimal GrossAmount { get; set; }
+
+
         public int CurrencyId { get; set; }
         public virtual Currency Currency { get; set; }
 
+
         public PosTrxStatus TransactionStatus { get; set; }
 
+
+
+        public string ServiceIdentityUserId { get; set; }
+        public ServiceIdentityUser Cashier { get; set; }
+        
+        
         /// <summary>
         /// Update some or all properties.
         /// </summary>
@@ -117,6 +126,7 @@ namespace SharedModel
         /// <summary>
         /// This is applied discount belong to which PosTrx.
         /// </summary>
+        [ForeignKey("PosTrxId")]
         public virtual PosTrx PosTrx { get; set; }
         public int PosTrxId { get; set; }
     }

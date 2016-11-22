@@ -49,13 +49,13 @@ namespace BackOfficeSystem {
         protected global::System.Web.UI.WebControls.GridView PosMopManagmentGridView;
         
         /// <summary>
-        /// PosStaffManagmentGridView control.
+        /// SiteInfoManagmentGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PosStaffManagmentGridView;
+        protected global::System.Web.UI.WebControls.GridView SiteInfoManagmentGridView;
         
         /// <summary>
         /// GridView2 control.

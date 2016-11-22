@@ -22,22 +22,22 @@ namespace AuthService.Migrations
             //  This method will be called after migrating to the latest version.
 
             context.CurrencyModels.AddOrUpdate(new Currency() { Name = "CNY" });
-            context.CurrencyModels.AddOrUpdate(new Currency() { Name = "JAP" });
-            context.CurrencyModels.AddOrUpdate(new Currency() { Name = "SGD" });
-            context.CurrencyModels.AddOrUpdate(new Currency() { Name = "USD" });
-            context.SiteInfoModels.AddOrUpdate(new SiteInfo()
-            {
-                Description = "created for testing",
-                Name = "EUCN",
-                ProjectCodeName = "EMSG"
-            });
+            //context.CurrencyModels.AddOrUpdate(new Currency() { Name = "JAP" });
+            //context.CurrencyModels.AddOrUpdate(new Currency() { Name = "SGD" });
+            //context.CurrencyModels.AddOrUpdate(new Currency() { Name = "USD" });
+            //context.SiteInfoModels.AddOrUpdate(new SiteInfo()
+            //{
+            //    Description = "created for testing",
+            //    Name = "EUCN",
+            //    ProjectCodeName = "EMSG"
+            //});
 
-            context.SiteInfoModels.AddOrUpdate(new SiteInfo()
-            {
-                Description = "created for testing",
-                Name = "ESBB",
-                ProjectCodeName = "EMSG"
-            });
+            //context.SiteInfoModels.AddOrUpdate(new SiteInfo()
+            //{
+            //    Description = "created for testing",
+            //    Name = "ESBB",
+            //    ProjectCodeName = "EMSG"
+            //});
             //context.IdentityUserClaimModels.AddOrUpdate(new IdentityUserClaim()
             //{
             //    ClaimType ="ChargeGroup",

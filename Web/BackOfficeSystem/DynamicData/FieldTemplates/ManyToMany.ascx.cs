@@ -73,6 +73,30 @@ namespace BackOfficeSystem
                     Repeater1.DataBind();
                 }
             }
+            else if (entity is ServiceIdentityUser)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetServiceIdentityUser = (ServiceIdentityUser)entity;
+                    var entityCollection = db.Users.Include(u=>u.BindingSites)
+                        .Where(u => u.Id == targetServiceIdentityUser.Id)
+                        .SelectMany(t => t.BindingSites).ToList();
+                    Repeater1.DataSource = entityCollection;
+                    Repeater1.DataBind();
+                }
+            }
+            else if (entity is SiteInfo)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetSiteInfo = (SiteInfo)entity;
+                    var entityCollection = db.SiteInfoModels.Include(u => u.BoundServiceUsers)
+                        .Where(s => s.Id == targetSiteInfo.Id)
+                        .SelectMany(t => t.BoundServiceUsers).ToList();
+                    Repeater1.DataSource = entityCollection;
+                    Repeater1.DataBind();
+                }
+            }
             else
             {
                 var entityCollection = Column.EntityTypeProperty.GetValue(entity, null);

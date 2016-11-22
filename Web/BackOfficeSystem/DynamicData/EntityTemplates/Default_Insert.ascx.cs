@@ -37,6 +37,10 @@ namespace BackOfficeSystem {
             DynamicControl dynamicControl = (DynamicControl)sender;
             dynamicControl.DataField = currentColumn.Name;
         }
-    
+
+        protected override void OnCommitTransaction(EventArgs e)
+        {
+            base.OnCommitTransaction(e);
+        }
     }
 }

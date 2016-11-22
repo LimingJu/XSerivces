@@ -17,7 +17,7 @@
         </Columns>
     </asp:GridView>
     <br />
-    
+
     <h2 class="DDSubHeader">POS Discounts Managment</h2>
     <asp:GridView ID="PosDiscountsManagmentGridView" runat="server" AutoGenerateColumns="false"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
@@ -29,7 +29,7 @@
         </Columns>
     </asp:GridView>
     <br />
-    
+
     <h2 class="DDSubHeader">POS Method Of Payment (MOP) Managment</h2>
     <asp:GridView ID="PosMopManagmentGridView" runat="server" AutoGenerateColumns="false"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
@@ -42,8 +42,8 @@
     </asp:GridView>
     <br />
 
-    <h2 class="DDSubHeader">POS Staff Managment</h2>
-    <asp:GridView ID="PosStaffManagmentGridView" runat="server" AutoGenerateColumns="false"
+    <h2 class="DDSubHeader">Site Info Managment</h2>
+    <asp:GridView ID="SiteInfoManagmentGridView" runat="server" AutoGenerateColumns="false"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
         <Columns>
             <asp:HyperLinkField HeaderText="Operation" DataTextField="DisplayText" DataNavigateUrlFields="LinkPath"></asp:HyperLinkField>
@@ -64,7 +64,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    
+
     <h2 class="DDSubHeader">POS Inventory Managment</h2>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
@@ -86,7 +86,7 @@
             <asp:HyperLinkField HeaderText="Description" DataTextField="DetailDescription" DataNavigateUrlFields="LinkPath"></asp:HyperLinkField>
         </Columns>
     </asp:GridView>
-    
+
     <h2 class="DDSubHeader">User Account Managment</h2>
     <asp:GridView ID="UserAccountManagment" runat="server" AutoGenerateColumns="false"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">

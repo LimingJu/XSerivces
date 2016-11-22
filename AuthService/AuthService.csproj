@@ -202,9 +202,17 @@
     <Compile Include="ApplicationOAuthProvider.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\DebugController.cs" />
-    <Compile Include="Migrations\201611071429453_init.cs" />
-    <Compile Include="Migrations\201611071429453_init.Designer.cs">
-      <DependentUpon>201611071429453_init.cs</DependentUpon>
+    <Compile Include="Migrations\201611180731043_align0.cs" />
+    <Compile Include="Migrations\201611180731043_align0.Designer.cs">
+      <DependentUpon>201611180731043_align0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611210153282_align1.cs" />
+    <Compile Include="Migrations\201611210153282_align1.Designer.cs">
+      <DependentUpon>201611210153282_align1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611210215432_align2.cs" />
+    <Compile Include="Migrations\201611210215432_align2.Designer.cs">
+      <DependentUpon>201611210215432_align2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -257,12 +265,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611071429453_init.resx">
-      <DependentUpon>201611071429453_init.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Security\" />
+    <EmbeddedResource Include="Migrations\201611180731043_align0.resx">
+      <DependentUpon>201611180731043_align0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611210153282_align1.resx">
+      <DependentUpon>201611210153282_align1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611210215432_align2.resx">
+      <DependentUpon>201611210215432_align2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

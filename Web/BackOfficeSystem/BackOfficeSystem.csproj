@@ -142,9 +142,41 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Content Include="DynamicData\FieldTemplates\GuidColumnText.ascx" />
+    <Content Include="DynamicData\FieldTemplates\GuidColumnText_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ServiceUserGuidLinkedChildren.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ServiceUserGuidLinkedChildren_Edit.ascx" />
     <Content Include="DynamicData\FieldTemplates\ShortDateTimeWithTimePicker.ascx" />
     <Content Include="DynamicData\FieldTemplates\ShortDateTimeWithTimePicker_Edit.ascx" />
     <Content Include="Global.asax" />
+    <Compile Include="DynamicData\FieldTemplates\GuidColumnText.ascx.cs">
+      <DependentUpon>GuidColumnText.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\GuidColumnText.ascx.designer.cs">
+      <DependentUpon>GuidColumnText.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\GuidColumnText_Edit.ascx.cs">
+      <DependentUpon>GuidColumnText_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\GuidColumnText_Edit.ascx.designer.cs">
+      <DependentUpon>GuidColumnText_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ServiceUserGuidLinkedChildren.ascx.cs">
+      <DependentUpon>ServiceUserGuidLinkedChildren.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ServiceUserGuidLinkedChildren.ascx.designer.cs">
+      <DependentUpon>ServiceUserGuidLinkedChildren.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ServiceUserGuidLinkedChildren_Edit.ascx.cs">
+      <DependentUpon>ServiceUserGuidLinkedChildren_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ServiceUserGuidLinkedChildren_Edit.ascx.designer.cs">
+      <DependentUpon>ServiceUserGuidLinkedChildren_Edit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DynamicData\FieldTemplates\ShortDateTimeWithTimePicker.ascx.cs">
       <DependentUpon>ShortDateTimeWithTimePicker.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

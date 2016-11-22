@@ -12,7 +12,6 @@ using System.Web.Http.Description;
 using System.Web.Http.SelfHost;
 using System.Web.Http.SelfHost.Channels;
 using System.Web.Mvc;
-using AuthService.Security;
 using HelpPageForSelfHost.Areas.HelpPage;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;

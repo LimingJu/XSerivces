@@ -36,7 +36,7 @@ namespace SharedModel
         /// <summary>
         /// this sites resouces (or services) will be consumed by these ServiceUser account
         /// </summary>
-        public virtual List<ServiceUser> BoundServiceUsers { get; set; }
+        public virtual List<ServiceIdentityUser> BoundServiceUsers { get; set; }
 
     }
 }

@@ -152,7 +152,7 @@ namespace ReportingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ServiceUser() { UserName = model.Email, Email = model.Email };
+                var user = new ServiceIdentityUser() { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -368,7 +368,7 @@ namespace ReportingSystem.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ServiceUser { UserName = model.Email, Email = model.Email };
+                var user = new ServiceIdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

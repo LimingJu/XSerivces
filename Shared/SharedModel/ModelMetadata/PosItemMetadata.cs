@@ -18,16 +18,22 @@ namespace SharedModel.ModelMetaData
         [ScaffoldColumn(true)]
         public int ItemId;
 
+        /// <summary>
+        /// "DateTime.Now.AddDays", "3"    will set with DateTime.Now.AddDays(3) when page loaded.
+        /// </summary>
         [Description("Item will be set to ALLOW for sale after this time")]
         // start from 3rd param, each 2 is a key:value pair, so params count must be even
         [UIHint("ShortDateTimeWithTimePicker", null, "DateTime.Now.AddDays", "3")]
         public DateTime DateToActivate;
 
+        /// <summary>
+        /// "StaticValue", "4444-12-12"    will set a static date str 4444-12-12 when page loaded.
+        /// </summary>
         [Description("Item will be set to NOT ALLOW for sale after this time")]
         [UIHint("ShortDateTimeWithTimePicker", null, "StaticValue", "4444-12-12")]
         public DateTime DateToDeactivate;
 
-        [ScaffoldColumn(false)]
+        //[ScaffoldColumn(false)]
         public List<PosDiscount> DiscountedIn;
     }
 }

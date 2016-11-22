@@ -9,40 +9,6 @@
             This controller is for display API description info, works as a ReadMe.
             </summary>
         </member>
-        <member name="T:AdminService.Controllers.PosStaffController">
-            <summary>
-            This controller is only for sample code demo purpose
-            </summary>
-        </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Get(System.Int32)">
-            <summary>
-            Get People by Id
-            </summary>
-            <param name="id">int id</param>
-            <returns>the people matched with the Id</returns>
-        </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Post(SharedModel.PosStaff)">
-            <summary>
-            Create a new staff
-            </summary>
-            <param name="newPosStaff">new staff entity</param>
-            <returns>succeed or not.</returns>
-        </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Put(System.Int32,SharedModel.PosStaff)">
-            <summary>
-            update target People
-            </summary>
-            <param name="id">target people id</param>
-            <param name="updateStaff">replace with this entity</param>
-            <returns>succeed or not.</returns>
-        </member>
-        <member name="M:AdminService.Controllers.PosStaffController.Delete(System.Int32)">
-            <summary>
-            Delete target People by id
-            </summary>
-            <param name="id">target Id</param>
-            <returns>succeed or not.</returns>
-        </member>
         <member name="M:AdminService.Program.LogMemory">
             <summary>
             Logs the current memory status.

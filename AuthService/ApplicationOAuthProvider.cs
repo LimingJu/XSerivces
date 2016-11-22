@@ -13,6 +13,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using SharedConfig;
 using SharedModel;
+using SharedModel.Identity;
 
 namespace AuthService
 {
@@ -34,9 +35,9 @@ namespace AuthService
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            var userManager = new ServiceUserManager(new UserStore<ServiceUser>(new DefaultAppDbContext()));//context.OwinContext.GetUserManager<ServiceUserManager>();
+            var userManager = new ServiceUserManager(new UserStore<ServiceIdentityUser, ServiceIdentityRole, string, IdentityUserLogin, ServiceIdentityUserRole, ServiceIdentityUserClaim>(new DefaultAppDbContext()));//context.OwinContext.GetUserManager<ServiceUserManager>();
 
-            ServiceUser user = await userManager.FindAsync(context.UserName, context.Password);
+            ServiceIdentityUser user = await userManager.FindAsync(context.UserName, context.Password);
             if (user == null)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");

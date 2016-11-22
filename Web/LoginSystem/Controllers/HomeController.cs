@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SharedConfig;
 using SharedModel;
+using SharedModel.Identity;
 
 namespace LoginSystem.Controllers
 {
@@ -16,7 +17,7 @@ namespace LoginSystem.Controllers
         DefaultAppDbContext db = new DefaultAppDbContext();
         public async Task<ActionResult> Index()
         {
-            var manager = new UserManager<ServiceUser>(new UserStore<ServiceUser>(db));
+            var manager = new UserManager<ServiceIdentityUser,string>(new UserStore<ServiceIdentityUser, ServiceIdentityRole, string, IdentityUserLogin, ServiceIdentityUserRole, ServiceIdentityUserClaim>(db));
 
             ViewData["UserId"] = this.User.Identity.GetUserId() ?? "";
             var currentUser = await manager.FindByIdAsync(ViewData["UserId"].ToString());
