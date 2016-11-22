@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InventoryService</name>
+    </assembly>
+    <members>
+        <member name="P:InventoryService.ApplicationDbContext.PosItemModels">
+            <summary>
+            set of product items
+            </summary>
+        </member>
+        <member name="T:InventoryService.Controllers.InventoryController">
+            <summary>
+            This controller acts as a registration interface for all service to regist itself, then others can discover it.
+            </summary>
+        </member>
+        <member name="M:InventoryService.Controllers.InventoryController.GetPosItems">
+            <summary>
+            Sync PosItems to fusion side
+            </summary>
+            <returns>PosItemModels</returns>
+        </member>
+        <member name="M:InventoryService.Controllers.InventoryController.GetUpdate(System.String)">
+            <summary>
+            Compare the latest snapshot tag with the one from fusion
+            </summary>
+            <param name="snapshotTag"></param>
+            <returns>Ok if there are any items to be updated, else NotFound</returns>
+        </member>
+        <member name="M:InventoryService.Program.LogMemory">
+            <summary>
+            Logs the current memory status.
+            </summary>
+        </member>
+    </members>
+</doc>
