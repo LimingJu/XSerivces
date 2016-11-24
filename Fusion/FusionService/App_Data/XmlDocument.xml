@@ -9,6 +9,25 @@
             This controller is for display API description info, works as a ReadMe.
             </summary>
         </member>
+        <member name="T:FusionService.Controllers.InventoryController">
+            <summary>
+            Interface for POS to retrieve PosItem ring up
+            </summary>
+        </member>
+        <member name="M:FusionService.Controllers.InventoryController.GetByBarcode(System.String)">
+            <summary>
+            Retrieve an Item by barcode from the latest snapshot
+            </summary>
+            <param name="barcode"></param>
+            <returns>PosItem</returns>
+        </member>
+        <member name="M:FusionService.Controllers.InventoryController.GetByItemId(System.Int32)">
+            <summary>
+            Retrieve an Item by ItemId from the latest snapshot
+            </summary>
+            <param name="id"></param>
+            <returns>PosItem</returns>
+        </member>
         <member name="T:FusionService.Controllers.ItemsController">
             <summary>
             This controller is for querying POS items.

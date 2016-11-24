@@ -1,39 +1,80 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
+using SharedConfig;
+using SharedModel;
 
-namespace InventoryService.Controllers
+namespace FusionService.Controllers
 {
+    /// <summary>
+    /// Interface for POS to retrieve PosItem ring up
+    /// </summary>
     public class InventoryController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// Retrieve an Item by barcode from the latest snapshot
+        /// </summary>
+        /// <param name="barcode"></param>
+        /// <returns>PosItem</returns>
+        [Route("api/Inventory/barcode/{barcode}")]
+        [ResponseType(typeof(PosItem))]
+        public IHttpActionResult GetByBarcode(string barcode)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                using (var db = new DefaultAppDbContext())
+                {
+                    return
+                        Ok(db.PosItemModels.Where(x => x.SnapShotId == db.SnapShotModels.Select(y => y.Id).Max())
+                            .First(r => r.BarCode == barcode));
+                }
+            }
+            catch(InvalidOperationException)
+            {
+                // item not found
+                return NotFound();
+            }
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        /// <summary>
+        /// Retrieve an Item by ItemId from the latest snapshot
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>PosItem</returns>
+        [Route("api/inventory/item/{itemId}")]
+        [ResponseType(typeof(PosItem))]
+        public IHttpActionResult GetByItemId(int id)
         {
-            return "value";
+            try
+            {
+                using (var db = new DefaultAppDbContext())
+                {
+                    return
+                        Ok(db.PosItemModels.Where(x => x.SnapShotId == db.SnapShotModels.Select(y => y.Id).Max())
+                            .First(r => r.Id == id));
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                // item not found
+                return NotFound();
+            }
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
+        //// POST api/<controller>
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT api/<controller>/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<controller>/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
