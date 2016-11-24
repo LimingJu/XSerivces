@@ -24,7 +24,7 @@ namespace SharedConfig
         public static HttpSelfHostConfiguration config;
         // This code configures Web API. The Startup class is specified as a type
         // parameter in the WebApp.Start method.
-        public void Configuration(IAppBuilder appBuilder)
+        public virtual void Configuration(IAppBuilder appBuilder)
         {
             //if (ConfigurationManager.AppSettings["EnableClientIpRestriction"] != null
             //    && ConfigurationManager.AppSettings["EnableClientIpRestriction"].ToLower() == "true")

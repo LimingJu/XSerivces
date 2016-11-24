@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Web.Http;
 using log4net;
+using SharedConfig;
 using SharedModel;
 
-namespace InventoryService.Controllers
+namespace InventoryService.Controller
 {
     /// <summary>
     /// This controller acts as a registration interface for all service to regist itself, then others can discover it.
@@ -12,7 +13,7 @@ namespace InventoryService.Controllers
     public class InventoryController : ApiController
     {
         private ILog logger = log4net.LogManager.GetLogger("Main");
-        ApplicationDbContext dbContext = new ApplicationDbContext();
+        DefaultAppDbContext dbContext = new DefaultAppDbContext();
 
         /// <summary>
         /// Sync PosItems to fusion side
@@ -34,7 +35,7 @@ namespace InventoryService.Controllers
         [HttpGet]
         public IHttpActionResult GetUpdate(string snapshotTag)
         {
-            using (var db = new ApplicationDbContext())
+            using (var db = new DefaultAppDbContext())
             {
                 if (db.PosItemModels.OrderBy(x => x.SnapShot.CreatedDateTime).First().SnapShot.Tag != snapshotTag)
                     return Ok();

@@ -1,12 +1,15 @@
-﻿using Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Owin;
+using SharedConfig;
 
 namespace InventoryService
 {
-    class SignalRStartup
+    class SignalRStartup: SelfHostStartupConsumeBarerToken
     {
-        public void Configuration(IAppBuilder app)
+        public override void Configuration(IAppBuilder app)
         {
-            app.MapSignalR();
+            //base.Configuration(app);
+            app.MapSignalR("/Inventory", new HubConfiguration());
         }
     }
 }

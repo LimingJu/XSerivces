@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Configuration;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using log4net;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Hosting;
+using SharedConfig;
+using SharedModel;
 
 namespace InventoryService
 {
@@ -50,8 +56,12 @@ namespace InventoryService
                     //Console.WriteLine(response.Content.ReadAsStringAsync().Result);
                     logger.Info("Started successfully");
                     Console.WriteLine("Started successfully");
+
+                    RunAsync().Wait();
                     while (true)
+                    {                        
                         Console.ReadLine();
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -59,9 +69,48 @@ namespace InventoryService
                 Console.WriteLine("Failed to start, exception detail: " + ex);
                 logger.Error("Started failed with error: " + ex);
             }
+            
+        }
 
+        // track id of lasteast updating  
+        private static int _lastPosItemId = 0;
+
+        /// <summary>
+        /// check db data change for every 10 seconds, assuming Id increases as new items are added
+        /// </summary>
+        /// <returns></returns>
+        private static Task RunAsync()
+        {
             while (true)
-                Console.ReadLine();
+            {
+                try
+                {
+                    using (var db = new DefaultAppDbContext())
+                    {
+                        // Check db change, ignore the first time on startup
+                        if (db.PosItemModels.Select(x => x.Id).Max() > _lastPosItemId && _lastPosItemId > 0)
+                        {
+                            _lastPosItemId = db.PosItemModels.Select(x => x.Id).Max();
+
+                            var context = GlobalHost.ConnectionManager.GetHubContext<InventoryHub>();
+                            context.Clients.All.NotifyUpdate(db.PosItemModels, db.SnapShotModels);
+                        }
+                    }
+
+                    System.Threading.Thread.Sleep(10000);
+                }
+                catch (Exception ex)
+                {
+                    if (ex is DbException)
+                    {
+                        logger.Error("Wrong data source {0}", ex);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
         }
 
         /// <summary>
