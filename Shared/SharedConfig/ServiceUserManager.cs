@@ -65,4 +65,19 @@ namespace SharedConfig
             return new ServiceSignInManager(context.GetUserManager<ServiceUserManager>(), context.Authentication);
         }
     }
+
+    public class ServiceUserRoleManager : RoleManager<ServiceIdentityRole>
+    {
+        public ServiceUserRoleManager(IRoleStore<ServiceIdentityRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+        public static ServiceUserRoleManager Create(IdentityFactoryOptions<ServiceUserRoleManager> options, IOwinContext context)
+        {
+            var appRoleManager = new ServiceUserRoleManager(new RoleStore<ServiceIdentityRole, string,ServiceIdentityUserRole>(context.Get<DefaultAppDbContext>()));
+
+            return appRoleManager;
+        }
+    }
 }

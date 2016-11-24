@@ -16,7 +16,6 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Owin;
-using SharedProvider;
 
 namespace SharedConfig
 {
@@ -85,7 +84,8 @@ namespace SharedConfig
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             //app.UseCookieAuthentication(new CookieAuthenticationOptions());
             //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-
+            app.CreatePerOwinContext<ServiceUserRoleManager>(ServiceUserRoleManager.Create);
+            app.CreatePerOwinContext<ServiceUserManager>(ServiceUserManager.Create);
             // Configure the application validate the incomign request with OAuth=========================
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
             {

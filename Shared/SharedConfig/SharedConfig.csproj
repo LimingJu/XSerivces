@@ -167,6 +167,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseApiController.cs" />
+    <Compile Include="ClaimsAuthorizationAttribute.cs" />
     <Compile Include="DefaultAppDbContext.cs" />
     <Compile Include="OAuthSecurity\XServiceAccessTokenFormat.cs" />
     <Compile Include="OAuthSecurity\XServiceDataProtector.cs" />

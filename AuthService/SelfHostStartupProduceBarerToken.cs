@@ -23,7 +23,6 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Owin;
 using SharedConfig;
-using SharedProvider;
 namespace AuthService
 {
     public class SelfHostStartupProduceBarerToken

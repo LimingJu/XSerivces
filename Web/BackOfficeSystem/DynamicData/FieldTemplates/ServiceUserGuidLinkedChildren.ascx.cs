@@ -72,6 +72,7 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
             }
 
             var serviceUserEntity = entity as ServiceIdentityUser;
+            var serviceIdentityRole = entity as ServiceIdentityRole;
             if (ChildrenColumn.ChildTable.EntityType == typeof(ServiceIdentityUserClaim))
             {
                 using (var db = new ApplicationDbContext())
@@ -102,18 +103,45 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
             }
             else if (ChildrenColumn.ChildTable.EntityType == typeof(ServiceIdentityUserRole))
             {
-                using (var db = new ApplicationDbContext())
+                if (serviceUserEntity != null)
                 {
-                    var entityCollection = from roles in db.Roles
-                                           join userRole in db.ServiceIdentityUserRoleModels
-                                               on roles.Id equals userRole.RoleId
-                                           where userRole.UserId == serviceUserEntity.Id
-                                           select roles;
-                    Repeater1.DataSource = entityCollection.ToList();
-                    Repeater1.DataBind();
-                    if (entityCollection == null || !entityCollection.Any())
+                    using (var db = new ApplicationDbContext())
                     {
-                        HyperLink1.Visible = true;
+                        var ownedUserRoles = db.ServiceIdentityUserRoleModels.Where(
+                            userRoles => userRoles.ServiceIdentityUser.Id == serviceUserEntity.Id);
+                        var entityCollection = from roles in db.Roles
+                                               join userRole in ownedUserRoles
+                                                   on roles.Id equals userRole.RoleId
+                                               select roles;
+                        var debug = entityCollection.ToList();
+                        Repeater1.DataSource = debug;
+                        Repeater1.DataBind();
+                        if (entityCollection == null || !entityCollection.Any())
+                        {
+                            HyperLink1.Visible = true;
+                        }
+                    }
+                }
+                else if (serviceIdentityRole != null)
+                {
+                    using (var db = new ApplicationDbContext())
+                    {
+                        var fullUserRoles =
+                            db.ServiceIdentityUserRoleModels.Include(ur => ur.ServiceIdentityUser)
+                                .Include(ur => ur.ServiceIdentityRole);
+                        var entityCollection = from roles in db.Roles
+                                               join userRole in fullUserRoles
+                                                   on roles.Id equals userRole.RoleId
+                                               where userRole.RoleId == serviceIdentityRole.Id
+                                               select userRole;
+                        var debug = entityCollection.Include(ur => ur.ServiceIdentityUser)
+                                .Include(ur => ur.ServiceIdentityRole).ToList();
+                        Repeater1.DataSource = debug;
+                        Repeater1.DataBind();
+                        if (entityCollection == null || !entityCollection.Any())
+                        {
+                            HyperLink1.Visible = true;
+                        }
                     }
                 }
             }
@@ -128,7 +156,7 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
             else if ((repeaterItem?.DataItem as ServiceIdentityUserRole) != null)
             {
                 var role = repeaterItem?.DataItem as ServiceIdentityUserRole;
-                ((DynamicHyperLink)sender).Text = role.ServiceIdentityRole.Name;
+                ((DynamicHyperLink)sender).Text = role.ServiceIdentityUser.UserName;
             }
         }
 

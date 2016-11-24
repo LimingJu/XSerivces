@@ -33,6 +33,13 @@ namespace SharedModel.ModelMetaData
         [UIHint("ShortDateTimeWithTimePicker", null, "StaticValue", "4444-12-12")]
         public DateTime DateToDeactivate;
 
+        /// <summary>
+        /// 'DateTime.Now_OnPostBack' will set a DateTime.Now when Page PostBack performed.
+        /// </summary>
+        [UIHint("DateTime", null, "DateTime.Now_OnPostBack", "")]
+        [ScaffoldColumn(true)]
+        public DateTime CreatedDateTime;
+
         //[ScaffoldColumn(false)]
         public List<PosDiscount> DiscountedIn;
     }

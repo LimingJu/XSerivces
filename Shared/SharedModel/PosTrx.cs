@@ -172,6 +172,12 @@ namespace SharedModel
 
         public decimal Value { get; set; }
 
+        /// <summary>
+        /// Gets or sets the datetime when this discount rule created and saved into database.
+        /// normally this time should be automatically set at the saving time (to db).
+        /// </summary>
+        public DateTime CreatedDateTime { get; set; }
+
         [Index("IX_DiscountNameAndSnapShotId", 2, IsUnique = true)]
         public int SnapShotId { get; set; }
         public virtual SnapShot SnapShot { get; set; }
@@ -199,6 +205,7 @@ namespace SharedModel
     }
 
     [ScaffoldTable(true)]
+    [MetadataType(typeof(PosMopMetadata))]
     public class PosMop
     {
         public int Id { get; set; }
@@ -210,6 +217,12 @@ namespace SharedModel
         [Index("IX_PaymentIdAndSnapShotId", 1, IsUnique = true)]
         [Required]
         public int PaymentId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the datetime when this Mop created and saved into database.
+        /// normally this time should be automatically set at the saving time (to db).
+        /// </summary>
+        public DateTime CreatedDateTime { get; set; }
 
         /// <summary>
         /// for keep all history item, import this version
