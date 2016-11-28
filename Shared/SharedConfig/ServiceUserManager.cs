@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -23,15 +24,16 @@ namespace SharedConfig
 
         public static ServiceUserManager Create(IdentityFactoryOptions<ServiceUserManager> options, IOwinContext context)
         {
-            var manager = new ServiceUserManager(new UserStore<ServiceIdentityUser, ServiceIdentityRole, string, IdentityUserLogin, ServiceIdentityUserRole, ServiceIdentityUserClaim>(context.Get<DefaultAppDbContext>()));
+            var dbContext = context.Get<DefaultAppDbContext>() ?? new DefaultAppDbContext();
+            var userManager = new ServiceUserManager(new UserStore<ServiceIdentityUser, ServiceIdentityRole, string, IdentityUserLogin, ServiceIdentityUserRole, ServiceIdentityUserClaim>(dbContext));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ServiceIdentityUser>(manager)
+            userManager.UserValidator = new UserValidator<ServiceIdentityUser>(userManager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
             };
             // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator
+            userManager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = true,
@@ -42,9 +44,9 @@ namespace SharedConfig
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ServiceIdentityUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                userManager.UserTokenProvider = new DataProtectorTokenProvider<ServiceIdentityUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
-            return manager;
+            return userManager;
         }
     }
 
@@ -75,7 +77,15 @@ namespace SharedConfig
 
         public static ServiceUserRoleManager Create(IdentityFactoryOptions<ServiceUserRoleManager> options, IOwinContext context)
         {
-            var appRoleManager = new ServiceUserRoleManager(new RoleStore<ServiceIdentityRole, string,ServiceIdentityUserRole>(context.Get<DefaultAppDbContext>()));
+            var dbContext = context.Get<DefaultAppDbContext>() ?? new DefaultAppDbContext();
+            var appRoleManager = new ServiceUserRoleManager(new RoleStore<ServiceIdentityRole, string, ServiceIdentityUserRole>(dbContext));
+
+            return appRoleManager;
+        }
+
+        public static ServiceUserRoleManager Create(IdentityFactoryOptions<ServiceUserRoleManager> options, DbContext dbContext)
+        {
+            var appRoleManager = new ServiceUserRoleManager(new RoleStore<ServiceIdentityRole, string, ServiceIdentityUserRole>(dbContext));
 
             return appRoleManager;
         }

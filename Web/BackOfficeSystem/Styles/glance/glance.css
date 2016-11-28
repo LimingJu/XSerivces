@@ -1,0 +1,39 @@
+body { overflow-x: hidden;}
+cursor: pointer;
+.negative{
+	color:#DD2222;
+}
+.positive{
+	color:#22DD22;
+}
+.icon{
+	vertical-align:text-top;
+	height:15px;
+	width:15px;
+}
+
+.droppable{
+	background-color: white;
+}
+
+.link_nodeco:link{
+	text-decoration:none;
+	font-size:15px;
+}
+.widget{
+	max-width: 700px;
+}
+
+.hidePanel{
+	display:none;
+}
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/** Use for clickable panels **/
+.clickable-div 
+{
+	cursor: pointer;
+}

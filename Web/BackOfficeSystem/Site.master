@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" CodeBehind="Site.master.cs" Inherits="BackOfficeSystem.Site" %>
 
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,22 +11,29 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <table>
-        <tr>
-            <td>
-                <img alt="Back to home page" runat="server" style="height: 60%" src="Images/wayne_logo.png" /></td>
-            <td>
-                <h1 class="DDMainHeader" style="margin-left: 10px">Back Office Management System</h1>
-            </td>
-        </tr>
-    </table>
-    <div class="DDNavigation">
-        <a runat="server" href="~/">
-            <img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
-    </div>
-
+<body runat="server">
     <form id="form1" runat="server">
+        <table width="100%">
+            <tr>
+                <td>
+                    <img alt="Back to home page" runat="server" style="height: 60%" src="Images/wayne_logo.png" /></td>
+                <td>
+                    <h1 class="DDMainHeader" style="margin-left: 1px">Back Office Management System</h1>
+                </td>
+                <td align="right">
+                    <ul>
+                        Hello:
+                        <asp:LinkButton runat="server" ID="UserNameLinkButton" OnClick="UserNameLinkButton_Click"></asp:LinkButton>
+                        <%--<%= Page.User.Identity.GetUserName() %>--%>
+                        <asp:Button ID="LogoutBtn" runat="server" OnClick="LogoutButton_Click" Text="Log out" />
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <div class="DDNavigation">
+            <a runat="server" href="~/">
+                <img alt="Back to home page" runat="server" src="DynamicData/Content/Images/back.gif" />Back to home page</a>
+        </div>
         <div>
             <%-- TODO: Enable partial rendering by setting the EnablePartialRendering attribute to "true" to provide a smoother browsing experience.
              Leaving partial rendering disabled will provide a better debugging experience while the application is in development. --%>

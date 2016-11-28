@@ -1,0 +1,109 @@
+/* New Fusion style */
+
+html, body, div, p, h1, h2, h3, h4, h5, h6, form, ul, ol, li
+{
+    margin:0px;
+    padding:0px;
+}
+body
+{
+    color:#ffffff;
+    width:100%;
+    background:#ffffff url("../images/bg.png") no-repeat;
+    font:.9em/1.2em 'Ubuntu', 'Ubuntu Beta', Ubuntu, 'Bitstream Vera Sans', 'DejaVu Sans', Tahoma, sans-serif;
+}
+img
+{
+    border:0px;
+}
+table
+{
+    border:0px;
+    width:100%;
+    border-spacing:0px;
+    border-collapse:collapse;
+    padding:0px;
+}
+div
+{
+    display:block;
+}
+input
+{
+    padding-left:10px;
+    font-family:'Ubuntu', 'Ubuntu Beta', Ubuntu, 'Bitstream Vera Sans', 'DejaVu Sans', Tahoma, sans-serif;
+}
+
+/* Common boxes */
+.error_box, .container
+{
+	border-collapse: separate;
+    border-radius:6px;
+    -moz-box-shadow:0 2px 2px #202020;
+    -webkit-box-shadow:0 2px 2px #202020;
+    box-shadow:0 2px 2px #202020;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=2,Direction=135,Color='#202020')";
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=2,Direction=135,Color='#202020');
+}
+.container
+{
+    background:#DDECFF;
+    color:#000000;
+    font-size:13px;
+}
+.container_title
+{
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    background:#7FB2FF;
+    color:#000000;
+    font-size:20px;
+    font-weight:bold;
+    padding:5px 5px 5px 5px;
+    text-align:center;
+    border-bottom:1px solid #5680FF;
+}
+.container_body
+{
+    color:#000000;
+    padding:10px 10px 10px 10px;
+    text-align:center;
+}
+.container_top
+{
+    color:#000000;
+    padding:10px 10px 10px 10px;
+    text-align:center;
+    border-top:1px solid #ECECFF;
+}
+.error_box
+{
+    width:300px;
+    background:linear-gradient(to top, #F45451 0, #C64F63 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#F45451, endColorstr=#C64F63);
+    color:#ffffff;
+    font-size:13px;
+    font-weight:bold;
+    padding:5px 5px 5px 5px;
+}
+.container_input_title
+{ 
+	border-color:#ABB6CC;
+	border-width:1px 1px 0px 0px; 
+	border-style:solid; 
+	margin: 0px;
+	background-color:#EBF2FF;
+	color:#000000;
+	text-align:right;	
+	padding:4px 5px 4px 40px;
+}
+.button
+{
+	color: #000000;
+	text-decoration:none;
+	border: 1px solid #0A68AF;
+	margin: 0px;
+	padding: 5px 15px 5px 15px;
+    background-color: #7BBAFF;
+	font-weight: bold;
+}

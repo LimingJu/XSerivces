@@ -1,0 +1,682 @@
+/* CCSTheme v 3.x */
+/* General */
+
+
+
+.HeaderSpiritnew {
+	width: 100%;
+	}
+
+.HeaderSpiritnew th { 
+	font-family: Tahoma; font-size: 110%; font-weight: bold; text-align: left;
+	padding: 3px;
+	background-image: url('Images/HeaderBg.gif');  color: #ffffff;
+	width: 100%;
+	white-space: nowrap;
+	}
+
+.HeaderSpiritnew a:link { 
+	color: #ffffff;
+	}
+
+.HeaderSpiritnew a:visited { 
+	color: #ffffff;
+	}
+
+.HeaderSpiritnew a:hover, .CaptionSpiritnew a:active { 
+	color: #ffffff; text-decoration: none;
+	}
+
+.HeaderLeftSpiritnew { 
+	background-image: url('Images/HeaderLeft.gif');
+	}
+
+.HeaderRightSpiritnew { 
+	background-image: url('Images/HeaderRight.gif');
+	}
+
+.HeaderLeftSpiritnew img{
+	width: 4px;
+	}
+
+.HeaderRightSpiritnew img{
+	width: 9px;
+	}
+
+
+/* Grid Options */
+.GridSpiritnew { 
+	border: 1px solid #81a9d2;
+	width: 100%;
+	}
+
+.CaptionSpiritnew th { 
+	font-family: Tahoma; font-size: 80%; text-align: left; vertical-align: top;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #e1e1f6; color: #000000;
+	white-space: nowrap;
+	}
+
+.CaptionSpiritnew td { 
+	font-family: Tahoma; font-size: 80%; text-align: left; vertical-align: top;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #e1e1f6; color: #000000;
+	white-space: nowrap;
+	}
+
+.CaptionSpiritnew a:link { 
+	color: #000000;
+	}
+
+.CaptionSpiritnew a:visited { 
+	color: #000000;
+	}
+
+.CaptionSpiritnew a:hover, .CaptionSpiritnew a:active { 
+	color: #ff7272;
+	}
+
+.CaptionSpiritnew img {
+	margin: 2px; 
+	vertical-align: middle;
+	}
+
+.CaptionSpiritnew input {
+	vertical-align: middle;
+	}
+
+.RowSpiritnew th { 
+	font-family: Tahoma; font-size: 80%; font-weight: normal; text-align: left; vertical-align: top;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #f9f9f9; color: #000000;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.RowSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	vertical-align: top;
+	background-color: #f9f9f9; 
+	color: #000000;
+	}
+
+.RowSpiritnew a:link { 
+	color: #5284b7;
+	}
+
+.RowSpiritnew a:visited { 
+	color: #873c87;
+	}
+
+.RowSpiritnew a:hover, .RowSpiritnew a:active { 
+	color: #ff7272;
+	}
+
+.SeparatorSpiritnew{
+	color: #81a9d2;
+	}
+
+.SeparatorSpiritnew td{
+	height: 1px;
+	}
+
+
+.AltRowSpiritnew th { 
+	font-family: Tahoma; font-size: 80%; font-weight: normal; text-align: left; vertical-align: top;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #f9f9f9; color: #000000;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.AltRowSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	vertical-align: top;
+	background-color: #efeff9; 
+	color: #000000;
+	}
+
+.AltRowSpiritnew a:link { 
+	color: #5284b7;
+	}
+
+.AltRowSpiritnew a:visited { 
+	color: #873c87;
+	}
+
+.AltRowSpiritnew a:hover, .AltRowSpiritnew a:active { 
+	color: #ff7272;
+	}
+
+.NoRecordsSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #f9f9f9; 
+	color: #000000;
+	vertical-align: top;
+	}
+
+.FooterSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border: 1px solid #e1e1f6; border-left: 0px none;
+	background-color: #f9f9f9; color: #000000;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.FooterSpiritnew a:link { 
+	color: #5284b7;
+	}
+
+.FooterSpiritnew a:visited { 
+	color: #873c87;
+	}
+
+.FooterSpiritnew a:hover, .FooterSpiritnew a:active { 
+	color: #ff7272;
+	}
+
+.FooterSpiritnew img {
+	margin: 2px; 
+	vertical-align: middle;
+	}
+
+.FooterSpiritnew input {
+	margin: 2px;
+	vertical-align: middle;
+	}
+
+/* Record Options */
+.RecordSpiritnew { 
+	border: 1px solid #81a9d2;
+	width: 100%;
+	}
+
+.ErrorSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	color: #FF0000;
+	vertical-align: top;
+	background-color: #f9f9f9; 
+	}
+
+.ControlsSpiritnew th { 
+	font-family: Tahoma; font-size: 80%; font-weight: normal; text-align: left; vertical-align: top;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #f9f9f9; color: #000000;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.ControlsSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	vertical-align: top;
+	background-color: #f9f9f9; 
+	color: #000000;
+	}
+
+.BottomSpiritnew td { 
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border: 1px solid #e1e1f6; border-left: 0px none;
+	background-color: #f9f9f9; color: #000000;
+	text-align: right;
+	vertical-align: middle;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.BottomSpiritnew a:link { 
+	color: #5284b7;
+	}
+
+.BottomSpiritnew a:visited { 
+	color: #873c87;
+	}
+
+.BottomSpiritnew a:hover, .CaptionSpiritnew a:active { 
+	color: #ff7272;
+	}
+
+.BottomSpiritnew img {
+	margin: 2px;
+	vertical-align: middle; 
+	}
+
+.BottomSpiritnew input {
+	margin: 2px;
+	vertical-align: middle;
+	}
+
+/* Report */
+.GroupCaptionSpiritnew th{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	white-space: nowrap;
+	text-align: left; 
+	vertical-align: top;
+	font-weight: bold;
+	background-color: #efeff9; 
+	color: #000000;
+	}
+
+.GroupCaptionSpiritnew td{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	vertical-align: top;
+	font-weight: bold;
+	background-color: #f9f9f9; 
+	color: #000000;
+	}
+
+.GroupCaptionSpiritnew a:link {
+	color: #000000;
+	}
+
+.GroupCaptionSpiritnew a:visited{
+	color: #000000;
+	}
+
+.GroupCaptionSpiritnew a:hover, .GroupCaptionSpiritnew a:active{
+	color: #ff7272;
+	}
+
+.GroupFooterSpiritnew td{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border: 1px solid #e1e1f6; border-left: 0px none;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	background-color: #e1e1f6; 
+	color: #000000;
+	}
+
+.GroupFooterSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.GroupFooterSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.GroupFooterSpiritnew a:hover, .GroupFooterSpiritnew a:active{
+	color: #ff7272;
+	}
+
+.GroupFooterSpiritnew img {
+	margin: 2px; 
+	vertical-align: middle;
+	}
+
+.GroupFooterSpiritnew input {
+	margin: 2px;
+	vertical-align: middle;
+	}
+
+.SubTotalSpiritnew td{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	vertical-align: top;
+	font-weight: bold;
+	background-color: #efeff9; 
+	color: #000000;
+	border-bottom: 2px solid #81a9d2;
+	}
+
+.SubTotalSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.SubTotalSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.SubTotalSpiritnew a:hover, .SubTotalSpiritnew a:active{
+	color: #ff7272;
+	}
+
+.TotalSpiritnew td{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	vertical-align: top;
+	white-space: nowrap;
+	font-weight: bold;
+	background-color: #efeff9; 
+	color: #000000;
+	}
+
+.TotalSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.TotalSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.TotalSpiritnew a:hover, .TotalSpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Form Options */
+.ButtonSpiritnew { 
+	background-color: #81a9d2; color: #ffffff; border-left: solid 1px #EDEDED; border-top: solid 1px #EDEDED; border-right: solid 1px #848284; border-bottom: solid 1px #848284; padding: 2px; font-weight: bold; font-size: 85%; font-family: Tahoma;
+	}
+
+/* Calendar */
+
+.CalendarSpiritnew { 
+	border: 1px solid #81a9d2;
+	width: 100%;
+	}
+
+.CalendarWeekdayNameSpiritnew{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	text-align: center; 
+	vertical-align: top;
+	white-space: nowrap;
+	background-color: #efeff9; 
+	color: #000000;
+	}
+
+.CalendarWeekdayNameSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarWeekdayNameSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarWeekdayNameSpiritnew a:hover, .CalendarWeekdayNameSpiritnew a:active{
+	color: #ff7272;
+	}
+
+.CalendarWeekendNameSpiritnew{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	white-space: nowrap;
+	text-align: center; 
+	vertical-align: top;
+	background-color: #efeff9;	
+	color: #000000;
+	}
+
+.CalendarWeekendNameSpiritnew a:link {
+	color: #000000;
+	}
+
+.CalendarWeekendNameSpiritnew a:visited{
+	color: #000000;
+	}
+
+.CalendarWeekendNameSpiritnew a:link, .CalendarWeekendNameSpiritnew a:visited{
+	color: #ff7272;
+	}
+
+/* Calendar Day */
+.CalendarDaySpiritnew{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	text-align: center;
+	background-color: #f9f9f9;	
+	color: #000000;
+	}
+
+.CalendarDaySpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarDaySpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarDaySpiritnew a:hover, .CalendarDaySpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Weekend */
+.CalendarWeekendSpiritnew{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	text-align: center;
+	background-color: #efeff9;	
+	color: #000000;
+	}
+
+.CalendarWeekendSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarWeekendSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarWeekendSpiritnew a:hover, .CalendarWeekendSpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Today */
+.CalendarTodaySpiritnew {
+	font-family: Tahoma; font-size: 80%;
+	padding: 1px;
+	border: 2px solid #81a9d2;
+	text-align: center;
+	background-color: #f9f9f9;	
+	color: #000000;
+	}
+
+.CalendarTodaySpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarTodaySpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarTodaySpiritnew a:hover, .CalendarTodaySpiritnew a:active {
+	color: #ff7272;
+	}
+
+/* Calendar Weekend Today */
+.CalendarWeekendTodaySpiritnew {
+	font-family: Tahoma; font-size: 80%;
+	padding: 1px;
+	border: 2px solid #81a9d2;
+	text-align: center;
+	background-color: #efeff9;	
+	color: #000000;
+	}
+
+.CalendarWeekendTodaySpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarWeekendTodaySpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarWeekendTodaySpiritnew a:hover, .CalendarWeekendTodaySpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Other Month's Day */
+.CalendarOtherMonthDaySpiritnew{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	text-align: center;
+	background-color: #f9f9f9;	
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthDaySpiritnew a:link {
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthDaySpiritnew a:visited{
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthDaySpiritnew a:hover, .CalendarOtherMonthDaySpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Other Month's Today */
+.CalendarOtherMonthTodaySpiritnew {
+	font-family: Tahoma; font-size: 80%;
+	padding: 1px;
+	border: 2px solid #81a9d2;
+	text-align: center;
+	background-color: #f9f9f9;	
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthTodaySpiritnew a:link {
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthTodaySpiritnew a:visited{
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthTodaySpiritnew a:hover, .CalendarOtherMonthTodaySpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Other Month's Weekend */
+.CalendarOtherMonthWeekendSpiritnew {
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	text-align: center;
+	background-color: #efeff9;	
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthWeekendSpiritnew a:link {
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthWeekendSpiritnew a:visited{
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthWeekendSpiritnew a:hover, .CalendarOtherMonthWeekendSpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Other Month's Weekend Today */
+.CalendarOtherMonthWeekendTodaySpiritnew {
+	font-family: Tahoma; font-size: 80%;
+	padding: 1px;
+	border: 2px solid #81a9d2;
+	text-align: center;
+	color: #81a9d2;
+	background-color: #efeff9;	
+	}
+
+.CalendarOtherMonthWeekendTodaySpiritnew a:link {
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthWeekendTodaySpiritnew a:visited{
+	color: #81a9d2;
+	}
+
+.CalendarOtherMonthWeekendTodaySpiritnew a:hover, .CalendarOtherMonthWeekendTodaySpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Selected Day (for DatePicker) */
+.CalendarSelectedDaySpiritnew{
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	border-top: 1px solid #e1e1f6; border-right: 1px solid #e1e1f6;
+	background-color: #e1e1f6;
+	color: #000000;
+	text-align: center;
+	font-weight: bold;
+	}
+
+.CalendarSelectedDaySpiritnew a:link {
+	color: #000000;
+	}
+
+.CalendarSelectedDaySpiritnew a:visited{
+	color: #000000;
+	}
+
+.CalendarSelectedDaySpiritnew a:hover, .CalendarSelectedDaySpiritnew a:active{
+	color: #ff7272;
+	}
+
+/* Calendar Navigator */
+.CalendarNavigatorSpiritnew {
+	font-family: Tahoma; font-size: 80%;
+	padding: 3px;
+	background-color: #f9f9f9; color: #000000;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.CalendarNavigatorSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarNavigatorSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarNavigatorSpiritnew a:hover, .CalendarNavigatorSpiritnew a:active{
+	color: #ff7272;
+	}
+
+.CalendarNavigatorSpiritnew img{
+	margin: 2px;
+	vertical-align: middle; 	
+	}
+
+/* Calendar Extra */
+.CalendarEventSpiritnew{
+	font-size: 80%;
+	text-align: left;
+	}
+
+.CalendarEventSpiritnew a:link {
+	color: #5284b7;
+	}
+
+.CalendarEventSpiritnew a:visited{
+	color: #873c87;
+	}
+
+.CalendarEventSpiritnew a:hover, .CalendarEventSpiritnew a:active{
+	color: #ff7272;
+	}

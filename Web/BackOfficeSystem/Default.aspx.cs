@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.DynamicData;
+using Microsoft.AspNet.Identity;
 using SharedModel;
 using SharedModel.Identity;
 
@@ -12,6 +13,18 @@ namespace BackOfficeSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                }
+                else
+                {
+                    Response.Redirect("~/Login.aspx");
+                    return;
+                }
+            }
+
             var visibleTables = Global.DefaultModel.VisibleTables;
             if (visibleTables.Count == 0)
             {

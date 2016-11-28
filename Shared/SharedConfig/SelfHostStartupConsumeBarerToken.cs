@@ -86,6 +86,7 @@ namespace SharedConfig
             //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
             app.CreatePerOwinContext<ServiceUserRoleManager>(ServiceUserRoleManager.Create);
             app.CreatePerOwinContext<ServiceUserManager>(ServiceUserManager.Create);
+            app.CreatePerOwinContext(DefaultAppDbContext.Create);
             // Configure the application validate the incomign request with OAuth=========================
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
             {
