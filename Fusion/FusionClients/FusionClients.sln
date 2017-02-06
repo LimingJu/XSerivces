@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CF53C13C-30E8-4D08-8C02-B60E259FFB0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedModel", "SharedModel", "{7B810227-C963-4F9D-B4D6-0A2709CEA085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel", "..\..\Shared\SharedModel\SharedModel.csproj", "{80B5CAF7-3270-40BB-9852-41A7276E5438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosItemsClient", "PosItemsClient\PosItemsClient.csproj", "{67E47951-C79A-4B36-94CF-F3F86CD1A297}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedConfig", "SharedConfig", "{449483E6-0D86-437A-B733-41BD6C98195E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedConfig", "..\..\Shared\SharedConfig\SharedConfig.csproj", "{8630443E-775B-4C9B-B8F4-8E630A908FEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80B5CAF7-3270-40BB-9852-41A7276E5438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B5CAF7-3270-40BB-9852-41A7276E5438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B5CAF7-3270-40BB-9852-41A7276E5438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B5CAF7-3270-40BB-9852-41A7276E5438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67E47951-C79A-4B36-94CF-F3F86CD1A297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67E47951-C79A-4B36-94CF-F3F86CD1A297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67E47951-C79A-4B36-94CF-F3F86CD1A297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67E47951-C79A-4B36-94CF-F3F86CD1A297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8630443E-775B-4C9B-B8F4-8E630A908FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8630443E-775B-4C9B-B8F4-8E630A908FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8630443E-775B-4C9B-B8F4-8E630A908FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8630443E-775B-4C9B-B8F4-8E630A908FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7B810227-C963-4F9D-B4D6-0A2709CEA085} = {CF53C13C-30E8-4D08-8C02-B60E259FFB0E}
+		{80B5CAF7-3270-40BB-9852-41A7276E5438} = {7B810227-C963-4F9D-B4D6-0A2709CEA085}
+		{449483E6-0D86-437A-B733-41BD6C98195E} = {CF53C13C-30E8-4D08-8C02-B60E259FFB0E}
+		{8630443E-775B-4C9B-B8F4-8E630A908FEF} = {449483E6-0D86-437A-B733-41BD6C98195E}
+	EndGlobalSection
+EndGlobal

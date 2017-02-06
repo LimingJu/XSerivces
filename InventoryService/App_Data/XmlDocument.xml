@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InventoryService</name>
+    </assembly>
+    <members>
+        <member name="T:InventoryService.Controller.InventoryController">
+            <summary>
+            This controller acts as a registration interface for all service to regist itself, then others can discover it.
+            </summary>
+        </member>
+        <member name="M:InventoryService.Controller.InventoryController.GetPosItems">
+            <summary>
+            Sync PosItems to fusion side
+            </summary>
+            <returns>PosItemModels</returns>
+        </member>
+        <member name="M:InventoryService.Controller.InventoryController.GetUpdate(System.String)">
+            <summary>
+            Compare the latest snapshot tag with the one from fusion
+            </summary>
+            <param name="snapshotTag"></param>
+            <returns>Ok if there are any items to be updated, else NotFound</returns>
+        </member>
+        <member name="T:InventoryService.IClient">
+            <summary>
+            Client to handle the PosItems update
+            </summary>
+        </member>
+        <member name="M:InventoryService.IClient.NotifyUpdate(System.Collections.Generic.IEnumerable{SharedModel.PosItem},System.Collections.Generic.IEnumerable{SharedModel.SnapShot})">
+            <summary>
+            Method called by server to notify client new items to be updated
+            </summary>
+        </member>
+        <member name="T:InventoryService.InventoryHub">
+            <summary>
+            Server interface to push new items to fusion
+            </summary>
+        </member>
+        <member name="M:InventoryService.InventoryHub.Get(System.Int32)">
+            <summary>
+            Method to send new items to fusion
+            </summary>
+        </member>
+        <member name="M:InventoryService.Program.RunAsync">
+            <summary>
+            check db data change for every 10 seconds, assuming Id increases as new items are added
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InventoryService.Program.LogMemory">
+            <summary>
+            Logs the current memory status.
+            </summary>
+        </member>
+    </members>
+</doc>

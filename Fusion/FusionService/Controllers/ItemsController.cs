@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Data.Entity;
-using System.Data.Entity.Core;
-using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
 using log4net;
 using SharedModel;
 using SharedConfig;
@@ -69,6 +61,54 @@ namespace FusionService.Controllers
                 var item = dbContext.PosItemModels
                                 .OrderByDescending(i => i.SnapShotId)
                                 .First(i => i.ItemId == itemId);
+                return Ok(item);
+            }
+            catch (InvalidOperationException)
+            {
+                // item not found
+                return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// Retrieve an Item by barcode from the latest snapshot
+        /// </summary>
+        /// <param name="barcode"></param>
+        /// <returns>PosItem</returns>
+        [Route("api/Inventory/barcode/{barcode}")]
+        [ResponseType(typeof(PosItem))]
+        public IHttpActionResult GetByBarcode(string barcode)
+        {
+            try
+            {
+                using (var db = new DefaultAppDbContext())
+                {
+                    return
+                        Ok(db.PosItemModels
+                                .OrderByDescending(i => i.SnapShotId)
+                            .First(r => r.BarCode == barcode));
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                // item not found
+                return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// Get an item by item id and snap shot id.
+        /// </summary>
+        /// <returns>A POS item if exists</returns>
+        [Route("api/snapShots/{snapShotId}/barcode/{barcode}")]
+        [ResponseType(typeof(PosItem))]
+        public IHttpActionResult GetByBarcodeFromSnapShot(int snapShotId, string barcode)
+        {
+            try
+            {
+                var item = dbContext.PosItemModels
+                                .Where(i => i.SnapShotId == snapShotId)
+                                .First(i => i.BarCode == barcode);
                 return Ok(item);
             }
             catch (InvalidOperationException)

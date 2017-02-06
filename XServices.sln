@@ -26,9 +26,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingSystem", "Web\ReportingSystem\ReportingSystem.csproj", "{0D53437F-01B4-44E3-B136-F39EB5BE6CE3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedBin", "SharedBin", "{2B6F9F64-1952-4A54-BE9A-4AA0CABA875C}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Users\Think\Downloads\TimePicker\Bin\TimePicker.dll = ..\..\..\..\Users\Think\Downloads\TimePicker\Bin\TimePicker.dll
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionService", "TransactionService\TransactionService.csproj", "{5684BFFC-5E3B-44F6-A4DC-6B36A8F97D66}"
 EndProject
@@ -41,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginSystem", "Web\LoginSystem\LoginSystem.csproj", "{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedConfigTests", "Shared\SharedConfigTests\SharedConfigTests.csproj", "{C80DF0DB-4E82-4A56-983F-BB81C4556E70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService", "InventoryService\InventoryService.csproj", "{958DE028-DFF8-42BA-AA9C-FF97053ADAC9}"
 EndProject
 Global
 	GlobalSection(Performance) = preSolution
@@ -99,10 +98,6 @@ Global
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

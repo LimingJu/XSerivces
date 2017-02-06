@@ -33,6 +33,19 @@
             </summary>
             <returns>A POS item if exists</returns>
         </member>
+        <member name="M:FusionService.Controllers.ItemsController.GetByBarcode(System.String)">
+            <summary>
+            Retrieve an Item by barcode from the latest snapshot
+            </summary>
+            <param name="barcode"></param>
+            <returns>PosItem</returns>
+        </member>
+        <member name="M:FusionService.Controllers.ItemsController.GetByBarcodeFromSnapShot(System.Int32,System.String)">
+            <summary>
+            Get an item by item id and snap shot id.
+            </summary>
+            <returns>A POS item if exists</returns>
+        </member>
         <member name="T:FusionService.Controllers.TransactionPaymentsController">
             <summary>
             This controller is for performing payments
