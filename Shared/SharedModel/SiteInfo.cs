@@ -28,6 +28,8 @@ namespace SharedModel
         [MaxLength(50)]
         [Index("IX_NameAndProjectCodeName", 2, IsUnique = true)]
         public string ProjectCodeName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
 
         /// <summary>
         /// anything could help people know what this site is, located where and etc.

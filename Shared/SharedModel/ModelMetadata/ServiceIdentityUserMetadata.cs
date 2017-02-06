@@ -19,7 +19,7 @@ namespace SharedModel.ModelMetadata
         public string Alias;
         [Display(Order = 2)]
         public string Email;
-        [Display(Order = 3)]
+        [Display(Order = 30)]
         [UIHint("GuidColumnText")]
         public string Id;
 
@@ -30,16 +30,16 @@ namespace SharedModel.ModelMetadata
         [Display(Order = 4)]
         public DateTime CreatedDateTime;
         [Display(Order = 5)]
-        public string Tag;
-        [Display(Order = 6)]
+        public List<BusinessUnit> RestrictedInBusinessUnits;
+        [Display(Order = 8)]
         public string Address;
-        [Display(Order = 7)]
+        [Display(Order = 9)]
         public string City;
         [Display(Order = 8)]
-        public string DetailDescription;
-        [Display(Order = 9)]
+        public string Description;
+        [Display(Order = 19)]
         public string PhoneNumber;
-        [Display(Order = 10)]
+        [Display(Order = 31)]
         public int AccessFailedCount;
         [Display(Order = 11)]
         [ScaffoldColumn(false)]
@@ -59,11 +59,13 @@ namespace SharedModel.ModelMetadata
         [ScaffoldColumn(false)]
         [Display(Order = 16)]
         public bool LockoutEnabled;
+        [Display(Order = 7)]
         [UIHint("ServiceUserGuidLinkedChildren")]
         public ICollection<ServiceIdentityUserClaim> Claims;
         [UIHint("ServiceUserGuidLinkedChildren")]
         public ICollection<IdentityUserLogin> Logins;
         [UIHint("ServiceUserGuidLinkedChildren")]
+        [Display(Order = 7)]
         public ICollection<ServiceIdentityUserRole> Roles;
     }
 }

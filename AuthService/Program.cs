@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using log4net;
 using Microsoft.Owin.Hosting;
 using SharedConfig;
+using SharedConfig.Util;
+using SharedModel.Identity;
 
 namespace AuthService
 {
@@ -30,6 +32,8 @@ namespace AuthService
 
             logger.Info("Starting listening: " + baseAddress);
             Console.WriteLine("Starting listening: " + baseAddress);
+            var eastAsiaUnit = new DefaultAppDbContext().BusinessUnitModels.First(b => b.Name == "RegionEastAsia");
+            UserPriviledgeHelper.CreateOrUpdateUser("x", "x@nodomain.com", "Pa88word!", "", new List<string>() { "RegionEastAsia" });
             try
             {
 

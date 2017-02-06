@@ -90,4 +90,52 @@ namespace SharedConfig
             return appRoleManager;
         }
     }
+
+    public class ServiceUserPasswordStore : IUserPasswordStore<ServiceIdentityUser>
+    {
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateAsync(ServiceIdentityUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(ServiceIdentityUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(ServiceIdentityUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceIdentityUser> FindByIdAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceIdentityUser> FindByNameAsync(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetPasswordHashAsync(ServiceIdentityUser user, string passwordHash)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> GetPasswordHashAsync(ServiceIdentityUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> HasPasswordAsync(ServiceIdentityUser user)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

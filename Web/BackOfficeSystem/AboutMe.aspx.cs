@@ -56,6 +56,9 @@ namespace BackOfficeSystem
             var roles = userManager.GetRolesAsync(Page.User.Identity.GetUserId()).Result;
             if (roles.Any(p => p == "superAdmin"))
             {
+                var cs = this.Controls;
+                Console.WriteLine(cs);
+                //FindControl("OperationArea").Visible = false;
                 //this.OperationArea.Visible = false;
             }
             //var userIdentity = manager.CreateIdentity<ServiceIdentityUser, string>(user,

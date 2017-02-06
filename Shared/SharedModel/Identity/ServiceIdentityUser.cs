@@ -53,23 +53,19 @@ namespace SharedModel
         [MaxLength(50)]
         [Index(IsUnique = true)]
         public string Alias { get; set; }
-        /// <summary>
-        /// explain what is this version created for, the purpose, the targets and etc, for human better understanding.
-        /// </summary>
-        public string Tag { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
 
-        public string DetailDescription
+        public string Description
         {
             get; set;
         }
 
         /// <summary>
-        /// A service user may incharge multiple sites, like super admin.
-        /// or several sites share one ServiceUser credential.
+        /// Gets or sets the business units for this user account can operated on.
         /// </summary>
-        public virtual List<SiteInfo> BindingSites { get; set; }
+        public virtual List<BusinessUnit> RestrictedInBusinessUnits { get; set; }
+
         public DateTime CreatedDateTime { get; set; }
 
         //private List<ServiceIdentityUserClaim> claims;

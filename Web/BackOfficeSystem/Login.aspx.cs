@@ -18,6 +18,22 @@ namespace BackOfficeSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //var predefinedOperations = new DefaultAppDbContext().ServiceUserOperationModels.ToList();
+            //var roleManager = ServiceUserRoleManager.Create(new IdentityFactoryOptions<ServiceUserRoleManager>(),
+            //    new DefaultAppDbContext());
+            //string parentRoleId = null;
+
+            //var roleName = "RegionAdmin";
+            //var foundRole = roleManager.FindByNameAsync(roleName).Result;
+            //if (foundRole == null) throw new OperationCanceledException("Role with roleName: " + roleName + " does not exists!!!!");
+            //if (false || foundRole.ProhibitedOperations == null) foundRole.ProhibitedOperations = new List<ServiceUserOperation>();
+            //foundRole.ProhibitedOperations.AddRange(predefinedOperations.Where(o => o.OperationName == "Print X").ToArray());
+            //var r = roleManager.Update(foundRole);
+            //if (!r.Succeeded)
+            //{
+            //    throw new OperationCanceledException("Create role: " + roleName + " failed!" + r.Errors.Aggregate((acc, n) => acc + n));
+            //}
+
             if (!IsPostBack)
             {
                 if (User.Identity.IsAuthenticated)

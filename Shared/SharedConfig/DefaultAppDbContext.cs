@@ -51,15 +51,23 @@ namespace SharedConfig
                     mc.MapRightKey("PosTrxItemId");
                 });
             modelBuilder.Entity<ServiceIdentityUser>()
-               .HasMany(p => p.BindingSites)
-               .WithMany(t => t.BoundServiceUsers)
+               .HasMany(p => p.RestrictedInBusinessUnits)
+               .WithMany(t => t.ReferencedInUsers)
                .Map(mc =>
                {
-                   mc.ToTable("ServiceUserSiteInfo_M2M");
-                   mc.MapLeftKey("ServiceUserId");
-                   mc.MapRightKey("SiteInfoId");
+                   mc.ToTable("IdentityUserBusiUnit_M2M");
+                   mc.MapLeftKey("ServiceIdentityUserId");
+                   mc.MapRightKey("BusinessUnitId");
                });
-
+            modelBuilder.Entity<ServiceIdentityRole>()
+                .HasMany(p => p.ProhibitedOperations)
+                .WithMany(t => t.ProhibitedInIdentityRoles)
+                .Map(mc =>
+                {
+                    mc.ToTable("IdentityRoleUserOperation_M2M");
+                    mc.MapLeftKey("ServiceIdentityRoleId");
+                    mc.MapRightKey("ServiceUserOperationId");
+                });
             // bug???
             //EntityTypeConfiguration<ServiceIdentityUser> entityTypeConfiguration = modelBuilder.Entity<ServiceIdentityUser>().ToTable("AspNetUsers");
             //entityTypeConfiguration.HasMany(u => u.ReadBooks).WithRequired().HasForeignKey(f => f.UserId);
@@ -108,11 +116,11 @@ namespace SharedConfig
 
         public System.Data.Entity.DbSet<Currency> CurrencyModels { get; set; }
 
-        public System.Data.Entity.DbSet<SiteInfo> SiteInfoModels { get; set; }
+        public System.Data.Entity.DbSet<BusinessUnit> BusinessUnitModels { get; set; }
         public System.Data.Entity.DbSet<ServiceIdentityUserClaim> ServiceIdentityUserClaimModels { get; set; }
         public System.Data.Entity.DbSet<IdentityUserLogin> IdentityUserLoginModels { get; set; }
         public System.Data.Entity.DbSet<ServiceIdentityUserRole> ServiceIdentityUserRoleModels { get; set; }
 
-        //public System.Data.Entity.DbSet<ServiceIdentityRole> ServiceIdentityRoleModels { get; set; }
+        public System.Data.Entity.DbSet<ServiceUserOperation> ServiceUserOperationModels { get; set; }
     }
 }

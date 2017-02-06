@@ -62,8 +62,8 @@ namespace SharedModel
 
         public string ServiceIdentityUserId { get; set; }
         public ServiceIdentityUser Cashier { get; set; }
-        
-        
+
+
         /// <summary>
         /// Update some or all properties.
         /// </summary>
@@ -236,6 +236,7 @@ namespace SharedModel
     public class Currency
     {
         public int Id { get; set; }
+        [Index("IX_CurrencyName", IsUnique = true)]
         public string Name { get; set; }
     }
 }

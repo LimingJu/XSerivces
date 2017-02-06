@@ -31,7 +31,7 @@ namespace AuthService.Controllers
 
         public IEnumerable<ServiceIdentityUser> Get()
         {
-            var all = dbContext.Users.Include(u => u.BindingSites).Include(u => u.Roles).Include(u => u.Claims).ToList();
+            var all = dbContext.Users.Include(u => u.Roles).Include(u => u.Claims).ToList();
             return all;
         }
 

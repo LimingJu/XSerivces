@@ -40,7 +40,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginSystem", "Web\LoginSystem\LoginSystem.csproj", "{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedConfigTests", "Shared\SharedConfigTests\SharedConfigTests.csproj", "{C80DF0DB-4E82-4A56-983F-BB81C4556E70}"
+EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -94,6 +99,10 @@ Global
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80DF0DB-4E82-4A56-983F-BB81C4556E70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +118,6 @@ Global
 		{2B6F9F64-1952-4A54-BE9A-4AA0CABA875C} = {757FBDEA-0BF1-4C1B-8F0E-F85B1664305F}
 		{79533F24-4B2C-4131-AF87-45E40AC4A551} = {4077564A-BFB7-4ADA-ADD2-C007F28769B0}
 		{63BB25D1-62FD-4EFA-BE7F-99A769C13F6D} = {F16C401D-481D-4214-A6C1-271D92B5C2D7}
+		{C80DF0DB-4E82-4A56-983F-BB81C4556E70} = {C87FFB7D-AEC8-4FEA-8286-8E6F2B04B004}
 	EndGlobalSection
 EndGlobal

@@ -9,6 +9,7 @@ using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SharedModel;
+using SharedModel.Identity;
 using EntityDataSource = Microsoft.AspNet.EntityDataSource.EntityDataSource;
 using EntityDataSourceChangingEventArgs = Microsoft.AspNet.EntityDataSource.EntityDataSourceChangingEventArgs;
 
@@ -189,6 +190,153 @@ namespace BackOfficeSystem
                     return;
                 }
             }
+            else if (e.Entity is ServiceIdentityRole)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetRole = (ServiceIdentityRole)(e.Entity);
+                    if (Mode == DataBoundControlMode.Insert)
+                    {
+                        db.Roles.Add(targetRole);
+                        db.SaveChanges();
+                    }
+
+                    if (Column.ColumnType == typeof(BusinessUnit))
+                    {
+                        //var linkedBusinessUnits = db.Roles.Include(r =>r.RestrictedInBusinessUnits)
+                        //    .Where(r => r.Id == targetRole.Id)
+                        //    .SelectMany(t => t.RestrictedInBusinessUnits).ToList();
+                        //foreach (var childEntity in db.BusinessUnitModels.ToList())
+                        //{
+                        //    var isCurrentlyInList = ListContainsEntity(childTable, linkedBusinessUnits, childEntity);
+
+                        //    string pkString = childTable.GetPrimaryKeyString(childEntity);
+                        //    ListItem listItem = CheckBoxList1.Items.FindByValue(pkString);
+                        //    if (listItem == null)
+                        //        continue;
+
+                        //    if (listItem.Selected)
+                        //    {
+                        //        if (!isCurrentlyInList)
+                        //        {
+                        //            //entityCollection.Add(childEntity);
+                        //            var target = db.Roles.Include(r => r.RestrictedInBusinessUnits)
+                        //                .First(item => item.Id == targetRole.Id);
+                        //            target.RestrictedInBusinessUnits.Add(childEntity);
+                        //            db.SaveChanges();
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        if (isCurrentlyInList)
+                        //        {
+                        //            //entityCollection.Remove(childEntity);
+                        //            var target = db.Roles.Include(r => r.RestrictedInBusinessUnits)
+                        //                    .First(item => item.Id == targetRole.Id);
+                        //            target.RestrictedInBusinessUnits.Remove(childEntity);
+                        //            db.SaveChanges();
+                        //        }
+                        //    }
+                        //}
+                        //e.Cancel = true;
+                        //return;
+                    }
+                    else if (Column.ColumnType == typeof(ServiceUserOperation))
+                    {
+
+                        var linkedProhibtedOperations = db.Roles.Include(r => r.ProhibitedOperations)
+                        .Where(r => r.Id == targetRole.Id)
+                        .SelectMany(t => t.ProhibitedOperations).ToList();
+                        foreach (var childEntity in db.ServiceUserOperationModels.ToList())
+                        {
+                            var isCurrentlyInList = ListContainsEntity(childTable, linkedProhibtedOperations, childEntity);
+
+                            string pkString = childTable.GetPrimaryKeyString(childEntity);
+                            ListItem listItem = CheckBoxList1.Items.FindByValue(pkString);
+                            if (listItem == null)
+                                continue;
+
+                            if (listItem.Selected)
+                            {
+                                if (!isCurrentlyInList)
+                                {
+                                    //entityCollection.Add(childEntity);
+                                    var target = db.Roles.Include(r => r.ProhibitedOperations)
+                                        .First(item => item.Id == targetRole.Id);
+                                    target.ProhibitedOperations.Add(childEntity);
+                                    db.SaveChanges();
+                                }
+                            }
+                            else
+                            {
+                                if (isCurrentlyInList)
+                                {
+                                    //entityCollection.Remove(childEntity);
+                                    var target = db.Roles.Include(r => r.ProhibitedOperations)
+                                            .First(item => item.Id == targetRole.Id);
+                                    target.ProhibitedOperations.Remove(childEntity);
+                                    db.SaveChanges();
+                                }
+                            }
+                        }
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            }
+            else if (e.Entity is ServiceIdentityUser)
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var targetUser = (ServiceIdentityUser)(e.Entity);
+                    if (Mode == DataBoundControlMode.Insert)
+                    {
+                        db.Users.Add(targetUser);
+                        db.SaveChanges();
+                    }
+
+                    if (Column.ColumnType == typeof(BusinessUnit))
+                    {
+                        var linkedBusinessUnits = db.Users.Include(r => r.RestrictedInBusinessUnits)
+                            .Where(r => r.Id == targetUser.Id)
+                            .SelectMany(t => t.RestrictedInBusinessUnits).ToList();
+                        foreach (var childEntity in db.BusinessUnitModels.ToList())
+                        {
+                            var isCurrentlyInList = ListContainsEntity(childTable, linkedBusinessUnits, childEntity);
+
+                            string pkString = childTable.GetPrimaryKeyString(childEntity);
+                            ListItem listItem = CheckBoxList1.Items.FindByValue(pkString);
+                            if (listItem == null)
+                                continue;
+
+                            if (listItem.Selected)
+                            {
+                                if (!isCurrentlyInList)
+                                {
+                                    //entityCollection.Add(childEntity);
+                                    var target = db.Users.Include(r => r.RestrictedInBusinessUnits)
+                                        .First(item => item.Id == targetUser.Id);
+                                    target.RestrictedInBusinessUnits.Add(childEntity);
+                                    db.SaveChanges();
+                                }
+                            }
+                            else
+                            {
+                                if (isCurrentlyInList)
+                                {
+                                    //entityCollection.Remove(childEntity);
+                                    var target = db.Users.Include(r => r.RestrictedInBusinessUnits)
+                                            .First(item => item.Id == targetUser.Id);
+                                    target.RestrictedInBusinessUnits.Remove(childEntity);
+                                    db.SaveChanges();
+                                }
+                            }
+                        }
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            }
             else
             {
                 entityCollection = Column.EntityTypeProperty.GetValue(e.Entity, null);
@@ -286,6 +434,16 @@ namespace BackOfficeSystem
                         entityCollection = db.PosTrxDiscountModels.Include(item => item.Items)
                             .Where(item => item.Id == targetDiscount.Id)
                             .SelectMany(t => t.Items).ToList();
+                    }
+                }
+                else if (entity is ServiceIdentityRole)
+                {
+                    using (var db = new ApplicationDbContext())
+                    {
+                        var targetRole = (ServiceIdentityRole)entity;
+                        entityCollection = db.Roles.Include(u => u.ProhibitedOperations)
+                            .Where(r => r.Id == targetRole.Id)
+                            .SelectMany(t => t.ProhibitedOperations).ToList();
                     }
                 }
                 else

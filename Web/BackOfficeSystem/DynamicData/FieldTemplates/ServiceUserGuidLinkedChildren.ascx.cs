@@ -78,7 +78,8 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
                 using (var db = new ApplicationDbContext())
                 {
                     var entityCollection = db.ServiceIdentityUserClaimModels
-                        .Where(c => c.UserId == serviceUserEntity.Id).ToList();//.Select(s => s.ClaimType + ":" + s.ClaimValue).ToList();
+                        .Where(c => c.UserId == serviceUserEntity.Id).ToList();
+                    //.Select(s => s.ClaimType + ":" + s.ClaimValue).ToList();
                     Repeater1.DataSource = entityCollection;
                     Repeater1.DataBind();
                     if (entityCollection == null || !entityCollection.Any())
@@ -135,7 +136,7 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
                                                where userRole.RoleId == serviceIdentityRole.Id
                                                select userRole;
                         var debug = entityCollection.Include(ur => ur.ServiceIdentityUser)
-                                .Include(ur => ur.ServiceIdentityRole).ToList();
+                            .Include(ur => ur.ServiceIdentityRole).ToList();
                         Repeater1.DataSource = debug;
                         Repeater1.DataBind();
                         if (entityCollection == null || !entityCollection.Any())
@@ -145,6 +146,9 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
                     }
                 }
             }
+            else if (ChildrenColumn.ChildTable.EntityType == typeof(ServiceIdentityRole))
+            {
+            }
         }
 
         protected void DynamicHyperLink_DataBinding(object sender, EventArgs e)
@@ -152,11 +156,16 @@ namespace BackOfficeSystem.DynamicData.FieldTemplates
             var repeaterItem = ((DynamicHyperLink)sender).BindingContainer as RepeaterItem;
             var identityUserClaim = repeaterItem?.DataItem as ServiceIdentityUserClaim;
             if (identityUserClaim != null)
-                ((DynamicHyperLink)sender).Text = identityUserClaim.ClaimType + ":" + identityUserClaim.ClaimValue;
+                ((DynamicHyperLink)sender).Text = "(" + identityUserClaim.ClaimType + ":" + identityUserClaim.ClaimValue + ")";
             else if ((repeaterItem?.DataItem as ServiceIdentityUserRole) != null)
             {
-                var role = repeaterItem?.DataItem as ServiceIdentityUserRole;
-                ((DynamicHyperLink)sender).Text = role.ServiceIdentityUser.UserName;
+                var userRole = repeaterItem?.DataItem as ServiceIdentityUserRole;
+                ((DynamicHyperLink)sender).Text = userRole.ServiceIdentityUser.UserName;
+            }
+            else if ((repeaterItem?.DataItem as ServiceIdentityRole) != null)
+            {
+                var role = repeaterItem?.DataItem as ServiceIdentityRole;
+                ((DynamicHyperLink)sender).Text = role.Name;
             }
         }
 

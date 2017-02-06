@@ -24,11 +24,10 @@
                         <asp:DynamicEntity runat="server" />
                         <tr class="td">
                             <td colspan="2">
-                                <asp:Panel ID="OperationArea" runat="server">
-                                    <asp:DynamicHyperLink runat="server" Action="Edit" Text="Edit" />
-                                    <asp:LinkButton runat="server" CommandName="Delete" Text="Delete"
-                                        OnClientClick='return confirm("Are you sure you want to delete this item?");' />
-                                </asp:Panel>
+                                <asp:Button runat="server" ID="TestButton2" /><asp:Literal ID="Detail222" runat="server"></asp:Literal>
+                                <asp:DynamicHyperLink runat="server" Action="Edit" Text="Edit" />
+                                <asp:LinkButton runat="server" CommandName="Delete" Text="Delete"
+                                    OnClientClick='return confirm("Are you sure you want to delete this item?");' />
                             </td>
                         </tr>
                     </table>

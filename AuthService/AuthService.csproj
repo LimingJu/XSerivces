@@ -121,16 +121,16 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Npgsql, Version=3.1.8.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.3.1.8\lib\net451\Npgsql.dll</HintPath>
+    <Reference Include="Npgsql, Version=3.1.9.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.9\lib\net451\Npgsql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RazorEngine, Version=3.9.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorEngine.3.9.1\lib\net45\RazorEngine.dll</HintPath>
+    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -202,6 +202,38 @@
     <Compile Include="ApplicationOAuthProvider.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\DebugController.cs" />
+    <Compile Include="Migrations\201612080803459_init.cs" />
+    <Compile Include="Migrations\201612080803459_init.Designer.cs">
+      <DependentUpon>201612080803459_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080824182_re.cs" />
+    <Compile Include="Migrations\201612080824182_re.Designer.cs">
+      <DependentUpon>201612080824182_re.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080832283_rere.cs" />
+    <Compile Include="Migrations\201612080832283_rere.Designer.cs">
+      <DependentUpon>201612080832283_rere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080839431_rerere.cs" />
+    <Compile Include="Migrations\201612080839431_rerere.Designer.cs">
+      <DependentUpon>201612080839431_rerere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612090143018_rerere3.cs" />
+    <Compile Include="Migrations\201612090143018_rerere3.Designer.cs">
+      <DependentUpon>201612090143018_rerere3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612170206530_restri.cs" />
+    <Compile Include="Migrations\201612170206530_restri.Designer.cs">
+      <DependentUpon>201612170206530_restri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612170231218_restri0.cs" />
+    <Compile Include="Migrations\201612170231218_restri0.Designer.cs">
+      <DependentUpon>201612170231218_restri0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612210254404_restri0000.cs" />
+    <Compile Include="Migrations\201612210254404_restri0000.Designer.cs">
+      <DependentUpon>201612210254404_restri0000.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -254,6 +286,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612080803459_init.resx">
+      <DependentUpon>201612080803459_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080824182_re.resx">
+      <DependentUpon>201612080824182_re.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080832283_rere.resx">
+      <DependentUpon>201612080832283_rere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080839431_rerere.resx">
+      <DependentUpon>201612080839431_rerere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612090143018_rerere3.resx">
+      <DependentUpon>201612090143018_rerere3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612170206530_restri.resx">
+      <DependentUpon>201612170206530_restri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612170231218_restri0.resx">
+      <DependentUpon>201612170231218_restri0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612210254404_restri0000.resx">
+      <DependentUpon>201612210254404_restri0000.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

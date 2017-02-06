@@ -1,11 +1,11 @@
 <%@ Page Language="C#" MasterPageFile="~/Site.master" CodeBehind="List.aspx.cs" Inherits="BackOfficeSystem.List" %>
 
-<%@ Register src="~/DynamicData/Content/GridViewPager.ascx" tagname="GridViewPager" tagprefix="asp" %>
+<%@ Register Src="~/DynamicData/Content/GridViewPager.ascx" TagName="GridViewPager" TagPrefix="asp" %>
 
-<asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:DynamicDataManager ID="DynamicDataManager1" runat="server" AutoLoadForeignKeys="true">
         <DataControls>
             <asp:DataControlReference ControlID="GridView1" />
@@ -24,7 +24,8 @@
                 <asp:QueryableFilterRepeater runat="server" ID="FilterRepeater">
                     <ItemTemplate>
                         <asp:Label runat="server" Text='<%# Eval("DisplayName") %>' OnPreRender="Label_PreRender" />
-                        <asp:DynamicFilter runat="server" ID="DynamicFilter" OnFilterChanged="DynamicFilter_FilterChanged" /><br />
+                        <asp:DynamicFilter runat="server" ID="DynamicFilter" OnFilterChanged="DynamicFilter_FilterChanged" />
+                        <br />
                     </ItemTemplate>
                 </asp:QueryableFilterRepeater>
                 <br />
@@ -36,15 +37,13 @@
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:DynamicHyperLink runat="server" Action="Edit" Text="Edit"
-                            />&nbsp;<asp:LinkButton runat="server" CommandName="Delete" Text="Delete"
-                                OnClientClick='return confirm("Are you sure you want to delete this item?");'
-                            />&nbsp;<asp:DynamicHyperLink runat="server" Text="Details" />
+                            <asp:DynamicHyperLink runat="server" Action="Edit" Text="Edit" />&nbsp;<asp:LinkButton runat="server" CommandName="Delete" Text="Delete"
+                                OnClientClick='return confirm("Are you sure you want to delete this item?");' />&nbsp;<asp:DynamicHyperLink runat="server" Text="Details" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
 
-                <PagerStyle CssClass="DDFooter"/>        
+                <PagerStyle CssClass="DDFooter" />
                 <PagerTemplate>
                     <asp:GridViewPager runat="server" />
                 </PagerTemplate>
@@ -53,18 +52,43 @@
                 </EmptyDataTemplate>
             </asp:GridView>
 
-            <ef:EntityDataSource ID="GridDataSource" runat="server" EnableDelete="true" />
-            
+            <ef:entitydatasource id="GridDataSource" runat="server" enabledelete="true" />
+
             <asp:QueryExtender TargetControlID="GridDataSource" ID="GridQueryExtender" runat="server">
                 <asp:DynamicFilterExpression ControlID="FilterRepeater" />
             </asp:QueryExtender>
 
             <br />
-
+            
             <div class="DDBottomHyperLink">
                 <asp:DynamicHyperLink ID="InsertHyperLink" runat="server" Action="Insert"><img runat="server" src="~/DynamicData/Content/Images/plus.gif" alt="Insert new item" />Insert new item</asp:DynamicHyperLink>
+            </div>
+            <br />
+            <div id="treeView" runat="server" Visible="False">
+                <h3>Root</h3>
+                <ul>
+                    <li>Folder 1
+                            <ul>
+                                <li>Folder 2
+                                    <ul>
+                                        <li>Folder 3
+                                            <ul>
+                                                <li>file1.xml</li>
+                                                <li>file2.xml</li>
+                                                <li>file3.xml</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>file.html</li>
+                            </ul>
+                    </li>
+                    <li>file.psd</li>
+                    <li>file.cpp</li>
+                </ul>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
+
 

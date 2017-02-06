@@ -1,16 +1,15 @@
 <%@ Page Language="C#" MasterPageFile="~/Site.master" CodeBehind="Details.aspx.cs" Inherits="BackOfficeSystem.Details" %>
 
-
-<asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:DynamicDataManager ID="DynamicDataManager1" runat="server" AutoLoadForeignKeys="true">
         <DataControls>
             <asp:DataControlReference ControlID="FormView1" />
         </DataControls>
     </asp:DynamicDataManager>
-
+    
     <h2 class="DDSubHeader">Entry from table <%= table.DisplayName %></h2>
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -42,7 +41,7 @@
             <asp:QueryExtender TargetControlID="DetailsDataSource" ID="DetailsQueryExtender" runat="server">
                 <asp:DynamicRouteExpression />
             </asp:QueryExtender>
-
+            
             <br />
 
             <div class="DDBottomHyperLink">

@@ -5,6 +5,7 @@ using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
 using System.Web.UI;
 using SharedModel;
+using SharedModel.Identity;
 
 namespace BackOfficeSystem
 {
@@ -75,26 +76,56 @@ namespace BackOfficeSystem
             }
             else if (entity is ServiceIdentityUser)
             {
-                using (var db = new ApplicationDbContext())
+                if (Column.ColumnType == typeof(BusinessUnit))
                 {
-                    var targetServiceIdentityUser = (ServiceIdentityUser)entity;
-                    var entityCollection = db.Users.Include(u=>u.BindingSites)
-                        .Where(u => u.Id == targetServiceIdentityUser.Id)
-                        .SelectMany(t => t.BindingSites).ToList();
-                    Repeater1.DataSource = entityCollection;
-                    Repeater1.DataBind();
+                    using (var db = new ApplicationDbContext())
+                    {
+                        var targetUser = (ServiceIdentityUser)entity;
+                        var entityCollection = db.Users.Include(u => u.RestrictedInBusinessUnits)
+                            .Where(r => r.Id == targetUser.Id)
+                            .SelectMany(t => t.RestrictedInBusinessUnits).ToList();
+                        Repeater1.DataSource = entityCollection;
+                        Repeater1.DataBind();
+                    }
                 }
             }
-            else if (entity is SiteInfo)
+            //else if (entity is SiteInfo)
+            //{
+            //    using (var db = new ApplicationDbContext())
+            //    {
+            //        var targetSiteInfo = (SiteInfo)entity;
+            //        var entityCollection = db.SiteInfoModels.Include(u => u.BoundServiceUsers)
+            //            .Where(s => s.Id == targetSiteInfo.Id)
+            //            .SelectMany(t => t.BoundServiceUsers).ToList();
+            //        Repeater1.DataSource = entityCollection;
+            //        Repeater1.DataBind();
+            //    }
+            //}
+            else if (entity is ServiceIdentityRole)
             {
-                using (var db = new ApplicationDbContext())
+                if (Column.ColumnType == typeof(BusinessUnit))
                 {
-                    var targetSiteInfo = (SiteInfo)entity;
-                    var entityCollection = db.SiteInfoModels.Include(u => u.BoundServiceUsers)
-                        .Where(s => s.Id == targetSiteInfo.Id)
-                        .SelectMany(t => t.BoundServiceUsers).ToList();
-                    Repeater1.DataSource = entityCollection;
-                    Repeater1.DataBind();
+                    //using (var db = new ApplicationDbContext())
+                    //{
+                    //    var targetRole = (ServiceIdentityRole)entity;
+                    //    var entityCollection = db.Roles.Include(u => u.RestrictedInBusinessUnits)
+                    //        .Where(r => r.Id == targetRole.Id)
+                    //        .SelectMany(t => t.RestrictedInBusinessUnits).ToList();
+                    //    Repeater1.DataSource = entityCollection;
+                    //    Repeater1.DataBind();
+                    //}
+                }
+                else if (Column.ColumnType == typeof(ServiceUserOperation))
+                {
+                    using (var db = new ApplicationDbContext())
+                    {
+                        var targetRole = (ServiceIdentityRole)entity;
+                        var entityCollection = db.Roles.Include(u => u.ProhibitedOperations)
+                            .Where(r => r.Id == targetRole.Id)
+                            .SelectMany(t => t.ProhibitedOperations).ToList();
+                        Repeater1.DataSource = entityCollection;
+                        Repeater1.DataBind();
+                    }
                 }
             }
             else

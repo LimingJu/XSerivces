@@ -13,10 +13,14 @@ namespace SharedModel.ModelMetadata
     [DisplayName("ServiceIdentityRole (Pre-defined role which for categorize user.)")]
     class ServiceIdentityRoleMetadata
     {
-        [UIHint("GuidColumnText")]
-        public string Id;
+        [Display(Name = "RoleName", Order = 1)]
+        public string Name;
+        [Display(Order = 2)]
+        public string Description;
+        [Display(Name = "User In this Role", Order = 3)]
         [UIHint("ServiceUserGuidLinkedChildren")]
         public ICollection<ServiceIdentityUserRole> Users;
+
         /// <summary>
         /// 'DateTime.Now_OnPostBack' will set a DateTime.Now when Page PostBack performed.
         /// </summary>
@@ -24,7 +28,15 @@ namespace SharedModel.ModelMetadata
         [Display(Order = 4)]
         public DateTime CreatedDateTime;
 
-        [Display(Name = "RoleName")]
-        public string Name;
+        [Display(Name = "ParentRole", Order = 18)]
+        public ServiceIdentityRole ParentRole;
+
+        
+        [Display(Order = 19)]
+        public List<ServiceUserOperation> ProhibitedOperations;
+
+        [Display(Order = 30)]
+        [UIHint("GuidColumnText")]
+        public string Id;
     }
 }

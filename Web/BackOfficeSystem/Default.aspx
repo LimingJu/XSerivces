@@ -42,8 +42,8 @@
     </asp:GridView>
     <br />
 
-    <h2 class="DDSubHeader">Site Info Managment</h2>
-    <asp:GridView ID="SiteInfoManagmentGridView" runat="server" AutoGenerateColumns="false"
+    <h2 class="DDSubHeader">Business Unit Managment</h2>
+    <asp:GridView ID="BusinessUnitManagmentGridView" runat="server" AutoGenerateColumns="false"
         CssClass="DDGridView" RowStyle-CssClass="td" HeaderStyle-CssClass="th" CellPadding="6">
         <Columns>
             <asp:HyperLinkField HeaderText="Operation" DataTextField="DisplayText" DataNavigateUrlFields="LinkPath"></asp:HyperLinkField>

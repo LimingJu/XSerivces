@@ -106,20 +106,20 @@ namespace BackOfficeSystem
 
             #endregion
 
-            #region SiteInfo Managment
+            #region Business Unit Managment
 
             sortedAndReorg = new List<OperationDescriptor>();
 
-            _ = visibleTables.First(t => t.EntityType == typeof(SiteInfo));
+            _ = visibleTables.First(t => t.EntityType == typeof(BusinessUnit));
             sortedAndReorg.Add(new OperationDescriptor()
             {
                 LinkPath = _.GetActionPath("List"),
-                DisplayText = "Add, update or delete Site.",
-                DetailDescription = "Add, update or delete Site.."
+                DisplayText = "Add, update or delete a business unit, like a site, a region, a country or a project.",
+                DetailDescription = "Mostly used for correlate with a role, to further restrict its privilidge in a certain range. "
             });
 
-            SiteInfoManagmentGridView.DataSource = sortedAndReorg;
-            SiteInfoManagmentGridView.DataBind();
+            BusinessUnitManagmentGridView.DataSource = sortedAndReorg;
+            BusinessUnitManagmentGridView.DataBind();
 
             #endregion
 

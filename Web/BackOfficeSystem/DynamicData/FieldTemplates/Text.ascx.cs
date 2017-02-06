@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace BackOfficeSystem {
     public partial class TextField : System.Web.DynamicData.FieldTemplateUserControl {
-        private const int MAX_DISPLAYLENGTH_IN_LIST = 25;
+        private const int MAX_DISPLAYLENGTH_IN_LIST = 55;
     
         public override string FieldValueString {
             get {
