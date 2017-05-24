@@ -68,7 +68,7 @@ namespace SharedConfig.Util
                 {
                     var pending = context.BusinessUnitModels.Where(m => restrictedInBusinessUnitNames.Contains(m.Name));
                     if (pending.Count() != restrictedInBusinessUnitNames.Count)
-                        throw new ArgumentException("one or more restrictedInBusinessUnit Name could not be found in database(those business units must be pre-defined in db).");
+                        throw new ArgumentException("BusinessUnit: " + restrictedInBusinessUnitNames.Aggregate((acc, n) => acc + "," + n) + ", could not be found in database(those business units must be pre-defined in db).");
                     newUser.RestrictedInBusinessUnits = new List<BusinessUnit>();
                     newUser.RestrictedInBusinessUnits.AddRange(pending);
                 }

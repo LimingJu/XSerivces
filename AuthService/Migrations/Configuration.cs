@@ -437,6 +437,8 @@ namespace AuthService.Migrations
 
                 #endregion
 
+                context.SaveChanges();
+
                 #region add pre-defined Roles
 
                 UserPriviledgeHelper.CreateOrUpdateRole("SuperAdmin", "top most (first) lv admin, the god", "");
@@ -489,8 +491,6 @@ namespace AuthService.Migrations
                 UserPriviledgeHelper.AssignUserToRoles("102", new string[] { "Cashier" });
 
                 #endregion
-
-                context.SaveChanges();
             }
             catch (Exception ex)
             {

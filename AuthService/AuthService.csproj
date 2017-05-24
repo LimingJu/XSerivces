@@ -202,37 +202,9 @@
     <Compile Include="ApplicationOAuthProvider.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\DebugController.cs" />
-    <Compile Include="Migrations\201612080803459_init.cs" />
-    <Compile Include="Migrations\201612080803459_init.Designer.cs">
-      <DependentUpon>201612080803459_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612080824182_re.cs" />
-    <Compile Include="Migrations\201612080824182_re.Designer.cs">
-      <DependentUpon>201612080824182_re.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612080832283_rere.cs" />
-    <Compile Include="Migrations\201612080832283_rere.Designer.cs">
-      <DependentUpon>201612080832283_rere.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612080839431_rerere.cs" />
-    <Compile Include="Migrations\201612080839431_rerere.Designer.cs">
-      <DependentUpon>201612080839431_rerere.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612090143018_rerere3.cs" />
-    <Compile Include="Migrations\201612090143018_rerere3.Designer.cs">
-      <DependentUpon>201612090143018_rerere3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612170206530_restri.cs" />
-    <Compile Include="Migrations\201612170206530_restri.Designer.cs">
-      <DependentUpon>201612170206530_restri.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612170231218_restri0.cs" />
-    <Compile Include="Migrations\201612170231218_restri0.Designer.cs">
-      <DependentUpon>201612170231218_restri0.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612210254404_restri0000.cs" />
-    <Compile Include="Migrations\201612210254404_restri0000.Designer.cs">
-      <DependentUpon>201612210254404_restri0000.cs</DependentUpon>
+    <Compile Include="Migrations\201705231246117_init.cs" />
+    <Compile Include="Migrations\201705231246117_init.Designer.cs">
+      <DependentUpon>201705231246117_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,29 +260,8 @@
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612080803459_init.resx">
-      <DependentUpon>201612080803459_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612080824182_re.resx">
-      <DependentUpon>201612080824182_re.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612080832283_rere.resx">
-      <DependentUpon>201612080832283_rere.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612080839431_rerere.resx">
-      <DependentUpon>201612080839431_rerere.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612090143018_rerere3.resx">
-      <DependentUpon>201612090143018_rerere3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612170206530_restri.resx">
-      <DependentUpon>201612170206530_restri.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612170231218_restri0.resx">
-      <DependentUpon>201612170231218_restri0.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612210254404_restri0000.resx">
-      <DependentUpon>201612210254404_restri0000.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705231246117_init.resx">
+      <DependentUpon>201705231246117_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

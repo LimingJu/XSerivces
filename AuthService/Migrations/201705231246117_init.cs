@@ -17,52 +17,12 @@ namespace AuthService.Migrations
                         Name = c.String(maxLength: 50),
                         Address = c.String(),
                         Description = c.String(),
-                        ParentBusinessUnitId = c.Int(nullable: false),
+                        ParentBusinessUnitId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("public.BusinessUnits", t => t.ParentBusinessUnitId)
                 .Index(t => t.Name, unique: true)
                 .Index(t => t.ParentBusinessUnitId);
-            
-            CreateTable(
-                "public.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Description = c.String(),
-                        CreatedDateTime = c.DateTime(),
-                        ParentRoleId = c.String(maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("public.AspNetRoles", t => t.ParentRoleId)
-                .Index(t => t.ParentRoleId)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "public.ServiceUserOperations",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        OperationName = c.String(),
-                        CreatedDateTime = c.DateTime(),
-                        Description = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.OperationName, unique: true);
-            
-            CreateTable(
-                "public.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("public.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("public.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
             
             CreateTable(
                 "public.AspNetUsers",
@@ -114,6 +74,46 @@ namespace AuthService.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("public.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
+            CreateTable(
+                "public.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("public.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("public.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "public.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Description = c.String(),
+                        CreatedDateTime = c.DateTime(),
+                        ParentRoleId = c.String(maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("public.AspNetRoles", t => t.ParentRoleId)
+                .Index(t => t.ParentRoleId)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
+            CreateTable(
+                "public.ServiceUserOperations",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        OperationName = c.String(),
+                        CreatedDateTime = c.DateTime(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.OperationName, unique: true);
             
             CreateTable(
                 "public.Currencies",
@@ -259,6 +259,19 @@ namespace AuthService.Migrations
                 .Index(t => t.PosMopId);
             
             CreateTable(
+                "public.IdentityUserBusiUnit_M2M",
+                c => new
+                    {
+                        ServiceIdentityUserId = c.String(nullable: false, maxLength: 128),
+                        BusinessUnitId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.ServiceIdentityUserId, t.BusinessUnitId })
+                .ForeignKey("public.AspNetUsers", t => t.ServiceIdentityUserId, cascadeDelete: true)
+                .ForeignKey("public.BusinessUnits", t => t.BusinessUnitId, cascadeDelete: true)
+                .Index(t => t.ServiceIdentityUserId)
+                .Index(t => t.BusinessUnitId);
+            
+            CreateTable(
                 "public.IdentityRoleUserOperation_M2M",
                 c => new
                     {
@@ -270,19 +283,6 @@ namespace AuthService.Migrations
                 .ForeignKey("public.ServiceUserOperations", t => t.ServiceUserOperationId, cascadeDelete: true)
                 .Index(t => t.ServiceIdentityRoleId)
                 .Index(t => t.ServiceUserOperationId);
-            
-            CreateTable(
-                "public.IdentityRoleBusinessUnit_M2M",
-                c => new
-                    {
-                        ServiceIdentityRoleId = c.String(nullable: false, maxLength: 128),
-                        BusinessUnitId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.ServiceIdentityRoleId, t.BusinessUnitId })
-                .ForeignKey("public.AspNetRoles", t => t.ServiceIdentityRoleId, cascadeDelete: true)
-                .ForeignKey("public.BusinessUnits", t => t.BusinessUnitId, cascadeDelete: true)
-                .Index(t => t.ServiceIdentityRoleId)
-                .Index(t => t.BusinessUnitId);
             
             CreateTable(
                 "public.PosItemPosDis_M2M",
@@ -330,23 +330,23 @@ namespace AuthService.Migrations
             DropForeignKey("public.PosItemPosDis_M2M", "PosItemId", "public.PosItems");
             DropForeignKey("public.PosDiscounts", "SnapShotId", "public.SnapShots");
             DropForeignKey("public.AspNetUserRoles", "UserId", "public.AspNetUsers");
-            DropForeignKey("public.AspNetUserLogins", "UserId", "public.AspNetUsers");
-            DropForeignKey("public.AspNetUserClaims", "UserId", "public.AspNetUsers");
             DropForeignKey("public.AspNetUserRoles", "RoleId", "public.AspNetRoles");
-            DropForeignKey("public.IdentityRoleBusinessUnit_M2M", "BusinessUnitId", "public.BusinessUnits");
-            DropForeignKey("public.IdentityRoleBusinessUnit_M2M", "ServiceIdentityRoleId", "public.AspNetRoles");
             DropForeignKey("public.IdentityRoleUserOperation_M2M", "ServiceUserOperationId", "public.ServiceUserOperations");
             DropForeignKey("public.IdentityRoleUserOperation_M2M", "ServiceIdentityRoleId", "public.AspNetRoles");
             DropForeignKey("public.AspNetRoles", "ParentRoleId", "public.AspNetRoles");
+            DropForeignKey("public.IdentityUserBusiUnit_M2M", "BusinessUnitId", "public.BusinessUnits");
+            DropForeignKey("public.IdentityUserBusiUnit_M2M", "ServiceIdentityUserId", "public.AspNetUsers");
+            DropForeignKey("public.AspNetUserLogins", "UserId", "public.AspNetUsers");
+            DropForeignKey("public.AspNetUserClaims", "UserId", "public.AspNetUsers");
             DropForeignKey("public.BusinessUnits", "ParentBusinessUnitId", "public.BusinessUnits");
             DropIndex("public.PosTrxDisPosTrxItem_M2M", new[] { "PosTrxItemId" });
             DropIndex("public.PosTrxDisPosTrxItem_M2M", new[] { "PosTrxDiscountId" });
             DropIndex("public.PosItemPosDis_M2M", new[] { "PosDiscountId" });
             DropIndex("public.PosItemPosDis_M2M", new[] { "PosItemId" });
-            DropIndex("public.IdentityRoleBusinessUnit_M2M", new[] { "BusinessUnitId" });
-            DropIndex("public.IdentityRoleBusinessUnit_M2M", new[] { "ServiceIdentityRoleId" });
             DropIndex("public.IdentityRoleUserOperation_M2M", new[] { "ServiceUserOperationId" });
             DropIndex("public.IdentityRoleUserOperation_M2M", new[] { "ServiceIdentityRoleId" });
+            DropIndex("public.IdentityUserBusiUnit_M2M", new[] { "BusinessUnitId" });
+            DropIndex("public.IdentityUserBusiUnit_M2M", new[] { "ServiceIdentityUserId" });
             DropIndex("public.PosTrxMops", new[] { "PosMopId" });
             DropIndex("public.PosTrxMops", "IX_LineNumAndPosTrxId");
             DropIndex("public.PosTrxes", new[] { "ServiceIdentityUserId" });
@@ -359,21 +359,21 @@ namespace AuthService.Migrations
             DropIndex("public.PosItems", "IX_ItemIdAndSnapShotId");
             DropIndex("public.PosDiscounts", "IX_DiscountNameAndSnapShotId");
             DropIndex("public.Currencies", "IX_CurrencyName");
+            DropIndex("public.ServiceUserOperations", new[] { "OperationName" });
+            DropIndex("public.AspNetRoles", "RoleNameIndex");
+            DropIndex("public.AspNetRoles", new[] { "ParentRoleId" });
+            DropIndex("public.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("public.AspNetUserRoles", new[] { "UserId" });
             DropIndex("public.AspNetUserLogins", new[] { "UserId" });
             DropIndex("public.AspNetUserClaims", new[] { "UserId" });
             DropIndex("public.AspNetUsers", new[] { "Alias" });
             DropIndex("public.AspNetUsers", "UserNameIndex");
-            DropIndex("public.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("public.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("public.ServiceUserOperations", new[] { "OperationName" });
-            DropIndex("public.AspNetRoles", "RoleNameIndex");
-            DropIndex("public.AspNetRoles", new[] { "ParentRoleId" });
             DropIndex("public.BusinessUnits", new[] { "ParentBusinessUnitId" });
             DropIndex("public.BusinessUnits", new[] { "Name" });
             DropTable("public.PosTrxDisPosTrxItem_M2M");
             DropTable("public.PosItemPosDis_M2M");
-            DropTable("public.IdentityRoleBusinessUnit_M2M");
             DropTable("public.IdentityRoleUserOperation_M2M");
+            DropTable("public.IdentityUserBusiUnit_M2M");
             DropTable("public.PosTrxMops");
             DropTable("public.PosTrxes");
             DropTable("public.PosTrxItems");
@@ -383,12 +383,12 @@ namespace AuthService.Migrations
             DropTable("public.SnapShots");
             DropTable("public.PosDiscounts");
             DropTable("public.Currencies");
+            DropTable("public.ServiceUserOperations");
+            DropTable("public.AspNetRoles");
+            DropTable("public.AspNetUserRoles");
             DropTable("public.AspNetUserLogins");
             DropTable("public.AspNetUserClaims");
             DropTable("public.AspNetUsers");
-            DropTable("public.AspNetUserRoles");
-            DropTable("public.ServiceUserOperations");
-            DropTable("public.AspNetRoles");
             DropTable("public.BusinessUnits");
         }
     }
